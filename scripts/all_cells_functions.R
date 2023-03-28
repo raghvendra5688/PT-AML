@@ -7,7 +7,7 @@ library(ggpubr)
 library(extrafont)
 loadfonts()
 
-#setwd("/home/administrator/Documents/StJude_Work/Projects/Raghav/PanCancer_Panoptosis/Cell_Lines/")
+setwd("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/")
 
 plot_umap <- function(df, plot_title, expression_range, linetype_name)
 {
@@ -40,7 +40,7 @@ plot_umap <- function(df, plot_title, expression_range, linetype_name)
   return(g_final)
 }
 
-get_mean_se_stat_info <- function(df,output_path="results/")
+get_mean_se_stat_info <- function(df,output_path="Results/")
 {
   
   #Perform the stat test using wilcox test
