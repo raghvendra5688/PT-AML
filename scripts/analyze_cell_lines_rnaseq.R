@@ -118,14 +118,55 @@ rev_ssgsea_results$dbgap_rnaseq_sample <- rownames(rev_ssgsea_results)
 cell_lines_mat_with_expr_clinical_pathway_activity <- merge(final_cell_lines_mat, rev_ssgsea_results, by="dbgap_rnaseq_sample", all=TRUE)
 
 ################################################################################
+#Get the marker gene set for cell type and estimate enrichment for each cell type
+celltype_sig <- parse.van.galen.supp("BeatAML/Data/1-s2.0-S0092867419300947-mmc3.xlsx")
+celltypes_of_interest <- c("cDC-like","GMP-like","HSC-like","Monocyte-like","Progenitor-like","Promono-like")
+rev_celltype_sig <- celltype_sig[celltype_sig$vg_type %in% celltypes_of_interest,]
+celltype_genelist <- NULL
+unique_celltypes <- unique(rev_celltype_sig$vg_type)
+for (i in 1:length(unique_celltypes))
+{
+  celltype_name <- unique_celltypes[i]
+  geneset <- rev_celltype_sig[rev_celltype_sig$vg_type==celltype_name,]$display_label
+  celltype_genelist[[i]] <- geneset
+}
+names(celltype_genelist) <- unique_celltypes
+
+#Make the gene set enrichment analysis to get scores for each celltype
+ssgsea_celltype_results <- as.data.frame(t(gsva(expr=as.matrix(t(rev_cell_lines_mat[,-ncol(rev_cell_lines_mat)])), gset.idx.list = celltype_genelist, method="ssgsea", kcdf = "Gaussian", parallel.sz=20)))
+
+#Get the marker gene set for the modules and enrichment scores
+load("BeatAML/Data/merged_older_wgcna_kme.RData")
+unique_modules <- unique(cur.map$cur_labels)
+module_genelist <- NULL
+for (i in 1:length(unique_modules))
+{
+  module_name <- unique_modules[i]
+  genelist <- cur.map[cur.map$cur_labels==module_name,]$display_label
+  module_genelist[[i]] <- genelist
+}
+names(module_genelist) <- unique_modules
+
+ssgsea_module_results <- as.data.frame(t(gsva(expr=as.matrix(t(rev_cell_lines_mat[,-ncol(rev_cell_lines_mat)])), gset.idx.list = module_genelist, method="ssgsea", kcdf = "Gaussian", parallel.sz=20)))
+
+#Combine the ssgsea results for celltypes and modules
+ssgsea_celltype_module_combinations <- as.data.frame(cbind(ssgsea_celltype_results,ssgsea_module_results))
+ssgsea_celltype_module_combinations$dbgap_rnaseq_sample <- rownames(ssgsea_celltype_module_combinations)
+
+#Merge the cell type enrichment matrix with cell lines matrix
+cell_lines_mat_with_expr_clin_pa_cts <- merge(cell_lines_mat_with_expr_clinical_pathway_activity, ssgsea_celltype_module_combinations,
+                                              by = "dbgap_rnaseq_sample", all=TRUE)
+
+################################################################################
 #Divide data into train and test set and write it down
-train_cell_lines_mat_with_expr_clin_pa <- cell_lines_mat_with_expr_clinical_pathway_activity[cell_lines_mat_with_expr_clinical_pathway_activity$dbgap_rnaseq_sample %in% training_cohort_samples,]
-test_cell_lines_mat_with_expr_clin_pa <- cell_lines_mat_with_expr_clinical_pathway_activity[cell_lines_mat_with_expr_clinical_pathway_activity$dbgap_rnaseq_sample %in% test_cohort_samples,]
-N = nrow(train_cell_lines_mat_with_expr_clin_pa)
+train_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% training_cohort_samples,]
+test_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% test_cohort_samples,]
+N = nrow(train_cell_lines_mat_with_expr_clin_pa_cts)
 mid_point = N/2
-write.table(train_cell_lines_mat_with_expr_clin_pa[c(1:mid_point),], file="Data/Training_Set_with_Expr_Clin_PA_P1.csv",row.names=F, col.names=T, quote=F, sep=";")
-write.table(train_cell_lines_mat_with_expr_clin_pa[c((mid_point+1):N),], file="Data/Training_Set_with_Expr_Clin_PA_P2.csv",row.names=F, col.names=T, quote=F, sep=";")
-write.table(test_cell_lines_mat_with_expr_clin_pa, file="Data/Test_Set_with_Expr_Clin_PA.csv",row.names=F, col.names=T, quote=F, sep=";")
+write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c(1:mid_point),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F, sep=";")
+write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c((mid_point+1):N),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F, sep=";")
+write.table(test_cell_lines_mat_with_expr_clin_pa_cts, file="Data/Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep=";")
+
 
 # #Get the mutation information for each cell line, gene combination
 # ################################################################################

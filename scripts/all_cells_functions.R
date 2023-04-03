@@ -5,6 +5,7 @@ library(preprocessCore)
 library(rstatix)
 library(ggpubr)
 library(extrafont)
+library(openxlsx)
 loadfonts()
 
 setwd("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/")
@@ -207,5 +208,25 @@ make_heatmap <- function(scaled_matrix){
                 heatmap_legend_param = list(direction = "horizontal")
   )
   return(ht)
+}
+
+parse.van.galen.supp <- function(vg.supp.file){
+  
+  vg <- data.table(read.xlsx(vg.supp.file))
+  vg <- vg[,-c(1:4, 14),with=F]
+  names(vg) <- unlist(vg[1,])
+  names(vg)[1:3] <- paste(names(vg)[1:3], "Combined", sep="-")
+  vg <- vg[-1,]
+  vg <- vg[-51,]
+  vg[,rank:=.I]
+  
+  vg[,`GMP-like`:=`GMP-like-Combined`]
+  
+  melt.vg <- melt(vg, id.vars="rank", measure.vars=setdiff(colnames(vg), "rank"), variable.factor = F)
+  
+  names(melt.vg) <- c("vg_rank", "vg_type", "display_label")
+  
+  melt.vg
+  return(melt.vg)
 }
 
