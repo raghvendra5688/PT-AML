@@ -163,9 +163,9 @@ train_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_c
 test_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% test_cohort_samples,]
 N = nrow(train_cell_lines_mat_with_expr_clin_pa_cts)
 mid_point = N/2
-write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c(1:mid_point),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F, sep=";")
-write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c((mid_point+1):N),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F, sep=";")
-write.table(test_cell_lines_mat_with_expr_clin_pa_cts, file="Data/Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep=";")
+write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c(1:mid_point),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F, sep="\t")
+write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c((mid_point+1):N),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F, sep="\t")
+write.table(test_cell_lines_mat_with_expr_clin_pa_cts, file="Data/Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
 
 
 # #Get the mutation information for each cell line, gene combination
