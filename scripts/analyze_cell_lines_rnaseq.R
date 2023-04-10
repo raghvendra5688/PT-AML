@@ -161,6 +161,9 @@ cell_lines_mat_with_expr_clin_pa_cts <- merge(cell_lines_mat_with_expr_clinical_
 #Divide data into train and test set and write it down
 train_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% training_cohort_samples,]
 test_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% test_cohort_samples,]
+train_sample_ids <- train_cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample
+test_sample_ids <- test_cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample
+save(train_sample_ids,test_sample_ids,file='Data/Train_Test_Ids.Rdata')
 N = nrow(train_cell_lines_mat_with_expr_clin_pa_cts)
 mid_point = N/2
 write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c(1:mid_point),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F, sep="\t")
