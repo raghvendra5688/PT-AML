@@ -100,4 +100,17 @@ for (i in 1:length(all_sample_ids))
 train_mut_var_mat <- all_mut_var_mat[train_sample_ids,]
 test_mut_var_mat <- all_mut_var_mat[test_sample_ids,]
 
+train_mut_mat <- as.data.frame(as.matrix(train_mut_mat))
+test_mut_mat <- as.data.frame(as.matrix(test_mut_mat))
+train_mut_var_mat <- as.data.frame(as.matrix(train_mut_var_mat))
+test_mut_var_mat <- as.data.frame(as.matrix(test_mut_var_mat))
+train_mut_mat$dbgap_rnaseq_sample <- rownames(train_mut_mat)
+test_mut_mat$dbgap_rnaseq_sample <- rownames(test_mut_mat)
+train_mut_var_mat$dbgap_rnaseq_sample <- rownames(train_mut_var_mat)
+test_mut_var_mat$dbgap_rnaseq_sample <- rownames(test_mut_var_mat)
+rownames(train_mut_mat) <- NULL
+rownames(test_mut_mat) <- NULL
+rownames(train_mut_var_mat) <- NULL
+rownames(test_mut_var_mat) <- NULL
+
 save(train_mut_mat,test_mut_mat,train_mut_var_mat, test_mut_var_mat, file="Data/Train_Test_Mutation_Matrices.Rdata")
