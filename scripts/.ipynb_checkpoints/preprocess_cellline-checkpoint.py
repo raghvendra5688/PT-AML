@@ -18,9 +18,9 @@ import pandas as pd
 import pyreadr
 
 #Load the samples by gene, clinical, pathway enrichment, cell type enrichment data frame
-train_part1_df = pd.read_csv("../Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",sep="\t",low_memory=False)
-train_part2_df = pd.read_csv("../Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",sep="\t",low_memory=False)
-test_df = pd.read_csv("../Data/Test_Set_with_Expr_Clin_PA_CTS.csv.gz",sep="\t",low_memory=False)
+train_part1_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",sep="\t",low_memory=False)
+train_part2_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",sep="\t",low_memory=False)
+test_df = pd.read_csv("../Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv.gz",sep="\t",low_memory=False)
 train_part1_df.head()
 print(train_part1_df.shape)
 print(train_part2_df.shape)
@@ -85,7 +85,7 @@ print(big_test_df.shape)
 sum(big_train_df.columns==big_test_df.columns)
 # -
 #Write the data frames as pickle files
-#big_train_df.to_pickle("../Data/Training_Set_Mod.pkl", compression="zip")
+big_train_df.to_pickle("../Data/Training_Set_Mod.pkl", compression="zip")
 big_test_df.to_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
 
 

@@ -179,7 +179,7 @@ subset_auc_scores_df <- as.data.frame(subset_auc_scores_df)
 subset_auc_scores_df$primary_key <- rownames(subset_auc_scores_df)
 
 train_cell_drug_df <- merge(cell_drug_df,subset_auc_scores_df,on="primary_key",all=F)
-write.table(train_cell_drug_df, file="Data/Revised_Training_Set_with_IC50.csv",row.names=F,col.names=T,quote=F)
+write.table(train_cell_drug_df, file="Data/Revised_Training_Set_with_IC50.csv",row.names=F,col.names=T,quote=F,sep="\t")
 
 
 #Get drug, cell line specific affinity/distance measures for test set taking expression level of a gene in a cell line into account
@@ -233,4 +233,4 @@ subset_auc_scores_df <- as.data.frame(subset_auc_scores_df)
 subset_auc_scores_df$primary_key <- rownames(subset_auc_scores_df)
 
 test_cell_drug_df <- merge(cell_drug_df,subset_auc_scores_df,on="primary_key",all=F)
-write.table(train_cell_drug_df, file="Data/Revised_Test_Set_with_IC50.csv",row.names=F,col.names=T,quote=F)
+write.table(test_cell_drug_df, file="Data/Revised_Test_Set_with_IC50.csv",row.names=F,col.names=T,quote=F,sep="\t")

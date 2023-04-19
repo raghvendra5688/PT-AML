@@ -85,7 +85,7 @@ print(big_test_df.shape)
 sum(big_train_df.columns==big_test_df.columns)
 # -
 #Write the data frames as pickle files
-#big_train_df.to_pickle("../Data/Training_Set_Mod.pkl", compression="zip")
+big_train_df.to_pickle("../Data/Training_Set_Mod.pkl", compression="zip")
 big_test_df.to_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
 
 
