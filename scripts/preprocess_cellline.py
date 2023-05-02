@@ -18,12 +18,14 @@ import pandas as pd
 import pyreadr
 
 #Load the samples by gene, clinical, pathway enrichment, cell type enrichment data frame
-train_part1_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",sep="\t",low_memory=False)
-train_part2_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",sep="\t",low_memory=False)
-test_df = pd.read_csv("../Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv.gz",sep="\t",low_memory=False)
-train_part1_df.head()
-print(train_part1_df.shape)
-print(train_part2_df.shape)
+#train_part1_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",sep="\t",low_memory=False)
+#train_part2_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",sep="\t",low_memory=False)
+#test_df = pd.read_csv("../Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv.gz",sep="\t",low_memory=False)
+train_df = pd.read_csv("../Data/Revised_Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
+test_df = pd.read_csv("../Data/Revised_Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
+#train_part1_df.head()
+print(train_df.shape)
+print(test_df.shape)
 
 #Load the mutation information
 out = pyreadr.read_r("../Data/Train_Test_Mutation_Matrices.Rdata")
@@ -37,29 +39,29 @@ train_mut_df.columns
 
 # +
 #Get the column names and useful columns
-all_columns = list(train_part1_df.columns)
+all_columns = list(train_df.columns)
 
 #Sample ids
 sample_names = all_columns[0]
 
 #Gene names
-gene_names = all_columns[1:22844]
+gene_names = all_columns[1:653]
 
 #Clinical traits with T-sne
-clin_traits = all_columns[22844:22941]
+clin_traits = all_columns[653:750]
 clin_trait_of_use = ['Tsne1','Tsne2','consensus_sex','ageAtDiagnosis','diseaseStageAtSpecimenCollection','vitalStatus',
                      'overallSurvival', '%.Blasts.in.BM', '%.Blasts.in.PB', '%.Eosinophils.in.PB', '%.Lymphocytes.in.PB', 
                      '%.Monocytes.in.PB', '%.Neutrophils.in.PB','ALT', 'AST', 'albumin', 'creatinine', 
                      'hematocrit', 'hemoglobin','plateletCount','wbcCount']
 
 #A description of the min max values
-train_part1_df[clin_trait_of_use].describe()
+train_df[clin_trait_of_use].describe()
 
 #Get the information about pathways
-pathway_names = all_columns[22941:22995]
+pathway_names = all_columns[750:804]
 
 #Get the information about celltypes and modules
-cts_names = all_columns[22995:23015]
+cts_names = all_columns[804:824]
 
 #Print all columns of interest
 all_cols_of_interest = [sample_names]+gene_names+clin_trait_of_use+pathway_names+cts_names
@@ -70,7 +72,8 @@ len(all_cols_of_interest)
 
 # +
 #Make the big combined training and test dataframe
-big_train_df = pd.concat([train_part1_df,train_part2_df],axis=0)
+#big_train_df = pd.concat([train_part1_df,train_part2_df],axis=0)
+big_train_df = train_df
 big_train_df = pd.DataFrame(big_train_df[all_cols_of_interest])
 big_test_df = pd.DataFrame(test_df[all_cols_of_interest])
 

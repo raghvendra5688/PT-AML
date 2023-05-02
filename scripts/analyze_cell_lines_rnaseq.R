@@ -170,4 +170,13 @@ write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c(1:mid_point),], file="D
 write.table(train_cell_lines_mat_with_expr_clin_pa_cts[c((mid_point+1):N),], file="Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F, sep="\t")
 write.table(test_cell_lines_mat_with_expr_clin_pa_cts, file="Data/Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
 
+#Write the dataset with only oncogenes
+################################################################################
+list_oncogenes <- fread("Data/Oncogenes.csv",header=T)
+oncogenes_symbol <- list_oncogenes$`Gene Symbol`
+oncogene_ids <- which(colnames(train_cell_lines_mat_with_expr_clin_pa_cts) %in% oncogenes_symbol)
+train_cell_lines_mat_with_onco_expr_clin_pa_cts <- train_cell_lines_mat_with_expr_clin_pa_cts[,c(1,oncogene_ids,c(22844:ncol(train_cell_lines_mat_with_expr_clin_pa_cts)))]
+test_cell_lines_mat_with_onco_expr_clin_pa_cts <- test_cell_lines_mat_with_expr_clin_pa_cts[,c(1,oncogene_ids,c(22844:ncol(test_cell_lines_mat_with_expr_clin_pa_cts)))]
+write.table(train_cell_lines_mat_with_onco_expr_clin_pa_cts,file="Data/Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
+write.table(test_cell_lines_mat_with_onco_expr_clin_pa_cts,file="Data/Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
 

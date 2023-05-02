@@ -35,9 +35,15 @@ train_drug_cell_df = pd.read_csv("../Data/Revised_Training_Set_with_IC50.csv.gz"
 test_drug_cell_df = pd.read_csv("../Data/Revised_Test_Set_with_IC50.csv.gz",compression="gzip",header="infer",sep="\t")
 print(train_drug_cell_df.shape)
 print(test_drug_cell_df.shape)
+print(train_drug_cell_df.columns)
 
-rev_train_feature_df = train_feature_df.iloc[:,[0]+[i for i in range(22844,23322)]]
-rev_test_feature_df = test_feature_df.iloc[:,[0]+[i for i in range(22844,23322)]]
+#This part of code was not looking at gene expression profiles
+#rev_train_feature_df = train_feature_df.iloc[:,[0]+[i for i in range(22844,23322)]]
+#rev_test_feature_df = test_feature_df.iloc[:,[0]+[i for i in range(22844,23322)]]
+
+#We now focus on oncogenes, pathway enrichments, module enrichments, mutations in genes, mutation classes
+rev_train_feature_df = train_feature_df
+rev_test_feature_df = test_feature_df
 print(rev_train_feature_df.columns)
 # -
 
@@ -47,8 +53,23 @@ print(train_drug_cell_feature_df.shape)
 test_drug_cell_feature_df = pd.merge(test_drug_cell_df, rev_test_feature_df, on="dbgap_rnaseq_sample")
 print(test_drug_cell_feature_df.shape)
 
+# +
+#Get the drug embedding representation 
+drug_embed_df = pd.read_csv("../Data/Drug_Full_SMILES_Embedding.csv",header='infer')
+drug_embed_df.rename(columns={"Name":"inhibitor"},inplace=True)
+drug_embed_df.head()
+
+#Merge with the drug_cell_feature_df
+final_train_drug_feature_cell_feature_df = pd.merge(drug_embed_df, train_drug_cell_feature_df, on = "inhibitor")
+print(final_train_drug_feature_cell_feature_df.shape)
+final_test_drug_feature_cell_feature_df = pd.merge(drug_embed_df, test_drug_cell_feature_df, on = "inhibitor")
+print(final_test_drug_feature_cell_feature_df.shape)
+# -
+
 #Write the pickle files
-train_drug_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_Cell_Info.pkl", compression="zip")
-test_drug_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_Cell_Info.pkl",compression="zip")
+final_train_drug_feature_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_Cell_Info.pkl", compression="zip")
+final_test_drug_feature_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_Cell_Info.pkl",compression="zip")
+
+final_train_drug_feature_cell_feature_df.columns
 
 

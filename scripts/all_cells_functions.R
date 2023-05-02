@@ -33,7 +33,7 @@ plot_umap <- function(df, plot_title, expression_range, linetype_name)
     plot.title = element_text(size = 11, family = "Arial", colour="black"),
     axis.text = element_text(size=11, family="Arial", colour="black"))
     # theme(axis.text.x = element_text(color = "grey20", size = 1, angle = 0, hjust = .5, vjust = .5, face = "plain"),
-    #       strip.text = element_text(color = "grey20", size=20, angle=0, hjust = 0.5, vjust = 0.5, face = "plain"),
+     #       strip.text = element_text(color = "grey20", size=20, angle=0, hjust = 0.5, vjust = 0.5, face = "plain"),
     #       axis.text.y = element_text(color = "grey20", size = 16, angle = 0, hjust = 1, vjust = 0, face = "plain"),
     #       axis.title.x = element_text(color = "grey20", size = 20, angle = 0, hjust = .5, vjust = 0, face = "plain"),
     #       axis.title.y = element_text(color = "grey20", size = 20, angle = 90, hjust = .5, vjust = .5, face = "plain"),
