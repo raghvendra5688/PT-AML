@@ -39,46 +39,9 @@ import scipy
 import argparse
 import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics
 #plt.rcParams["font.family"] = "Arial"
 # -
-
-def calculate_regression_metrics(labels, predictions):
-    return round(metrics.mean_absolute_error(labels, predictions),3),\
-            round(metrics.mean_squared_error(labels, predictions, squared=False),3),\
-            round(np.power(scipy.stats.pearsonr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],2),3),\
-            round(scipy.stats.pearsonr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],3),\
-            round(scipy.stats.spearmanr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],3)
-
-
-def supervised_learning_steps(method, scoring, data_type, task, model, params, X_train, y_train, n_iter, n_splits = 5):
-    
-    gs = grid_search_cv(model, params, X_train, y_train, scoring=scoring, n_iter = n_iter, n_splits = n_splits)
-
-    y_pred = gs.predict(X_train)
-    y_pred[y_pred < 0] = 0
-
-    if task:
-        results=calculate_classification_metrics(y_train, y_pred)
-        print("Acc: %.3f, F1: %.3f, AUC: %.3f, AUPR: %.3f" % (results[0], results[1], results[2], results[3]))
-    else:
-        results=calculate_regression_metrics(y_train,y_pred)
-        print("MAE: %.3f, MSE: %.3f, R2: %.3f, Pearson R: %.3f, Spearman R: %.3f" % (results[0], results[1], results[2], results[3], results[4]))
-   
-    print('Parameters')
-    print('----------')
-    for p,v in gs.best_estimator_.get_params().items():
-        print(p, ":", v)
-    print('-' * 80)
-
-    if task:
-        save_model(gs, "%s_models/%s_%s_classifier_gs.pk" % (method,method,data_type))
-        save_model(gs.best_estimator_, "%s_models/%s_%s_classifier_best_estimator.pk" %(method,method,data_type))
-    else:
-        save_model(gs, "%s_models/%s_%s_regressor_gs.pk" % (method,method,data_type))
-        save_model(gs.best_estimator_, "%s_models/%s_%s_regressor_best_estimator.pk" %(method,method,data_type))
-    return(gs)
-
 
 #Get the setting with different X_trains and X_tests
 train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
@@ -151,8 +114,8 @@ save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
 
 # +
 #Test the linear regression model on separate test set   
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
+glr_gs = load_model("glr_models/lr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("glr_models/lr_"+data_type+"_scaling_gs.pk")
 np.max(glr_gs.cv_results_["mean_test_score"])
 glr_best = glr_gs.best_estimator_
 y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
@@ -186,7 +149,7 @@ outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 # +
 #Get the top coefficients and matching column information
-glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
+glr_best = load_model("glr_models/lasso_"+data_type+"_regressor_best_estimator.pk")
 val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
 
 fig = plt.figure()
