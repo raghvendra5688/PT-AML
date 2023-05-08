@@ -8,9 +8,9 @@
 #       format_version: '1.5'
 #       jupytext_version: 1.14.5
 #   kernelspec:
-#     display_name: Python [conda env:BeatAML] (arn:aws:sagemaker:us-east-1:081325390199:image/datascience-1.0)
+#     display_name: Python 3 (ipykernel)
 #     language: python
-#     name: conda-env-BeatAML-py__SAGEMAKER_INTERNAL__arn:aws:sagemaker:us-east-1:081325390199:image/datascience-1.0
+#     name: python3
 # ---
 
 # +
@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -137,7 +137,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("GLR Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("Label",fontsize=10)
@@ -159,9 +159,9 @@ fig.set_dpi(300)
 fig.set_facecolor("white")
 
 ax = fig.add_subplot(111)
-plt.bar(X_train.columns[index[-20:]],val[-20:])
+plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
+ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
 ax.set_xlabel("Features",fontsize=10)
 ax.set_ylabel("Coefficient Value",fontsize=10)
 ax.tick_params(labelsize=10)
