@@ -129,7 +129,6 @@ dependencies:
   - python=3.11.0=he550d4f_1_cpython
   - python-dateutil=2.8.2=pyhd8ed1ab_0
   - python_abi=3.11=3_cp311
-  - pytorch=2.1.0.dev20230316=py3.11_cpu_0
   - pytorch-cuda=11.6=hfa5cb2e_3
   - pytorch-mutex=1.0=cpu
   - pytz=2022.7.1=pyhd8ed1ab_0
@@ -144,9 +143,7 @@ dependencies:
   - sympy=1.10.1=py311h06a4308_0
   - threadpoolctl=3.1.0=pyh8a188c0_0
   - tk=8.6.12=h27826a3_0
-  - torchaudio=2.0.0.dev20230317=py311_cpu
-  - torchtext=0.6.0=py_1
-  - torchvision=0.16.0.dev20230317=py311_cpu
+  - torchtext=0.6.0=py_1 
   - tqdm=4.64.1=py311h06a4308_0
   - typing-extensions=4.5.0=hd8ed1ab_0
   - typing_extensions=4.5.0=pyha770c72_0

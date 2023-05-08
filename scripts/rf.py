@@ -1,7 +1,6 @@
 # ---
 # jupyter:
 #   jupytext:
-#     formats: ipynb,py:light
 #     text_representation:
 #       extension: .py
 #       format_name: light
@@ -37,10 +36,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
-import random
+from scipy.stats import randint
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics
-#plt.rcParams["font.family"] = "Arial"
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -54,7 +52,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -89,44 +87,44 @@ plt.hist(Y_train)
 plt.hist(Y_test)
 
 # +
-#Build the Generalized Linear Regression model
-model = linear_model.Ridge()
+model = ensemble.RandomForestRegressor(n_estimators=100, criterion='squared_error',
+                                                max_depth=None, min_samples_split=2,
+                                                min_samples_leaf=1, min_weight_fraction_leaf=0.0,
+                                                max_features='auto', max_leaf_nodes=None,
+                                                min_impurity_decrease=0.0,
+                                                bootstrap=True, oob_score=False,
+                                                n_jobs=64, random_state=328, verbose=1,
+                                                warm_start=False, ccp_alpha=0.0, max_samples=None)
+
 
 # Grid parameters
-params_glr = [
-    {
-        #'l1_ratio' : [0.01, 0.5], #scipy.stats.uniform.rvs(size=100, random_state=42),
-        'alpha' : random.sample(range(100), 100),
-        'fit_intercept' : [True,False],
-        'max_iter': [500,1000]
-    }
-]
-#It will select 1000 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
-scaler = preprocessing.StandardScaler()
+param_rf={'max_depth':list(np.arange(1, 10, step=2)) + [None],
+          'n_estimators':[100,250],
+          'max_features':["sqrt",0.1,0.2,0.3],
+          'criterion':['squared_error','absolute_error'],
+          'min_samples_leaf':np.arange(4,20,step=4)
+         }
 
-X_train_copy = scaler.fit_transform(rev_X_train)
-glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+#It will select 100 random combinations for the CV and do 5-fold CV for each combination
+n_iter = 50
+rf_gs=supervised_learning_steps("rf","r2",data_type,classification_task,model,param_rf,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(glr_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
+print(rf_gs.cv_results_)
 
 # +
-#Test the linear regression model on separate test set   
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
-np.max(glr_gs.cv_results_["mean_test_score"])
-glr_best = glr_gs.best_estimator_
-y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
-test_metrics = calculate_regression_metrics(Y_test,y_pred_glr)
-print(y_pred_glr)
+#Test the linear regression model on separate test set  
+rf_gs = load_model("rf_models/rf_"+data_type+"_regressor_gs.pk")
+np.max(rf_gs.cv_results_["mean_test_score"])
+rf_best = rf_gs.best_estimator_
+y_pred_rf=rf_best.predict(rev_X_test)
+test_metrics = calculate_regression_metrics(Y_test,y_pred_rf)
 print(test_metrics)
 
 #Write the prediction of LR model
-metadata_X_test['predictions']=y_pred_glr
+metadata_X_test['predictions']=y_pred_rf
 metadata_X_test['labels']=Y_test
-metadata_X_test.to_csv("../Results/GLR_"+data_type+"_supervised_test_predictions.csv",index=False)
+metadata_X_test.to_csv("../Results/RF_"+data_type+"_supervised_test_predictions.csv",index=False)
 print("Finished writing predictions")
 
 fig = plt.figure()
@@ -137,21 +135,21 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("RF Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("Label",fontsize=10)
 ax.set_ylabel("Prediction",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
-outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
+plt.text(2,2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(1,1, 'MAE ='+str(test_metrics[0]),fontsize=10)
+outfilename = "../Results/RF_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
-# +
-#Get the top coefficients and matching column information
-glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
-val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
 
+# +
+#Get the most important variables and their feature importance scores
+rf_best = load_model("rf_models/rf_"+data_type+"_regressor_best_estimator.pk")
+val, index = np.sort(rf_best.feature_importances_), np.argsort(rf_best.feature_importances_)
 fig = plt.figure()
 plt.style.use('classic')
 fig.set_size_inches(4,3)
@@ -161,11 +159,13 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
-ax.set_xlabel("Features",fontsize=10)
-ax.set_ylabel("Coefficient Value",fontsize=10)
-ax.tick_params(labelsize=10)
-outputfile = "../Results/GLR_"+data_type+"_Coefficients.pdf"
+
+ax.axes.set_title("Top RF VI (MFP + Feat)",fontsize=9)
+ax.set_xlabel("Features",fontsize=9)
+ax.set_ylabel("VI Value",fontsize=9)
+ax.tick_params(labelsize=9)
+outputfile = "../Results/RF_"+data_type+"_Coefficients.pdf"
 plt.savefig(outputfile, bbox_inches="tight")
 # -
+
 
