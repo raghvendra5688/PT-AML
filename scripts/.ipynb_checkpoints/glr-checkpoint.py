@@ -39,7 +39,7 @@ import scipy
 import argparse
 import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics
 #plt.rcParams["font.family"] = "Arial"
 # -
 
@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -90,13 +90,13 @@ plt.hist(Y_test)
 
 # +
 #Build the Generalized Linear Regression model
-model = linear_model.LinearRegression()
+model = linear_model.Ridge()
 
 # Grid parameters
 params_glr = [
     {
         #'l1_ratio' : [0.01, 0.5], #scipy.stats.uniform.rvs(size=100, random_state=42),
-        #'alpha' : random.sample(range(100), 100),
+        'alpha' : random.sample(range(100), 100),
         'fit_intercept' : [True,False],
         'max_iter': [500,1000]
     }
@@ -106,16 +106,16 @@ n_iter = 100
 scaler = preprocessing.StandardScaler()
 
 X_train_copy = scaler.fit_transform(rev_X_train)
-glr_gs=supervised_learning_steps("lr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 print(glr_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("lr","lr",data_type))
+save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
 
 # +
 #Test the linear regression model on separate test set   
-glr_gs = load_model("lasso_models/lr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("lasso_models/lr_"+data_type+"_scaling_gs.pk")
+glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
 np.max(glr_gs.cv_results_["mean_test_score"])
 glr_best = glr_gs.best_estimator_
 y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
@@ -126,7 +126,7 @@ print(test_metrics)
 #Write the prediction of LR model
 metadata_X_test['predictions']=y_pred_glr
 metadata_X_test['labels']=Y_test
-metadata_X_test.to_csv("../Results/LR_"+data_type+"_supervised_test_predictions.csv",index=False)
+metadata_X_test.to_csv("../Results/GLR_"+data_type+"_supervised_test_predictions.csv",index=False)
 print("Finished writing predictions")
 
 fig = plt.figure()
@@ -137,7 +137,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("LR Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("Label",fontsize=10)
@@ -145,11 +145,11 @@ ax.set_ylabel("Prediction",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
 plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
 plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
-outfilename = "../Results/LR_"+data_type+"_supervised_test_prediction.pdf"
+outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 # +
 #Get the top coefficients and matching column information
-glr_best = load_model("lr_models/lasso_"+data_type+"_regressor_best_estimator.pk")
+glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
 val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
 
 fig = plt.figure()
@@ -159,13 +159,13 @@ fig.set_dpi(300)
 fig.set_facecolor("white")
 
 ax = fig.add_subplot(111)
-plt.bar(X_train.columns[index[-20:]],val[-20:])
+plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top LR Coefficients (MFP + Feat)",fontsize=10)
+ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
 ax.set_xlabel("Features",fontsize=10)
 ax.set_ylabel("Coefficient Value",fontsize=10)
 ax.tick_params(labelsize=10)
-outputfile = "../Results/LR_"+data_type+"_Coefficients.pdf"
+outputfile = "../Results/GLR_"+data_type+"_Coefficients.pdf"
 plt.savefig(outputfile, bbox_inches="tight")
 # -
 
