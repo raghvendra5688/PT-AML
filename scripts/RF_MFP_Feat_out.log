@@ -1,8 +1,0 @@
-Loaded training file
-Shape of training set after removing non-numeric cols
-(34387, 2205)
-(19184, 2205)
-Shape of training set after removing cols with NaNs
-(34387, 2192)
-(19184, 2192)
-Fitting 5 folds for each of 50 candidates, totalling 250 fits
