@@ -25,6 +25,7 @@ import numpy as np
 import re 
 
 import xgboost as xgb
+import lightgbm
 from sklearn import ensemble
 from sklearn import dummy
 from sklearn import linear_model
@@ -37,12 +38,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
-import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics
-#plt.rcParams["font.family"] = "Arial"
+from misc import save_model, load_model, regression_results, grid_search_cv, calculate_regression_metrics, supervised_learning_steps
 # -
-
 #Get the setting with different X_trains and X_tests
 train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
                  "../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",
@@ -52,9 +50,10 @@ test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 ".."]
 data_type_options = ["LS_Feat","MFP_Feat"]
 
+
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -89,44 +88,43 @@ plt.hist(Y_train)
 plt.hist(Y_test)
 
 # +
-#Build the Generalized Linear Regression model
-model = linear_model.Ridge()
+#Build the LightGBM Regression model
+model = lightgbm.LGBMRegressor(boosting_type='gbdt',random_state=0, n_jobs=20, objective="regression")
 
 # Grid parameters
-params_glr = [
-    {
-        #'l1_ratio' : [0.01, 0.5], #scipy.stats.uniform.rvs(size=100, random_state=42),
-        'alpha' : random.sample(range(100), 100),
-        'fit_intercept' : [True,False],
-        'max_iter': [500,1000]
-    }
-]
-#It will select 1000 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
-scaler = preprocessing.StandardScaler()
+params_lgbm = {
+        "n_estimators": [100, 200, 400], #scipy.stats.randint(20, 500),
+        "max_depth": [5, 7, 9, 11, 13], #scipy.stats.randint(1, 9),
+        "num_leaves": [32, 64, 128, 256], 
+        "min_child_samples": [5, 10, 20, 40],#scipy.stats.randint(1, 10),
+        "learning_rate": [1e-3, 1e-2, 1e-1], #loguniform(1e-4, 1e-1),
+        "subsample": [0.8, 1.0], #loguniform(0.8, 1e0),
+        "colsample_bytree": [0.1, 0.3, 0.5, 0.7],
+        "reg_alpha": [0.1, 0.5, 1, 5], #loguniform(1e-1, 1e1),
+        "reg_lambda": [1, 2, 4, 8], #loguniform(1, 1e1)
+}   
 
-X_train_copy = scaler.fit_transform(rev_X_train)
-glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+        
+#It will select 200 random combinations for the CV and do 5-fold CV for each combination
+n_iter = 100
+lgbm_gs=supervised_learning_steps("lgbm","r2",data_type,classification_task,model,params_lgbm,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(glr_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
+print(lgbm_gs.cv_results_)
 
 # +
-#Test the linear regression model on separate test set   
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
-np.max(glr_gs.cv_results_["mean_test_score"])
-glr_best = glr_gs.best_estimator_
-y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
-test_metrics = calculate_regression_metrics(Y_test,y_pred_glr)
-print(y_pred_glr)
+#Test the linear regression model on separate test set  
+lgbm_gs = load_model("lgbm_models/lgbm_"+data_type+"_regressor_gs.pk")
+np.max(lgbm_gs.cv_results_["mean_test_score"])
+lgbm_best = lgbm_gs.best_estimator_
+y_pred_lgbm=lgbm_best.predict(rev_X_test)
+test_metrics=calculate_regression_metrics(Y_test,y_pred_lgbm)
 print(test_metrics)
 
 #Write the prediction of LR model
-metadata_X_test['predictions']=y_pred_glr
+metadata_X_test['predictions']=y_pred_lgbm
 metadata_X_test['labels']=Y_test
-metadata_X_test.to_csv("../Results/GLR_"+data_type+"_supervised_test_predictions.csv",index=False)
+metadata_X_test.to_csv("../Results/LGBM_"+data_type+"_supervised_test_predictions.csv",index=False,sep="\t")
 print("Finished writing predictions")
 
 fig = plt.figure()
@@ -137,21 +135,21 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("LGBM Predictions (MFP + LS)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
-ax.set_xlabel("Label",fontsize=10)
-ax.set_ylabel("Prediction",fontsize=10)
+ax.set_xlabel("",fontsize=10)
+ax.set_ylabel("",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
-outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
+plt.text(-4, 3, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(-4, 2, 'MAE ='+str(test_metrics[0]),fontsize=10)
+outfilename = "../Results/LGBM_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
-# +
-#Get the top coefficients and matching column information
-glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
-val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
 
+# +
+#Get the most important variables and their feature importance scores
+lgbm_best = load_model("lgbm_models/lgbm_"+data_type+"_regressor_best_estimator.pk")
+val, index = np.sort(lgbm_best.feature_importances_), np.argsort(lgbm_best.feature_importances_)
 fig = plt.figure()
 plt.style.use('classic')
 fig.set_size_inches(4,3)
@@ -161,11 +159,10 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
-ax.set_xlabel("Features",fontsize=10)
-ax.set_ylabel("Coefficient Value",fontsize=10)
-ax.tick_params(labelsize=10)
-outputfile = "../Results/GLR_"+data_type+"_Coefficients.pdf"
-plt.savefig(outputfile, bbox_inches="tight")
-# -
 
+ax.axes.set_title("Top LGBM VI (MFP + LS)",fontsize=9)
+ax.set_xlabel("Features",fontsize=9)
+ax.set_ylabel("VI Value",fontsize=9)
+ax.tick_params(labelsize=9)
+outputfile = "../Results/LGBM_"+data_type+"_Coefficients.pdf"
+plt.savefig(outputfile, bbox_inches="tight")
