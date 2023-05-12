@@ -61,6 +61,8 @@ data_type = data_type_options[input_option]
 print("Loaded training file")
 big_train_df = pd.read_pickle(train_options[input_option],compression="zip")
 big_test_df = pd.read_pickle(test_options[input_option],compression="zip")
+big_train_df = big_train_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+big_test_df = big_test_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric values
@@ -89,19 +91,19 @@ plt.hist(Y_test)
 
 # +
 #Build the Xgboost Regression model
-model = xgb.XGBRegressor(tree_method = "hist",random_state=0, n_jobs=64, objective="reg:squarederror")
+model = xgb.XGBRegressor(tree_method = "hist",random_state=0, n_jobs=36, objective="reg:squarederror")
 
 # Grid parameters
 params_xgb = {
-        "n_estimators": [100, 200, 400], #scipy.stats.randint(20, 500),
-        "max_depth": [5, 7, 9, 11, 13], #scipy.stats.randint(1, 9),
-        "gamma": [1e-2, 1e-1, 1], #loguniform(1e-8, 1.0),
-        "min_child_weight": [2, 6, 10, 14],#scipy.stats.randint(1, 10),
-        "learning_rate": [1e-4, 1e-3, 1e-2, 1e-1], #loguniform(1e-4, 1e-1),
-        "subsample": [0.8, 1.0], #loguniform(0.8, 1e0),
+        "n_estimators": scipy.stats.randint(100, 500),
+        "max_depth": scipy.stats.randint(3, 12),
+        "gamma": loguniform(1e-8, 1.0),
+        "min_child_weight": scipy.stats.randint(3, 15),
+        "learning_rate": loguniform(1e-4, 1e-1),
+        "subsample": loguniform(0.8, 1e0),
         "colsample_bytree": [0.1, 0.3, 0.5, 0.7],
-        "reg_alpha": [0.1, 0.5, 1, 5], #loguniform(1e-1, 1e1),
-        "reg_lambda": [1, 2, 4, 8], #loguniform(1, 1e1)
+        "reg_alpha": loguniform(1e-1, 1e1),
+        "reg_lambda": loguniform(1, 1e1)
 }   
 
         
@@ -135,14 +137,14 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("XGB Predictions (MFP + LS)",fontsize=10)
+ax.axes.set_title("XGB Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("",fontsize=10)
 ax.set_ylabel("",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(-4, 3, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(-4, 2, 'MAE ='+str(test_metrics[0]),fontsize=10)
+plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/XGB_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 
@@ -160,7 +162,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top XGB VI (MFP + LS)",fontsize=9)
+ax.axes.set_title("Top XGB VI (MFP + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
