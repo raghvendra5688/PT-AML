@@ -139,11 +139,11 @@ ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={
 ax.axes.set_title("SVR Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
-ax.set_xlabel("",fontsize=10)
-ax.set_ylabel("",fontsize=10)
+ax.set_xlabel("Label",fontsize=10)
+ax.set_ylabel("Prediction",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(-4, 3, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(-4, 2, 'MAE ='+str(test_metrics[0]),fontsize=10)
+plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/SVR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 
