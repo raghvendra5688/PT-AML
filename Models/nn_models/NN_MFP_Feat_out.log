@@ -1,0 +1,522 @@
+Loaded training file
+Shape of training set after removing non-numeric cols
+(34387, 2205)
+(19184, 2205)
+Shape of training set after removing cols with NaNs
+(34387, 2192)
+(19184, 2192)
+Fitting 5 folds for each of 50 candidates, totalling 250 fits
+[CV] END alpha=2.56016152500287e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001177703750752171; total time=17.7min
+[CV] END alpha=1.3121819515983308e-07, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00016464568542729648; total time=20.2min
+[CV] END alpha=8.918326627754471e-07, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004307983765036455; total time=81.0min
+[CV] END alpha=0.0001128845450975669, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002056924409354973; total time=63.4min
+[CV] END alpha=0.0022466743657540023, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0005056949114147479; total time=30.9min
+[CV] END alpha=6.951918666569086e-08, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002975829503887464; total time=40.9min
+[CV] END alpha=8.918326627754471e-07, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004307983765036455; total time=58.1min
+[CV] END alpha=2.6164379248807874e-05, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00019430162692591995; total time=29.5min
+[CV] END alpha=0.006201508211904869, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004567393316687091; total time=90.5min
+[CV] END alpha=6.951918666569086e-08, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002975829503887464; total time=35.3min
+[CV] END alpha=2.298014844498274e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00014822094749180923; total time=18.5min
+[CV] END alpha=5.508845682466708e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004532414178590252; total time=20.7min
+[CV] END alpha=4.469567778459803e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00019776079419973663; total time=28.5min
+[CV] END alpha=3.97858253535288e-06, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00024894205793717046; total time=32.9min
+[CV] END alpha=1.5821130889304227e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00026537197006241015; total time=83.6min
+[CV] END alpha=1.8590843630169635e-05, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00044248047641916354; total time=21.5min
+[CV] END alpha=2.1573883515769803e-07, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0007990951145739111; total time=15.1min
+[CV] END alpha=1.4090065169509274e-06, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0004053504586145521; total time=50.3min
+[CV] END alpha=3.1526441689495035e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00010217783699569048; total time=20.0min
+[CV] END alpha=0.0023781011616394146, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007790304570539065; total time=79.1min
+[CV] END alpha=0.0022466743657540023, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0005056949114147479; total time=20.7min
+[CV] END alpha=9.439687300068826e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0006012443657136704; total time=15.2min
+[CV] END alpha=1.9982467392329447e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000337983049214134; total time=31.9min
+[CV] END alpha=2.298014844498274e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00014822094749180923; total time=18.2min
+[CV] END alpha=3.0981466892380294e-05, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000298330394416068; total time=33.5min
+[CV] END alpha=2.42596749800826e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0003686391484593301; total time=49.8min
+[CV] END alpha=0.006201508211904869, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004567393316687091; total time=89.2min
+[CV] END alpha=2.56016152500287e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001177703750752171; total time=22.8min
+[CV] END alpha=5.0084107549181685e-06, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004984610132094825; total time=32.8min
+[CV] END alpha=6.746798008923238e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00023373576487028156; total time=28.3min
+[CV] END alpha=2.42596749800826e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0003686391484593301; total time=28.0min
+[CV] END alpha=0.00012031877920753528, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009518552912110096; total time=53.1min
+[CV] END alpha=2.6289932085987994e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00037525392964069795; total time=58.7min
+[CV] END alpha=2.56016152500287e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001177703750752171; total time=25.1min
+[CV] END alpha=5.0084107549181685e-06, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004984610132094825; total time=14.1min
+[CV] END alpha=8.918326627754471e-07, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004307983765036455; total time=54.4min
+[CV] END alpha=9.764337033481095e-08, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0001401011701897104; total time=57.0min
+[CV] END alpha=9.142000168460768e-05, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00041496878479535646; total time=73.2min
+[CV] END alpha=0.00021076375545009597, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0003446459897310036; total time=39.1min
+[CV] END alpha=8.918326627754471e-07, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004307983765036455; total time=46.0min
+[CV] END alpha=3.9114424579932645e-07, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.0008339837915839603; total time=15.5min
+[CV] END alpha=3.97858253535288e-06, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00024894205793717046; total time=35.2min
+[CV] END alpha=0.006201508211904869, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004567393316687091; total time=90.6min
+[CV] END alpha=1.9628224813442797e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00040064836619643947; total time=60.4min
+[CV] END alpha=0.0008432558817326785, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.000688564942779525; total time=16.9min
+[CV] END alpha=5.1566340705438e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002595750787932574; total time=65.3min
+[CV] END alpha=4.348698361492533e-05, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00020025105678949317; total time=83.8min
+[CV] END alpha=4.2220489831498265e-06, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009197350992568115; total time=55.2min
+[CV] END alpha=6.746798008923238e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00023373576487028156; total time=29.2min
+[CV] END alpha=3.9114424579932645e-07, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.0008339837915839603; total time=11.5min
+[CV] END alpha=9.764337033481095e-08, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0001401011701897104; total time=51.1min
+[CV] END alpha=9.142000168460768e-05, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00041496878479535646; total time=80.4min
+[CV] END alpha=1.8590843630169635e-05, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00044248047641916354; total time=15.6min
+[CV] END alpha=1.3121819515983308e-07, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00016464568542729648; total time=17.7min
+[CV] END alpha=2.298014844498274e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00014822094749180923; total time=23.1min
+[CV] END alpha=6.746798008923238e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00023373576487028156; total time=40.9min
+[CV] END alpha=2.6164379248807874e-05, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00019430162692591995; total time=40.0min
+[CV] END alpha=1.5821130889304227e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00026537197006241015; total time=90.3min
+[CV] END alpha=1.9628224813442797e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00040064836619643947; total time=113.4min
+[CV] END alpha=4.979794918206897e-08, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.00025811909810335835; total time=13.1min
+[CV] END alpha=0.0001128845450975669, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002056924409354973; total time=86.0min
+[CV] END alpha=9.439687300068826e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0006012443657136704; total time=15.6min
+[CV] END alpha=0.0003561998612311083, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002975777250726476; total time=88.5min
+[CV] END alpha=0.0011325372051861089, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0006940425858386165; total time=73.7min
+[CV] END alpha=2.6289932085987994e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00037525392964069795; total time=23.9min
+[CV] END alpha=0.0022466743657540023, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0005056949114147479; total time=42.0min
+[CV] END alpha=1.8590843630169635e-05, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00044248047641916354; total time=29.6min
+[CV] END alpha=5.0084107549181685e-06, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004984610132094825; total time=25.2min
+[CV] END alpha=6.746798008923238e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00023373576487028156; total time=25.9min
+[CV] END alpha=2.42596749800826e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0003686391484593301; total time=55.9min
+[CV] END alpha=1.5821130889304227e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00026537197006241015; total time=93.1min
+[CV] END alpha=0.0006389465240697491, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00047739682915509695; total time=16.0min
+[CV] END alpha=1.3121819515983308e-07, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00016464568542729648; total time=18.5min
+[CV] END alpha=2.298014844498274e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00014822094749180923; total time=32.4min
+[CV] END alpha=0.007253815900686048, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00010470988085083955; total time=30.9min
+[CV] END alpha=2.6164379248807874e-05, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00019430162692591995; total time=41.9min
+[CV] END alpha=4.348698361492533e-05, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00020025105678949317; total time=91.3min
+[CV] END alpha=1.9628224813442797e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00040064836619643947; total time=74.5min
+[CV] END alpha=5.1566340705438e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002595750787932574; total time=27.0min
+[CV] END alpha=3.97858253535288e-06, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00024894205793717046; total time=34.6min
+[CV] END alpha=1.5821130889304227e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00026537197006241015; total time=94.8min
+[CV] END alpha=3.332543279005117e-08, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009060562467991655; total time=22.7min
+[CV] END alpha=2.1573883515769803e-07, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0007990951145739111; total time=22.4min
+[CV] END alpha=0.005671469641942559, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009892352141083788; total time=14.8min
+[CV] END alpha=0.0008432558817326785, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.000688564942779525; total time=22.6min
+[CV] END alpha=2.42596749800826e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0003686391484593301; total time=26.7min
+[CV] END alpha=0.00012031877920753528, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009518552912110096; total time=72.3min
+[CV] END alpha=0.0022466743657540023, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0005056949114147479; total time=50.5min
+[CV] END alpha=3.332543279005117e-08, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009060562467991655; total time=20.3min
+[CV] END alpha=6.476032810713016e-08, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001411480449818149; total time=47.7min
+[CV] END alpha=0.007253815900686048, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00010470988085083955; total time=18.5min
+[CV] END alpha=3.9114424579932645e-07, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.0008339837915839603; total time=13.9min
+[CV] END alpha=2.6164379248807874e-05, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00019430162692591995; total time=105.7min
+[CV] END alpha=9.439687300068826e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0006012443657136704; total time=26.8min
+[CV] END alpha=1.9628224813442797e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00040064836619643947; total time=121.5min
+[CV] END alpha=0.0001128845450975669, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002056924409354973; total time=111.4min
+[CV] END alpha=0.0006389465240697491, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00047739682915509695; total time=28.1min
+[CV] END alpha=5.0084107549181685e-06, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004984610132094825; total time=37.3min
+[CV] END alpha=0.007253815900686048, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00010470988085083955; total time=31.7min
+[CV] END alpha=2.6164379248807874e-05, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00019430162692591995; total time=60.3min
+[CV] END alpha=3.7377668301575665e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000198738645677931; total time=19.2min
+[CV] END alpha=0.0023948569385987073, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000272812914519748; total time=56.5min
+[CV] END alpha=1.8590843630169635e-05, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00044248047641916354; total time=47.2min
+[CV] END alpha=3.0981466892380294e-05, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000298330394416068; total time=16.7min
+[CV] END alpha=3.7721629693531806e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00029420578065975886; total time=25.7min
+[CV] END alpha=0.0011325372051861089, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0006940425858386165; total time=77.9min
+[CV] END alpha=2.6289932085987994e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00037525392964069795; total time=25.5min
+[CV] END alpha=3.993570208262768e-08, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0005178945008120012; total time=40.8min
+[CV] END alpha=4.2220489831498265e-06, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009197350992568115; total time=54.6min
+[CV] END alpha=5.508845682466708e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004532414178590252; total time=14.7min
+[CV] END alpha=4.469567778459803e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00019776079419973663; total time=19.2min
+[CV] END alpha=3.1526441689495035e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00010217783699569048; total time=16.5min
+[CV] END alpha=0.0023781011616394146, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007790304570539065; total time=131.9min
+[CV] END alpha=0.0006389465240697491, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00047739682915509695; total time=20.3min
+[CV] END alpha=6.476032810713016e-08, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001411480449818149; total time=34.0min
+[CV] END alpha=5.508845682466708e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004532414178590252; total time=36.7min
+[CV] END alpha=3.8759751651795275e-07, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00035712600856284497; total time=42.7min
+[CV] END alpha=0.006201508211904869, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004567393316687091; total time=75.4min
+[CV] END alpha=9.439687300068826e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0006012443657136704; total time=28.0min
+[CV] END alpha=3.332543279005117e-08, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009060562467991655; total time=20.4min
+[CV] END alpha=6.476032810713016e-08, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001411480449818149; total time=24.6min
+[CV] END alpha=0.005671469641942559, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009892352141083788; total time=16.6min
+[CV] END alpha=3.7721629693531806e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00029420578065975886; total time=25.3min
+[CV] END alpha=3.1526441689495035e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00010217783699569048; total time=31.1min
+[CV] END alpha=4.979794918206897e-08, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.00025811909810335835; total time=30.9min
+[CV] END alpha=9.142000168460768e-05, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00041496878479535646; total time=89.9min
+[CV] END alpha=4.2220489831498265e-06, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009197350992568115; total time=46.4min
+[CV] END alpha=3.0981466892380294e-05, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000298330394416068; total time=24.2min
+[CV] END alpha=4.469567778459803e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00019776079419973663; total time=19.6min
+[CV] END alpha=0.0011325372051861089, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0006940425858386165; total time=60.3min
+[CV] END alpha=9.142000168460768e-05, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00041496878479535646; total time=89.5min
+[CV] END alpha=0.0006389465240697491, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00047739682915509695; total time=46.5min
+[CV] END alpha=3.0981466892380294e-05, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000298330394416068; total time=12.9min
+[CV] END alpha=0.0008432558817326785, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.000688564942779525; total time=32.9min
+[CV] END alpha=3.8759751651795275e-07, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00035712600856284497; total time=69.1min
+[CV] END alpha=3.7377668301575665e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000198738645677931; total time=28.8min
+[CV] END alpha=3.993570208262768e-08, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0005178945008120012; total time=50.5min
+[CV] END alpha=6.951918666569086e-08, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002975829503887464; total time=54.6min
+[CV] END alpha=5.508845682466708e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004532414178590252; total time=34.8min
+[CV] END alpha=0.0011325372051861089, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0006940425858386165; total time=79.0min
+[CV] END alpha=2.6289932085987994e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00037525392964069795; total time=73.1min
+[CV] END alpha=4.2220489831498265e-06, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009197350992568115; total time=60.3min
+[CV] END alpha=0.0008432558817326785, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.000688564942779525; total time=17.8min
+[CV] END alpha=5.1566340705438e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002595750787932574; total time=36.2min
+[CV] END alpha=4.979794918206897e-08, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.00025811909810335835; total time=17.5min
+[CV] END alpha=0.006201508211904869, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004567393316687091; total time=80.2min
+[CV] END alpha=9.439687300068826e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0006012443657136704; total time=31.7min
+[CV] END alpha=0.00021076375545009597, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0003446459897310036; total time=22.1min
+[CV] END alpha=2.1573883515769803e-07, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0007990951145739111; total time=15.0min
+[CV] END alpha=1.4090065169509274e-06, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0004053504586145521; total time=51.2min
+[CV] END alpha=3.1526441689495035e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00010217783699569048; total time=28.5min
+[CV] END alpha=4.979794918206897e-08, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.00025811909810335835; total time=25.0min
+[CV] END alpha=4.348698361492533e-05, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00020025105678949317; total time=29.3min
+[CV] END alpha=8.302424198157785e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000270033991160404; total time=74.2min
+[CV] END alpha=3.332543279005117e-08, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009060562467991655; total time=21.0min
+[CV] END alpha=6.476032810713016e-08, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001411480449818149; total time=44.9min
+[CV] END alpha=0.007253815900686048, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00010470988085083955; total time=18.9min
+[CV] END alpha=3.9114424579932645e-07, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.0008339837915839603; total time=11.0min
+[CV] END alpha=9.764337033481095e-08, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0001401011701897104; total time=84.1min
+[CV] END alpha=0.0023948569385987073, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000272812914519748; total time=66.1min
+[CV] END alpha=0.00021076375545009597, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0003446459897310036; total time=23.7min
+[CV] END alpha=5.0084107549181685e-06, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004984610132094825; total time=21.2min
+[CV] END alpha=0.005671469641942559, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009892352141083788; total time=20.5min
+[CV] END alpha=3.7721629693531806e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00029420578065975886; total time=44.2min
+[CV] END alpha=0.00012031877920753528, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009518552912110096; total time=60.9min
+[CV] END alpha=8.302424198157785e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000270033991160404; total time=75.8min
+[CV] END alpha=1.9982467392329447e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000337983049214134; total time=22.6min
+[CV] END alpha=2.1573883515769803e-07, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0007990951145739111; total time=29.8min
+[CV] END alpha=3.0981466892380294e-05, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000298330394416068; total time=15.7min
+[CV] END alpha=0.007253815900686048, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00010470988085083955; total time=37.3min
+[CV] END alpha=0.0023781011616394146, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007790304570539065; total time=68.4min
+[CV] END alpha=8.302424198157785e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000270033991160404; total time=74.5min
+[CV] END alpha=1.9628224813442797e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00040064836619643947; total time=91.8min
+[CV] END alpha=3.8759751651795275e-07, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00035712600856284497; total time=52.0min
+[CV] END alpha=4.348698361492533e-05, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00020025105678949317; total time=42.9min
+[CV] END alpha=3.993570208262768e-08, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0005178945008120012; total time=61.8min
+[CV] END alpha=0.00021076375545009597, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0003446459897310036; total time=37.3min
+[CV] END alpha=1.4090065169509274e-06, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0004053504586145521; total time=59.5min
+[CV] END alpha=9.764337033481095e-08, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0001401011701897104; total time=81.2min
+[CV] END alpha=0.0023948569385987073, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000272812914519748; total time=71.8min
+[CV] END alpha=0.0003561998612311083, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002975777250726476; total time=83.0min
+[CV] END alpha=2.42596749800826e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0003686391484593301; total time=41.7min
+[CV] END alpha=0.0001128845450975669, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002056924409354973; total time=125.3min
+[CV] END alpha=1.9982467392329447e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000337983049214134; total time=22.4min
+[CV] END alpha=2.1573883515769803e-07, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0007990951145739111; total time=17.5min
+[CV] END alpha=8.918326627754471e-07, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0004307983765036455; total time=81.4min
+[CV] END alpha=0.0001128845450975669, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002056924409354973; total time=71.0min
+[CV] END alpha=3.993570208262768e-08, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0005178945008120012; total time=57.7min
+[CV] END alpha=1.9982467392329447e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000337983049214134; total time=19.1min
+[CV] END alpha=1.3121819515983308e-07, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00016464568542729648; total time=17.9min
+[CV] END alpha=1.4090065169509274e-06, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0004053504586145521; total time=54.1min
+[CV] END alpha=3.8759751651795275e-07, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00035712600856284497; total time=24.9min
+[CV] END alpha=4.979794918206897e-08, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.00025811909810335835; total time=65.1min
+[CV] END alpha=0.0023948569385987073, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000272812914519748; total time=70.1min
+[CV] END alpha=1.9982467392329447e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000337983049214134; total time=15.4min
+[CV] END alpha=0.0003561998612311083, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002975777250726476; total time=75.0min
+[CV] END alpha=0.0011325372051861089, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0006940425858386165; total time=70.1min
+[CV] END alpha=3.7377668301575665e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000198738645677931; total time=19.7min
+[CV] END alpha=0.0023948569385987073, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000272812914519748; total time=75.8min
+[CV] END alpha=6.951918666569086e-08, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002975829503887464; total time=68.1min
+[CV] END alpha=4.469567778459803e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00019776079419973663; total time=12.4min
+[CV] END alpha=5.1566340705438e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002595750787932574; total time=57.7min
+[CV] END alpha=1.5821130889304227e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00026537197006241015; total time=121.1min
+[CV] END alpha=0.00021076375545009597, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0003446459897310036; total time=11.4min
+[CV] END alpha=0.0003561998612311083, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002975777250726476; total time=93.3min
+[CV] END alpha=0.0023781011616394146, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007790304570539065; total time=63.9min
+[CV] END alpha=8.302424198157785e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000270033991160404; total time=92.9min
+[CV] END alpha=2.56016152500287e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001177703750752171; total time=44.0min
+[CV] END alpha=0.005671469641942559, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009892352141083788; total time=17.4min
+[CV] END alpha=3.7721629693531806e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00029420578065975886; total time=22.5min
+[CV] END alpha=3.9114424579932645e-07, beta_1=0.9, hidden_layer_sizes=(256, 64), learning_rate_init=0.0008339837915839603; total time=17.9min
+[CV] END alpha=3.97858253535288e-06, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00024894205793717046; total time=43.1min
+[CV] END alpha=9.142000168460768e-05, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.00041496878479535646; total time=116.6min
+[CV] END alpha=0.0006389465240697491, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00047739682915509695; total time=52.7min
+[CV] END alpha=5.508845682466708e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0004532414178590252; total time=54.8min
+[CV] END alpha=0.00012031877920753528, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009518552912110096; total time=97.3min
+[CV] END alpha=0.009841970056895879, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007381184436871044; total time=58.0min
+[CV] END alpha=0.0003561998612311083, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0002975777250726476; total time=79.4min
+[CV] END alpha=5.1566340705438e-08, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002595750787932574; total time=26.9min
+[CV] END alpha=0.0023781011616394146, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007790304570539065; total time=83.1min
+[CV] END alpha=3.993570208262768e-08, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0005178945008120012; total time=75.1min
+[CV] END alpha=4.2220489831498265e-06, beta_1=0.9, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009197350992568115; total time=142.5min
+[CV] END alpha=4.348698361492533e-05, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00020025105678949317; total time=53.1min
+[CV] END alpha=0.009841970056895879, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007381184436871044; total time=72.8min
+[CV] END alpha=2.56016152500287e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001177703750752171; total time=17.7min
+[CV] END alpha=1.3121819515983308e-07, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00016464568542729648; total time=18.3min
+[CV] END alpha=1.4090065169509274e-06, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0004053504586145521; total time=67.8min
+[CV] END alpha=3.97858253535288e-06, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00024894205793717046; total time=50.4min
+[CV] END alpha=3.7377668301575665e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000198738645677931; total time=12.5min
+[CV] END alpha=2.6289932085987994e-05, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.00037525392964069795; total time=37.2min
+[CV] END alpha=0.009841970056895879, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007381184436871044; total time=68.7min
+[CV] END alpha=3.332543279005117e-08, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009060562467991655; total time=21.2min
+[CV] END alpha=6.476032810713016e-08, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.0001411480449818149; total time=37.8min
+[CV] END alpha=0.0008432558817326785, beta_1=0.7, hidden_layer_sizes=(256, 64), learning_rate_init=0.000688564942779525; total time=32.8min
+[CV] END alpha=3.8759751651795275e-07, beta_1=0.9, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.00035712600856284497; total time=65.5min
+[CV] END alpha=3.7377668301575665e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.000198738645677931; total time=18.3min
+[CV] END alpha=8.302424198157785e-05, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.000270033991160404; total time=98.2min
+[CV] END alpha=1.8590843630169635e-05, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00044248047641916354; total time=32.7min
+[CV] END alpha=2.298014844498274e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00014822094749180923; total time=23.8min
+[CV] END alpha=6.746798008923238e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00023373576487028156; total time=11.9min
+[CV] END alpha=4.469567778459803e-06, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00019776079419973663; total time=18.3min
+[CV] END alpha=3.1526441689495035e-08, beta_1=0.9, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00010217783699569048; total time=21.3min
+[CV] END alpha=0.00012031877920753528, beta_1=0.7, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0009518552912110096; total time=90.6min
+[CV] END alpha=0.009841970056895879, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007381184436871044; total time=75.2min
+MAE: 2.428, MSE: 3.313, R2: 0.519, Pearson R: 0.720, Spearman R: 0.719
+Parameters
+----------
+activation : identity
+alpha : 0.005671469641942559
+batch_size : 2056
+beta_1 : 0.7
+beta_2 : 0.999
+early_stopping : False
+epsilon : 1e-08
+hidden_layer_sizes : (256, 128, 64)
+learning_rate : constant
+learning_rate_init : 0.0009892352141083788
+max_fun : 15000
+max_iter : 1000
+momentum : 0.9
+n_iter_no_change : 50
+nesterovs_momentum : True
+power_t : 0.5
+random_state : 42
+shuffle : False
+solver : adam
+tol : 0.0001
+validation_fraction : 0.2
+verbose : False
+warm_start : False
+--------------------------------------------------------------------------------
+Saved model to file: ../Models/nn_models/nn_MFP_Feat_regressor_gs.pk
+Saved model to file: ../Models/nn_models/nn_MFP_Feat_regressor_best_estimator.pk
+{'mean_fit_time': array([5536.02403488, 1758.25023618, 4303.91351366, 1336.15992479,
+       1526.65835729, 1265.33448844, 2917.42750406, 1963.08760915,
+       1602.10191174, 5026.09599185, 1110.27903843, 2266.1718266 ,
+       1194.67711763, 1567.56464715, 1390.80139208, 3394.47592244,
+       3846.53880959, 1071.67842665, 1234.58871255, 1937.63237324,
+       1633.86453953, 1475.00868874, 1758.40694165, 1647.45611153,
+       1173.80933299, 2555.79013987, 2423.16045799,  837.5104949 ,
+       1407.9359056 , 4327.61859155, 3048.0531147 , 4397.14369659,
+       3324.5799633 , 2354.29242344, 5113.76238327, 4485.60670094,
+       1819.41250968, 5481.6233099 , 5105.54509163, 5791.36728373,
+       3602.61076603, 5391.42548213, 1181.72795186, 2620.18845096,
+       4985.23842378, 4082.44653769, 1910.32107649, 3428.91570511,
+       4385.77433391, 1407.37230396]), 'std_fit_time': array([1376.77315451,  646.64330827, 2138.53362221,  327.34212982,
+        583.11981764,   50.79213388,  694.08116853,  867.23414823,
+        617.95320829,  390.37247606,   51.27960388,  491.34198911,
+        336.30641824,  494.08734671,  308.66407943,  387.58471458,
+        868.20122878,  128.39912294,  448.22691782,  839.14272608,
+        554.47801638,  422.2191956 ,  461.49468337,  448.24408761,
+        309.54251062,  957.75584125,  694.98854749,  154.5044519 ,
+        327.7895088 ,  404.5978606 ,  964.16165681,  977.68627783,
+       1620.1896628 ,  395.63363864, 1459.07910911, 1012.59159218,
+       1105.32013112, 1415.02918701,  373.60036018,  770.29120038,
+       1426.29797928,  884.05897807,  312.65592759, 1156.2563472 ,
+        617.03627808,  393.86014906,  783.99150318,  688.5242845 ,
+        641.16794167,  406.38161927]), 'mean_score_time': array([4.32334137, 1.14847403, 4.37074904, 1.15810986, 1.06751037,
+       1.18729291, 2.17588892, 1.16069112, 1.11100531, 4.37640896,
+       1.14565721, 1.10141201, 1.15922537, 1.05762649, 1.14763799,
+       2.18132586, 4.46188121, 1.14730005, 1.1317121 , 1.09252787,
+       1.10969291, 1.0858448 , 1.15030127, 1.08642139, 1.13858562,
+       2.14902582, 2.25765543, 1.09972987, 1.16392403, 4.44479809,
+       2.24267545, 2.19365239, 2.22346425, 1.14992256, 3.95878911,
+       4.44773636, 1.07520251, 3.45051932, 3.89065204, 2.95724998,
+       1.95338597, 2.55151877, 1.14697189, 0.87443638, 2.06046052,
+       2.05623569, 1.10368495, 2.09136138, 2.00712142, 0.7884284 ]), 'std_score_time': array([0.02919965, 0.00777057, 0.02876782, 0.00873465, 0.06280229,
+       0.02488013, 0.01620149, 0.01560573, 0.01220593, 0.05683619,
+       0.01530191, 0.01913651, 0.04857932, 0.0426854 , 0.01639296,
+       0.01286117, 0.08571352, 0.02122298, 0.02507033, 0.01672309,
+       0.02343356, 0.01991165, 0.01123746, 0.01306246, 0.01047277,
+       0.02309885, 0.05868785, 0.01129942, 0.01812844, 0.09943959,
+       0.03291885, 0.02901562, 0.04860691, 0.01526463, 0.92490357,
+       0.11863489, 0.01359106, 1.09289232, 0.84932346, 1.05381043,
+       0.43603777, 0.86052446, 0.01088106, 0.26719551, 0.05294345,
+       0.04663257, 0.06419585, 0.0496931 , 0.01117203, 0.26953506]), 'param_alpha': masked_array(data=[1.9628224813442797e-05, 1.8590843630169635e-05,
+                   4.2220489831498265e-06, 1.9982467392329447e-06,
+                   2.56016152500287e-05, 3.332543279005117e-08,
+                   6.951918666569086e-08, 0.0006389465240697491,
+                   0.00021076375545009597, 0.0003561998612311083,
+                   1.3121819515983308e-07, 6.476032810713016e-08,
+                   2.1573883515769803e-07, 5.0084107549181685e-06,
+                   2.298014844498274e-08, 1.4090065169509274e-06,
+                   8.918326627754471e-07, 0.005671469641942559,
+                   3.0981466892380294e-05, 5.508845682466708e-05,
+                   6.746798008923238e-08, 0.0008432558817326785,
+                   3.7721629693531806e-08, 0.007253815900686048,
+                   4.469567778459803e-06, 5.1566340705438e-08,
+                   2.42596749800826e-08, 3.9114424579932645e-07,
+                   3.1526441689495035e-08, 0.0011325372051861089,
+                   3.8759751651795275e-07, 9.764337033481095e-08,
+                   2.6164379248807874e-05, 3.97858253535288e-06,
+                   0.0023781011616394146, 0.00012031877920753528,
+                   4.979794918206897e-08, 0.0001128845450975669,
+                   0.006201508211904869, 1.5821130889304227e-05,
+                   4.348698361492533e-05, 9.142000168460768e-05,
+                   3.7377668301575665e-06, 2.6289932085987994e-05,
+                   8.302424198157785e-05, 0.0023948569385987073,
+                   0.0022466743657540023, 3.993570208262768e-08,
+                   0.009841970056895879, 9.439687300068826e-08],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False],
+       fill_value='?',
+            dtype=object), 'param_beta_1': masked_array(data=[0.8, 0.8, 0.9, 0.9, 0.8, 0.7, 0.7, 0.8, 0.8, 0.9, 0.9,
+                   0.7, 0.8, 0.7, 0.9, 0.7, 0.9, 0.7, 0.9, 0.8, 0.8, 0.7,
+                   0.8, 0.8, 0.9, 0.9, 0.9, 0.9, 0.9, 0.7, 0.9, 0.8, 0.9,
+                   0.7, 0.7, 0.7, 0.9, 0.7, 0.7, 0.8, 0.8, 0.7, 0.9, 0.8,
+                   0.8, 0.9, 0.8, 0.7, 0.8, 0.8],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False],
+       fill_value='?',
+            dtype=object), 'param_hidden_layer_sizes': masked_array(data=[(1024, 256, 64), (256, 128, 64), (1024, 256, 64),
+                   (256, 128, 64), (256, 64), (256, 128, 64),
+                   (512, 128, 32), (256, 128, 64), (256, 64),
+                   (1024, 256, 64), (256, 128, 64), (256, 64),
+                   (256, 128, 64), (256, 64), (256, 128, 64),
+                   (512, 128, 32), (1024, 256, 64), (256, 128, 64),
+                   (256, 128, 64), (256, 64), (256, 128, 64), (256, 64),
+                   (256, 128, 64), (256, 64), (256, 128, 64),
+                   (512, 128, 32), (512, 128, 32), (256, 64),
+                   (256, 128, 64), (1024, 256, 64), (512, 128, 32),
+                   (512, 128, 32), (512, 128, 32), (256, 128, 64),
+                   (1024, 256, 64), (1024, 256, 64), (256, 64),
+                   (1024, 256, 64), (1024, 256, 64), (1024, 256, 64),
+                   (512, 128, 32), (1024, 256, 64), (256, 128, 64),
+                   (256, 64), (1024, 256, 64), (1024, 256, 64), (256, 64),
+                   (1024, 256, 64), (1024, 256, 64), (256, 128, 64)],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False],
+       fill_value='?',
+            dtype=object), 'param_learning_rate_init': masked_array(data=[0.00040064836619643947, 0.00044248047641916354,
+                   0.0009197350992568115, 0.000337983049214134,
+                   0.0001177703750752171, 0.0009060562467991655,
+                   0.0002975829503887464, 0.00047739682915509695,
+                   0.0003446459897310036, 0.0002975777250726476,
+                   0.00016464568542729648, 0.0001411480449818149,
+                   0.0007990951145739111, 0.0004984610132094825,
+                   0.00014822094749180923, 0.0004053504586145521,
+                   0.0004307983765036455, 0.0009892352141083788,
+                   0.000298330394416068, 0.0004532414178590252,
+                   0.00023373576487028156, 0.000688564942779525,
+                   0.00029420578065975886, 0.00010470988085083955,
+                   0.00019776079419973663, 0.0002595750787932574,
+                   0.0003686391484593301, 0.0008339837915839603,
+                   0.00010217783699569048, 0.0006940425858386165,
+                   0.00035712600856284497, 0.0001401011701897104,
+                   0.00019430162692591995, 0.00024894205793717046,
+                   0.0007790304570539065, 0.0009518552912110096,
+                   0.00025811909810335835, 0.0002056924409354973,
+                   0.0004567393316687091, 0.00026537197006241015,
+                   0.00020025105678949317, 0.00041496878479535646,
+                   0.000198738645677931, 0.00037525392964069795,
+                   0.000270033991160404, 0.000272812914519748,
+                   0.0005056949114147479, 0.0005178945008120012,
+                   0.0007381184436871044, 0.0006012443657136704],
+             mask=[False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False, False, False, False, False, False, False,
+                   False, False],
+       fill_value='?',
+            dtype=object), 'params': [{'alpha': 1.9628224813442797e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.00040064836619643947}, {'alpha': 1.8590843630169635e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00044248047641916354}, {'alpha': 4.2220489831498265e-06, 'beta_1': 0.9, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0009197350992568115}, {'alpha': 1.9982467392329447e-06, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.000337983049214134}, {'alpha': 2.56016152500287e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0001177703750752171}, {'alpha': 3.332543279005117e-08, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.0009060562467991655}, {'alpha': 6.951918666569086e-08, 'beta_1': 0.7, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.0002975829503887464}, {'alpha': 0.0006389465240697491, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00047739682915509695}, {'alpha': 0.00021076375545009597, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0003446459897310036}, {'alpha': 0.0003561998612311083, 'beta_1': 0.9, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0002975777250726476}, {'alpha': 1.3121819515983308e-07, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00016464568542729648}, {'alpha': 6.476032810713016e-08, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0001411480449818149}, {'alpha': 2.1573883515769803e-07, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.0007990951145739111}, {'alpha': 5.0084107549181685e-06, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0004984610132094825}, {'alpha': 2.298014844498274e-08, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00014822094749180923}, {'alpha': 1.4090065169509274e-06, 'beta_1': 0.7, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.0004053504586145521}, {'alpha': 8.918326627754471e-07, 'beta_1': 0.9, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0004307983765036455}, {'alpha': 0.005671469641942559, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.0009892352141083788}, {'alpha': 3.0981466892380294e-05, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.000298330394416068}, {'alpha': 5.508845682466708e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0004532414178590252}, {'alpha': 6.746798008923238e-08, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00023373576487028156}, {'alpha': 0.0008432558817326785, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.000688564942779525}, {'alpha': 3.7721629693531806e-08, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00029420578065975886}, {'alpha': 0.007253815900686048, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.00010470988085083955}, {'alpha': 4.469567778459803e-06, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00019776079419973663}, {'alpha': 5.1566340705438e-08, 'beta_1': 0.9, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.0002595750787932574}, {'alpha': 2.42596749800826e-08, 'beta_1': 0.9, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.0003686391484593301}, {'alpha': 3.9114424579932645e-07, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0008339837915839603}, {'alpha': 3.1526441689495035e-08, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00010217783699569048}, {'alpha': 0.0011325372051861089, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0006940425858386165}, {'alpha': 3.8759751651795275e-07, 'beta_1': 0.9, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.00035712600856284497}, {'alpha': 9.764337033481095e-08, 'beta_1': 0.8, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.0001401011701897104}, {'alpha': 2.6164379248807874e-05, 'beta_1': 0.9, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.00019430162692591995}, {'alpha': 3.97858253535288e-06, 'beta_1': 0.7, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.00024894205793717046}, {'alpha': 0.0023781011616394146, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0007790304570539065}, {'alpha': 0.00012031877920753528, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0009518552912110096}, {'alpha': 4.979794918206897e-08, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.00025811909810335835}, {'alpha': 0.0001128845450975669, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0002056924409354973}, {'alpha': 0.006201508211904869, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0004567393316687091}, {'alpha': 1.5821130889304227e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.00026537197006241015}, {'alpha': 4.348698361492533e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (512, 128, 32), 'learning_rate_init': 0.00020025105678949317}, {'alpha': 9.142000168460768e-05, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.00041496878479535646}, {'alpha': 3.7377668301575665e-06, 'beta_1': 0.9, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.000198738645677931}, {'alpha': 2.6289932085987994e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.00037525392964069795}, {'alpha': 8.302424198157785e-05, 'beta_1': 0.8, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.000270033991160404}, {'alpha': 0.0023948569385987073, 'beta_1': 0.9, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.000272812914519748}, {'alpha': 0.0022466743657540023, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 64), 'learning_rate_init': 0.0005056949114147479}, {'alpha': 3.993570208262768e-08, 'beta_1': 0.7, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0005178945008120012}, {'alpha': 0.009841970056895879, 'beta_1': 0.8, 'hidden_layer_sizes': (1024, 256, 64), 'learning_rate_init': 0.0007381184436871044}, {'alpha': 9.439687300068826e-08, 'beta_1': 0.8, 'hidden_layer_sizes': (256, 128, 64), 'learning_rate_init': 0.0006012443657136704}], 'split0_test_score': array([-34.16687414, -38.91116061, -27.84714951, -36.23649095,
+       -45.12084041, -20.54163401, -36.82006175, -32.53028497,
+       -39.36994869, -32.29692793, -37.70649652, -42.55866041,
+       -21.5640375 , -36.19445005, -38.52580312, -28.5872522 ,
+       -32.20539328, -15.13433958, -34.30696951, -35.17072107,
+       -31.09508203, -33.58450841, -36.90825302, -44.2439844 ,
+       -37.50658416, -39.20235113, -40.07515095, -36.41935355,
+       -40.94044428, -14.49085001, -36.86680323, -34.54134314,
+       -40.56901596, -34.71578647, -43.41792468, -30.90644768,
+       -44.11801606, -40.47707223, -24.04215968, -29.99586538,
+       -36.74906494, -32.2935903 , -37.46288961, -56.95124502,
+       -37.30050918, -43.38498225, -34.48532312, -38.21115132,
+       -30.2692215 , -25.8975951 ]), 'split1_test_score': array([-12.82312526,  -5.75501363, -11.7351175 ,  -9.95893349,
+       -18.55628593,  -7.95153989, -15.0093164 , -21.54540156,
+       -15.39295865, -12.75310366, -14.27048529, -17.20309524,
+        -7.68884066, -13.11636129, -14.6278665 , -13.77729465,
+       -14.28950979,  -4.75691578, -12.9036878 ,  -4.46812957,
+       -12.28978378, -13.07265478, -10.58901154, -18.76720006,
+       -13.39718011, -15.52734658, -15.24155557, -16.72450538,
+       -14.97066449,  -3.4696979 , -14.92673397, -16.51997615,
+       -16.84881771, -10.73445207, -11.11249287, -10.03864104,
+       -17.94216483, -15.85198319,  -9.56332129, -17.31644748,
+       -16.48985909,  -8.27350374, -14.3846139 , -13.41697478,
+       -14.96260505, -13.27676321, -14.02933553, -11.31972576,
+       -12.41959534,  -8.15142799]), 'split2_test_score': array([-31.02766888, -19.6174386 , -29.61185934, -19.3643465 ,
+       -34.45021818, -19.13037152, -25.34134263, -18.80308162,
+       -28.50973167, -26.9176712 , -28.55923969, -35.80230178,
+       -36.52728302, -31.34841094, -28.11554988, -26.48593288,
+       -33.27612402, -16.27429109, -25.35637863, -26.67238343,
+       -20.90449283, -31.25746116, -20.41895657, -34.86596724,
+       -26.87825278, -30.68308573, -30.50286036, -30.07687909,
+       -29.55515147, -21.50040985, -26.91630372, -30.34608872,
+       -33.08624782, -21.6594755 , -22.07844289, -25.16896916,
+       -28.14514879, -30.45779157, -15.01100453, -30.88270994,
+       -30.01508444,  -8.40220981, -26.89974502, -27.89170655,
+       -30.99613997, -30.67132151, -24.79190408, -35.96478034,
+       -25.28078669, -18.32751976]), 'split3_test_score': array([-36.1609537 , -17.50315715, -22.49991322, -18.47236028,
+       -34.16433145, -14.12275326, -22.98369571, -22.12436764,
+       -33.92231848, -26.80835412, -27.21836511, -32.04434094,
+       -17.94710612, -24.22102667, -26.81398264, -25.33349898,
+       -30.31557707, -12.85359232, -23.05718259, -25.90015616,
+       -19.14956167, -22.86080479, -21.93898616, -35.14128461,
+       -26.0012516 , -31.85793522, -27.54758689, -52.59148686,
+       -29.04034184, -28.1592894 , -28.83711672, -31.22742936,
+       -32.33700538, -18.17579992, -20.63077166, -23.33228645,
+       -31.13549583, -23.10884907, -28.73349409, -30.21506785,
+       -23.40890877, -17.30284929, -25.80278968, -27.90648312,
+       -26.25266458, -31.32423175, -25.89666726, -14.86651676,
+       -25.31500148, -14.1406068 ]), 'split4_test_score': array([-46.47675374, -34.29167136, -51.33439023, -37.02519536,
+       -53.44360419, -27.40248847, -43.56869635, -30.97551035,
+       -53.32519465, -45.55881683, -43.24343983, -50.97129493,
+       -13.3921254 , -48.64697212, -45.9913547 , -52.81807861,
+       -40.4180815 , -38.87397833, -40.27333404, -57.82238734,
+       -40.09693208, -39.14084707, -35.30648203, -52.54400777,
+       -40.5665903 , -43.03712085, -53.67225178, -41.71143291,
+       -46.53122009, -37.60485441, -47.63792364, -55.7154989 ,
+       -43.49625727, -33.60467208, -44.39278972, -40.74883493,
+       -46.0500894 , -40.38761022, -36.10390678, -44.52832948,
+       -45.82395711, -63.03398661, -38.35328517, -40.70412901,
+       -44.44272334, -46.82754599, -43.01939419, -42.17225436,
+       -24.14830304, -34.88607075]), 'mean_test_score': array([-32.13107515, -23.21568827, -28.60568596, -24.21146532,
+       -37.14705603, -17.82975743, -28.74462257, -25.19572923,
+       -34.10403043, -28.86697475, -30.19960529, -35.71593866,
+       -19.42387854, -30.70544422, -30.81491137, -29.40041146,
+       -30.10093713, -17.57862342, -27.17951051, -30.00675552,
+       -24.70717048, -27.98325524, -25.03233786, -37.11248881,
+       -28.86997179, -32.0615679 , -33.40788111, -35.50473156,
+       -32.20756443, -21.04502031, -31.03697625, -33.67006725,
+       -33.26746883, -23.77803721, -28.32648437, -26.03903585,
+       -33.47818298, -30.05666126, -22.69077727, -30.58768403,
+       -30.49737487, -25.86122795, -28.58066468, -33.37410769,
+       -30.79092842, -33.09696894, -28.44452484, -28.50688571,
+       -23.48658161, -20.28064408]), 'std_test_score': array([10.95625234, 11.99567276, 12.96208549, 10.66170221, 11.75538203,
+        6.5115914 , 10.18228962,  5.49227959, 12.47891385, 10.56481628,
+        9.9177668 , 11.27618904,  9.73016692, 11.8647758 , 10.72470688,
+       12.7919045 ,  8.61395751, 11.38323375,  9.44844324, 17.20801862,
+        9.76922762,  9.11209989,  9.85958606, 11.26474262,  9.62294903,
+        9.4527848 , 12.8677487 , 11.94550425, 10.91428069, 11.63526894,
+       10.87140807, 12.63250661,  9.25647245,  9.18918486, 13.26997557,
+       10.04157387, 10.45520135,  9.64903467,  9.48221192,  8.61444656,
+       10.20467742, 20.5454641 ,  8.79167753, 14.61403033,  9.99919914,
+       11.8003295 ,  9.7626734 , 12.79056993,  5.92423084,  9.31129704]), 'rank_test_score': array([38,  7, 22, 10, 50,  2, 23, 13, 46, 24, 30, 48,  3, 33, 35, 26, 29,
+        1, 16, 27, 11, 17, 12, 49, 25, 37, 43, 47, 39,  5, 36, 45, 41,  9,
+       18, 15, 44, 28,  6, 32, 31, 14, 21, 42, 34, 40, 19, 20,  8,  4],
+      dtype=int32)}
+Saved model to file: ../Models/nn_models/nn_MFP_Feat_scaling_gs.pk
+Load model to file: ../Models/nn_models/nn_MFP_Feat_regressor_gs.pk
+Load model to file: ../Models/nn_models/nn_MFP_Feat_scaling_gs.pk
+(3.002, 3.822, 0.321, 0.567, 0.563)
+Finished writing predictions
+[CV] END alpha=6.951918666569086e-08, beta_1=0.7, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0002975829503887464; total time=44.4min
+[CV] END alpha=0.005671469641942559, beta_1=0.7, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.0009892352141083788; total time=20.1min
+[CV] END alpha=3.7721629693531806e-08, beta_1=0.8, hidden_layer_sizes=(256, 128, 64), learning_rate_init=0.00029420578065975886; total time=28.8min
+[CV] END alpha=9.764337033481095e-08, beta_1=0.8, hidden_layer_sizes=(512, 128, 32), learning_rate_init=0.0001401011701897104; total time=93.1min
+[CV] END alpha=0.0022466743657540023, beta_1=0.8, hidden_layer_sizes=(256, 64), learning_rate_init=0.0005056949114147479; total time=15.2min
+[CV] END alpha=0.009841970056895879, beta_1=0.8, hidden_layer_sizes=(1024, 256, 64), learning_rate_init=0.0007381184436871044; total time=90.9min

@@ -52,7 +52,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                 #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -88,11 +88,10 @@ plt.hist(Y_test)
 
 # +
 #Build the Neural Network model
-model = neural_network.MLPRegressor(activation='identity', solver='adam', alpha=1e-5, batch_size=2056, max_iter=1000, random_state=42, tol=1e-4, shuffle=False, verbose=False, warm_start=False, early_stopping=False,
-                                    beta_2=0.999, epsilon=1e-08, n_iter_no_change=50, validation_fraction=0.2)
+model = neural_network.MLPRegressor(activation='identity', solver='adam', alpha=1e-5, batch_size=2056, max_iter=1000, random_state=42, tol=1e-4, shuffle=False, verbose=False, warm_start=False, early_stopping=False,beta_2=0.999, epsilon=1e-08, n_iter_no_change=50, validation_fraction=0.2)
 # Grid parameters
 params_nn = {
-        "hidden_layer_sizes": [(256,64), (512, 128, 32), (256, 128, 64)],
+        "hidden_layer_sizes": [(1024, 256, 64), (256,64), (512, 128, 32), (256, 128, 64)],
         "alpha": loguniform(1e-8,1e-2),
         "learning_rate_init" : loguniform(1e-4,1e-3),
         "beta_1" : [0.7,0.8,0.9]
@@ -100,7 +99,7 @@ params_nn = {
 
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
+n_iter = 50
 scaler = preprocessing.StandardScaler()
 X_train_copy = scaler.fit_transform(rev_X_train)
 nn_gs=supervised_learning_steps("nn","r2",data_type,classification_task,model,params_nn,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
