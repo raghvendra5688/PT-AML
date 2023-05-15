@@ -33,13 +33,13 @@ from sklearn import neural_network
 from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold
 from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
 import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics, get_CV_results
 #plt.rcParams["font.family"] = "Arial"
 # -
 
@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -111,6 +111,13 @@ glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,
 #Build the model and get 5-fold CV results    
 print(glr_gs.cv_results_)
 save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
+# -
+
+glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
+X_train_copy = scaler.transform(rev_X_train)
+results=get_CV_results(glr_gs, pd.DataFrame(X_train_copy), Y_train, n_splits=5)
+print(results)
 
 # +
 #Test the linear regression model on separate test set   
@@ -161,7 +168,7 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
+ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
 ax.set_xlabel("Features",fontsize=10)
 ax.set_ylabel("Coefficient Value",fontsize=10)
 ax.tick_params(labelsize=10)

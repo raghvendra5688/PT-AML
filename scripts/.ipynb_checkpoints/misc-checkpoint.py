@@ -4,6 +4,7 @@ import numpy as np
 from sklearn import metrics
 from sklearn import utils
 from sklearn import model_selection
+from sklearn.model_selection import KFold
 import scipy
 import xgboost as xgb
 import matplotlib.pyplot as plt
@@ -59,6 +60,26 @@ def calculate_regression_metrics(labels, predictions):
             round(np.power(scipy.stats.pearsonr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],2),3),\
             round(scipy.stats.pearsonr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],3),\
             round(scipy.stats.spearmanr(np.array(labels).flatten(),np.array(predictions.flatten()))[0],3)
+
+
+def get_CV_results (model, X_train, Y_train, n_splits):
+    kf = KFold(n_splits=n_splits)
+    mae_list, rmse_list, r2_list, pr_list, sr_list = [],[],[],[],[]
+    for train_index, test_index in kf.split(Y_train):
+        y_pred = model.best_estimator_.predict(X_train.iloc[test_index,:])
+        results=calculate_regression_metrics(Y_train[test_index],y_pred)
+        mae_list.append(results[0])
+        rmse_list.append(results[1])
+        r2_list.append(results[2])
+        pr_list.append(results[3])
+        sr_list.append(results[4])
+    print(mae_list,rmse_list,r2_list)
+    mean_mae, sd_mae = round(np.mean(mae_list),3), round(np.std(mae_list),3)
+    mean_rmse, sd_rmse = round(np.mean(rmse_list),3), round(np.std(rmse_list),3)
+    mean_r2, sd_r2 = round(np.mean(r2_list),3), round(np.std(r2_list),3)
+    mean_pr, sd_pr = round(np.mean(pr_list),3), round(np.std(pr_list),3)
+    mean_sr, sd_sr = round(np.mean(sr_list),3), round(np.std(sr_list),3)
+    return(mean_mae, sd_mae, mean_rmse, sd_rmse, mean_r2, sd_r2, mean_pr, sd_pr, mean_sr, sd_sr)
 
 
 def supervised_learning_steps(method, scoring, data_type, task, model, params, X_train, y_train, n_iter, n_splits = 5):

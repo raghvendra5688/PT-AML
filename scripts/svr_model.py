@@ -40,7 +40,7 @@ from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics, get_CV_results
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -111,6 +111,13 @@ svr_gs=supervised_learning_steps("svr","r2",data_type,classification_task,model,
 #Build the model and get 5-fold CV results    
 print(svr_gs.cv_results_)
 save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("svr","svr",data_type))
+# -
+
+svr_gs = load_model("svr_models/svr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("svr_models/svr_"+data_type+"_scaling_gs.pk")
+X_train_copy = scaler.transform(rev_X_train)
+results=get_CV_results(svr_gs, pd.DataFrame(X_train_copy), Y_train, n_splits=5)
+print(results)
 
 # +
 #Test the svm model on separate test set 
@@ -168,3 +175,6 @@ ax.set_ylabel("Coefficient Values",fontsize=9)
 ax.tick_params(labelsize=9)
 outputfile = "../Results/SVR_"+data_type+"_Coefficients.pdf"
 plt.savefig(outputfile, bbox_inches="tight")
+# -
+
+

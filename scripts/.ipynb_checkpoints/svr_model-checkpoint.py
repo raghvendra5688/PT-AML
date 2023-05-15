@@ -29,18 +29,18 @@ from sklearn import ensemble
 from sklearn import dummy
 from sklearn import linear_model
 from sklearn import svm
+from sklearn import kernel_approximation
+from sklearn.kernel_approximation import Nystroem
 from sklearn import neural_network
 from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import train_test_split
 from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
-import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics, get_CV_results
-#plt.rcParams["font.family"] = "Arial"
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -89,51 +89,50 @@ plt.hist(Y_train)
 plt.hist(Y_test)
 
 # +
-#Build the Generalized Linear Regression model
-model = linear_model.Ridge()
+#Build the SVR
+model = svm.LinearSVR(random_state=42, dual=False, loss='squared_epsilon_insensitive')
 
 # Grid parameters
-params_glr = [
+params_svr = [
     {
-        #'l1_ratio' : [0.01, 0.5], #scipy.stats.uniform.rvs(size=100, random_state=42),
-        'alpha' : random.sample(range(100), 100),
-        'fit_intercept' : [True,False],
-        'max_iter': [500,1000]
+        'C': loguniform(1e-2, 1e1),
+        'epsilon': scipy.stats.uniform.rvs(size=20, random_state=42),
+        'max_iter': [5000,10000]
     }
 ]
-#It will select 1000 random combinations for the CV and do 5-fold CV for each combination
+#It will select 100 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
 scaler = preprocessing.StandardScaler()
-
 X_train_copy = scaler.fit_transform(rev_X_train)
-glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+
+#Build the linear SVM model after doing Nystrom approx.
+svr_gs=supervised_learning_steps("svr","r2",data_type,classification_task,model,params_svr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(glr_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
+print(svr_gs.cv_results_)
+save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("svr","svr",data_type))
 # -
 
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
+svr_gs = load_model("svr_models/glr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("svr_models/glr_"+data_type+"_scaling_gs.pk")
 X_train_copy = scaler.transform(rev_X_train)
-results=get_CV_results(glr_gs, pd.DataFrame(X_train_copy), Y_train, n_splits=5)
+results=get_CV_results(svr_gs, pd.DataFrame(X_train_copy), Y_train, n_splits=5)
 print(results)
 
 # +
-#Test the linear regression model on separate test set   
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
-np.max(glr_gs.cv_results_["mean_test_score"])
-glr_best = glr_gs.best_estimator_
-y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
-test_metrics = calculate_regression_metrics(Y_test,y_pred_glr)
-print(y_pred_glr)
+#Test the svm model on separate test set 
+svr_gs = load_model("svr_models/svr_"+data_type+"_regressor_gs.pk")
+scaler = load_model("svr_models/svr_"+data_type+"_scaling_gs.pk")
+np.max(svr_gs.cv_results_["mean_test_score"])
+svr_best = svr_gs.best_estimator_
+y_pred_svr=svr_best.predict(scaler.transform(rev_X_test))
+test_metrics=calculate_regression_metrics(Y_test,y_pred_svr)
 print(test_metrics)
 
-#Write the prediction of LR model
-metadata_X_test['predictions']=y_pred_glr
+#Write the prediction of SVR model
+metadata_X_test['predictions']=y_pred_svr
 metadata_X_test['labels']=Y_test
-metadata_X_test.to_csv("../Results/GLR_"+data_type+"_supervised_test_predictions.csv",index=False)
+metadata_X_test.to_csv("../Results/SVR_"+data_type+"_supervised_test_predictions.csv",index=False)
 print("Finished writing predictions")
 
 fig = plt.figure()
@@ -144,7 +143,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("SVR Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("Label",fontsize=10)
@@ -152,12 +151,13 @@ ax.set_ylabel("Prediction",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
 plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
 plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
-outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
+outfilename = "../Results/SVR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
+
 # +
 #Get the top coefficients and matching column information
-glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
-val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
+svr_best = load_model("svr_models/svr_"+data_type+"_regressor_best_estimator.pk")
+val, index = np.sort(np.abs(svr_best.coef_)), np.argsort(np.abs(svr_best.coef_))
 
 fig = plt.figure()
 plt.style.use('classic')
@@ -168,11 +168,10 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
-ax.set_xlabel("Features",fontsize=10)
-ax.set_ylabel("Coefficient Value",fontsize=10)
-ax.tick_params(labelsize=10)
-outputfile = "../Results/GLR_"+data_type+"_Coefficients.pdf"
-plt.savefig(outputfile, bbox_inches="tight")
-# -
 
+ax.axes.set_title("Top SVR Coefficients (MFP + Feat)",fontsize=9)
+ax.set_xlabel("Features",fontsize=9)
+ax.set_ylabel("Coefficient Values",fontsize=9)
+ax.tick_params(labelsize=9)
+outputfile = "../Results/SVR_"+data_type+"_Coefficients.pdf"
+plt.savefig(outputfile, bbox_inches="tight")

@@ -25,6 +25,8 @@ import numpy as np
 import re 
 
 import xgboost as xgb
+import lightgbm
+import catboost
 from sklearn import ensemble
 from sklearn import dummy
 from sklearn import linear_model
@@ -33,16 +35,13 @@ from sklearn import neural_network
 from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import train_test_split
 from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
-import random
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, calculate_regression_metrics, get_CV_results
-#plt.rcParams["font.family"] = "Arial"
+from misc import save_model, load_model, regression_results, grid_search_cv, calculate_regression_metrics, supervised_learning_steps, get_CV_results
 # -
-
 #Get the setting with different X_trains and X_tests
 train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
                  "../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",
@@ -52,9 +51,10 @@ test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 ".."]
 data_type_options = ["LS_Feat","MFP_Feat"]
 
+
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -62,6 +62,8 @@ data_type = data_type_options[input_option]
 print("Loaded training file")
 big_train_df = pd.read_pickle(train_options[input_option],compression="zip")
 big_test_df = pd.read_pickle(test_options[input_option],compression="zip")
+big_train_df = big_train_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+big_test_df = big_test_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric values
@@ -89,51 +91,42 @@ plt.hist(Y_train)
 plt.hist(Y_test)
 
 # +
-#Build the Generalized Linear Regression model
-model = linear_model.Ridge()
+#Build the LightGBM Regression model
+model = catboost.CatBoostRegressor(random_state=0, objective="regression",
+                                   loss_function="MAE")
 
 # Grid parameters
-params_glr = [
-    {
-        #'l1_ratio' : [0.01, 0.5], #scipy.stats.uniform.rvs(size=100, random_state=42),
-        'alpha' : random.sample(range(100), 100),
-        'fit_intercept' : [True,False],
-        'max_iter': [500,1000]
-    }
-]
-#It will select 1000 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
-scaler = preprocessing.StandardScaler()
+params_catboost = {
+    'learning_rate':loguniform(1e-7,1),
+    'depth': scipy.stats.randint(3, 9),
+    'subsample': loguniform(0.8, 1e0),
+    'colsample_bylevel': [0.1, 0.3, 0.5, 0.7, 0.9],
+    'gradient_iterations': scipy.stats.randint(1,10),
+    'random_strength': [1,3,5,7,9,11,13,15],
+    'reg_lambda': loguniform(1,100)
+}
 
-X_train_copy = scaler.fit_transform(rev_X_train)
-glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+        
+#It will select 200 random combinations for the CV and do 5-fold CV for each combination
+n_iter = 100
+catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(glr_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
-# -
-
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
-X_train_copy = scaler.transform(rev_X_train)
-results=get_CV_results(glr_gs, pd.DataFrame(X_train_copy), Y_train, n_splits=5)
-print(results)
+print(catboost_gs.cv_results_)
 
 # +
-#Test the linear regression model on separate test set   
-glr_gs = load_model("glr_models/glr_"+data_type+"_regressor_gs.pk")
-scaler = load_model("glr_models/glr_"+data_type+"_scaling_gs.pk")
-np.max(glr_gs.cv_results_["mean_test_score"])
-glr_best = glr_gs.best_estimator_
-y_pred_glr=glr_best.predict(scaler.transform(rev_X_test))
-test_metrics = calculate_regression_metrics(Y_test,y_pred_glr)
-print(y_pred_glr)
+#Test the linear regression model on separate test set  
+catboost_gs = load_model("catboost_models/catboost_"+data_type+"_regressor_gs.pk")
+np.max(catboost_gs.cv_results_["mean_test_score"])
+catboost_best = catboost_gs.best_estimator_
+y_pred_catboost=catboost_best.predict(rev_X_test)
+test_metrics=calculate_regression_metrics(Y_test,y_pred_catboost)
 print(test_metrics)
 
 #Write the prediction of LR model
-metadata_X_test['predictions']=y_pred_glr
+metadata_X_test['predictions']=y_pred_catboost
 metadata_X_test['labels']=Y_test
-metadata_X_test.to_csv("../Results/GLR_"+data_type+"_supervised_test_predictions.csv",index=False)
+metadata_X_test.to_csv("../Results/Catboost_"+data_type+"_supervised_test_predictions.csv",index=False,sep="\t")
 print("Finished writing predictions")
 
 fig = plt.figure()
@@ -144,21 +137,21 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("Catboost Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
-ax.set_xlabel("Label",fontsize=10)
-ax.set_ylabel("Prediction",fontsize=10)
+ax.set_xlabel("",fontsize=10)
+ax.set_ylabel("",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(1, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
 plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
-outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
+outfilename = "../Results/Catboost_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
-# +
-#Get the top coefficients and matching column information
-glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
-val, index = np.sort(np.abs(glr_best.coef_)), np.argsort(np.abs(glr_best.coef_))
 
+# +
+#Get the most important variables and their feature importance scores
+catboost_best = load_model("catboost_models/catboost_"+data_type+"_regressor_best_estimator.pk")
+val, index = np.sort(catboost_best.feature_importances_), np.argsort(catboost_best.feature_importances_)
 fig = plt.figure()
 plt.style.use('classic')
 fig.set_size_inches(4,3)
@@ -168,11 +161,13 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
-ax.set_xlabel("Features",fontsize=10)
-ax.set_ylabel("Coefficient Value",fontsize=10)
-ax.tick_params(labelsize=10)
-outputfile = "../Results/GLR_"+data_type+"_Coefficients.pdf"
+
+ax.axes.set_title("Top Catboost VI (LS + Feat)",fontsize=9)
+ax.set_xlabel("Features",fontsize=9)
+ax.set_ylabel("VI Value",fontsize=9)
+ax.tick_params(labelsize=9)
+outputfile = "../Results/Catboost_"+data_type+"_Coefficients.pdf"
 plt.savefig(outputfile, bbox_inches="tight")
 # -
+
 
