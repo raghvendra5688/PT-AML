@@ -111,6 +111,11 @@ catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_t
         
 #Build the model and get 5-fold CV results    
 print(catboost_gs.cv_results_)
+# -
+
+catboost_gs = load_model("catboost_models/catboost_"+data_type+"_regressor_gs.pk")
+results = get_CV_results(catboost_gs,pd.DataFrame(rev_X_train),Y_train,n_splits=5)
+print(results)
 
 # +
 #Test the linear regression model on separate test set  
@@ -135,7 +140,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("Catboost Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("",fontsize=10)
