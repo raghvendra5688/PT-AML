@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -92,17 +92,15 @@ plt.hist(Y_test)
 
 # +
 #Build the LightGBM Regression model
-model = catboost.CatBoostRegressor(random_state=0, objective="regression",
-                                   loss_function="MAE")
+model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE")
 
 # Grid parameters
 params_catboost = {
+    'iterations': [250,500,1000],
     'learning_rate':loguniform(1e-7,1),
     'depth': scipy.stats.randint(3, 9),
     'subsample': loguniform(0.8, 1e0),
     'colsample_bylevel': [0.1, 0.3, 0.5, 0.7, 0.9],
-    'gradient_iterations': scipy.stats.randint(1,10),
-    'random_strength': [1,3,5,7,9,11,13,15],
     'reg_lambda': loguniform(1,100)
 }
 
@@ -137,7 +135,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("Catboost Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("",fontsize=10)
@@ -162,7 +160,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top Catboost VI (LS + Feat)",fontsize=9)
+ax.axes.set_title("Top Catboost VI (MFP + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
