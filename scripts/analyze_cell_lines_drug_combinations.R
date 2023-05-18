@@ -85,6 +85,43 @@ rev_train_cell_line_part2_df <- train_cell_line_part2_df[train_cell_line_part2_d
 rev_test_cell_line_df <- test_cell_line_df[test_cell_line_df$dbgap_rnaseq_sample %in% rev_test_ids,]
 rev_train_onco_cell_line_df <- train_onco_cell_line_df[train_onco_cell_line_df$dbgap_rnaseq_sample %in% rev_train_ids,]
 rev_test_onco_cell_line_df <- test_onco_cell_line_df[test_onco_cell_line_df$dbgap_rnaseq_sample %in% rev_test_ids,]
+
+#Make the t-sne plot of the dataset using all cell line features (oncogenes + clinical + pathway + modules + mutations)
+################################################################################
+set.seed(123)
+rev_cell_line_df <- as.data.frame(rbind(rev_train_onco_cell_line_df, rev_test_onco_cell_line_df))
+final_rev_cell_line_df <- rev_cell_line_df[,c(2:653,654,655,672,696,717,718,721:727,729:732,734,735,740,743,751:824)]
+
+#Remove columns with NA or characters
+na_col_ids <- which(colSums(is.na(final_rev_cell_line_df))>0)
+str_col_ids <- which(sapply(final_rev_cell_line_df,class)=="character")
+last_rev_cell_line_df <- final_rev_cell_line_df[,-union(na_col_ids,str_col_ids)]
+
+#Make t-sne plot of the cell line features as Supp Fig 1A
+final_tsne_out <- Rtsne(X=last_rev_cell_line_df, dims=2, perplexity = 30.0, pca_center = T, pca_scale = T, pca = T)
+final_tsne_df <- as.data.frame(final_tsne_out[["Y"]])
+colnames(final_tsne_df) <- c("Tsne1","Tsne2")
+final_tsne_df$Pheno <- rev_cell_line_df$Pheno
+unique_phenotypes <- unique(final_tsne_df$Pheno)
+final_tsne_df$Pheno <- factor(final_tsne_df$Pheno, levels = unique_phenotypes)
+
+P28 = createPalette(28,  c("#ff0000", "#00ff00", "#0000ff"))
+palette(P28)
+g_tsne <- ggplot(data=final_tsne_df, aes(x=Tsne1, y=Tsne2, color=Pheno)) + geom_point(aes(color=Pheno), size=2) + theme_bw() + xlab("T-SNE Dim1") + ylab("T-SNE Dim2") +
+  theme(legend.title.align=0.0, legend.text.align = 0.0) +
+  theme(axis.text.x = element_text(color = "grey20", size = 16, angle = 0, hjust = .5, vjust = .5, face = "plain"),
+        strip.text = element_text(color = "white", size=20, angle=0, hjust = 0.5, vjust = 0.5, face = "plain"),
+        axis.text.y = element_text(color = "grey20", size = 16, angle = 0, hjust = 1, vjust = 0, face = "plain"),
+        axis.title.x = element_text(color = "grey20", size = 20, angle = 0, hjust = .5, vjust = 0, face = "plain"),
+        axis.title.y = element_text(color = "grey20", size = 20, angle = 90, hjust = .5, vjust = .5, face = "plain"),
+        legend.text = element_text(color="grey20", size=18, angle = 0, face="plain"),
+        title=element_text(color="grey20", size=20, face="plain"))
+ggsave(filename=paste0("Results/Feature_Set_T-SNE_plot.pdf"), plot = g_tsne, device = pdf(), height = 8, width=8, units="in")
+dev.off()
+
+
+#Write out all these revised files
+###############################################################################
 write.table(rev_train_cell_line_part1_df,file="Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F,sep="\t")
 write.table(rev_train_cell_line_part2_df,file="Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F,sep="\t")
 write.table(rev_test_cell_line_df,file="Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F,col.names=T,quote=F,sep="\t")

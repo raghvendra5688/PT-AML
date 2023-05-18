@@ -140,7 +140,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("Catboost Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 12)
 ax.set_ylim(0, 12)
 ax.set_xlabel("",fontsize=10)
