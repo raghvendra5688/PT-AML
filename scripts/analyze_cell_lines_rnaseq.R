@@ -180,3 +180,20 @@ test_cell_lines_mat_with_onco_expr_clin_pa_cts <- test_cell_lines_mat_with_expr_
 write.table(train_cell_lines_mat_with_onco_expr_clin_pa_cts,file="Data/Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
 write.table(test_cell_lines_mat_with_onco_expr_clin_pa_cts,file="Data/Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F, sep="\t")
 
+
+#Calculate variance on training set
+##############################################################################
+train_part1_df <- fread("Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",header=T,sep="\t")
+train_part2_df <- fread("Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",header=T,sep="\t")
+train_part1_df <- as.data.frame(train_part1_df)
+train_part2_df <- as.data.frame(train_part2_df)
+train_df <- as.data.frame(rbind(train_part1_df,train_part2_df))
+var_list <- lapply(train_df[,c(2:22844)],var)
+variance_genes <- as.numeric(var_list)
+names(variance_genes) <- names(var_list)
+variance_genes <- sort(variance_genes,decreasing=T)
+
+column_names <- colnames(train_df)
+write.table(column_names,file="Results/TRAINING_Metadata.csv",row.names=T,col.names=F,quote=F,sep="\t")
+
+train_df[,c(23001:23015)]
