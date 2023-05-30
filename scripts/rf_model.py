@@ -64,11 +64,11 @@ big_test_df = pd.read_pickle(test_options[input_option],compression="zip")
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric values
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["auc"].to_numpy().flatten()/300
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["auc"].to_numpy().flatten()/300
 elif (input_option==1):
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["auc"].to_numpy().flatten()/300
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["auc"].to_numpy().flatten()/300
 
 #Keep only numeric training and test set and those which have no Nans
 X_train_numerics_only = X_train.select_dtypes(include=np.number)
@@ -84,8 +84,6 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-plt.hist(Y_train)
-plt.hist(Y_test)
 
 # +
 model = ensemble.RandomForestRegressor(n_estimators=100, criterion='squared_error',
@@ -111,7 +109,13 @@ n_iter = 50
 rf_gs=supervised_learning_steps("rf","r2",data_type,classification_task,model,param_rf,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(rf_gs.cv_results_)
+#print(rf_gs.cv_results_)
+
+# -
+
+rf_gs = load_model("rf_models/rf_"+data_type+"_regressor_gs.pk")
+results = get_CV_results(rf_gs,pd.DataFrame(rev_X_train),Y_train,n_splits=5)
+print(results)
 
 # +
 #Test the linear regression model on separate test set  
