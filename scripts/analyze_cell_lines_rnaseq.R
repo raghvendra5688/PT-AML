@@ -157,6 +157,7 @@ ssgsea_celltype_module_combinations$dbgap_rnaseq_sample <- rownames(ssgsea_cellt
 cell_lines_mat_with_expr_clin_pa_cts <- merge(cell_lines_mat_with_expr_clinical_pathway_activity, ssgsea_celltype_module_combinations,
                                               by = "dbgap_rnaseq_sample", all=TRUE)
 
+save(celltype_genelist, module_genelist, file="Data/Celltype_Moduletype_info.Rdata")
 ################################################################################
 #Divide data into train and test set and write it down
 train_cell_lines_mat_with_expr_clin_pa_cts <- cell_lines_mat_with_expr_clin_pa_cts[cell_lines_mat_with_expr_clin_pa_cts$dbgap_rnaseq_sample %in% training_cohort_samples,]
@@ -196,4 +197,3 @@ variance_genes <- sort(variance_genes,decreasing=T)
 column_names <- colnames(train_df)
 write.table(column_names,file="Results/TRAINING_Metadata.csv",row.names=T,col.names=F,quote=F,sep="\t")
 
-train_df[,c(23001:23015)]

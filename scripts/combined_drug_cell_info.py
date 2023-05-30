@@ -27,7 +27,7 @@ train_feature_df = pd.read_pickle("../Data/Training_Set_Mod.pkl",compression="zi
 test_feature_df = pd.read_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
 print(train_feature_df.shape)
 print(test_feature_df.shape)
-print(train_feature_df.columns)
+print(train_feature_df.columns[748:1100])
 
 # +
 #Load the training and test drug, cell combination file

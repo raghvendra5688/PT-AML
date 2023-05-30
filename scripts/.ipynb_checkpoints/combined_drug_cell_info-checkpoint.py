@@ -27,7 +27,7 @@ train_feature_df = pd.read_pickle("../Data/Training_Set_Mod.pkl",compression="zi
 test_feature_df = pd.read_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
 print(train_feature_df.shape)
 print(test_feature_df.shape)
-print(train_feature_df.columns)
+print(train_feature_df.columns[748:1100])
 
 # +
 #Load the training and test drug, cell combination file
@@ -68,8 +68,21 @@ print(final_test_drug_feature_cell_feature_df.shape)
 #Write the pickle files
 final_train_drug_feature_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl", compression="zip")
 final_test_drug_feature_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",compression="zip")
-# -
 
-drug_morgan_df = pd.read_csv("../Data/")
+# +
+drug_morgan_df = pd.read_csv("../Results/Drugs_file_with_morgan_fps.csv",header='infer')
+drug_morgan_df.columns = ["CID","MolecularWeight","CanonicalSMILES","InChIKey","XlogP","inhibitor"]+["MFP"+str(i) for i in range(0,1024)]
+drug_morgan_df.head()
+
+#Merge with the drug_cell_feature_df
+final_train_drug_mfp_cell_feature_df = pd.merge(drug_morgan_df, train_drug_cell_feature_df, on = "inhibitor")
+print(final_train_drug_mfp_cell_feature_df.shape)
+final_test_drug_mfp_cell_feature_df = pd.merge(drug_morgan_df, test_drug_cell_feature_df, on = "inhibitor")
+print(final_test_drug_mfp_cell_feature_df.shape)
+
+#Write the pickle files
+final_train_drug_mfp_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
+final_test_drug_mfp_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
+# -
 
 
