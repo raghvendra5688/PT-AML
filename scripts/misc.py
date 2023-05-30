@@ -111,7 +111,7 @@ def supervised_learning_steps(method, scoring, data_type, task, model, params, X
     return(gs)
 
 
-def grid_search_cv(model, parameters, X_train, y_train, n_splits=5, n_iter=1000, n_jobs=-1, scoring="r2", stratified=False):
+def grid_search_cv(model, parameters, X_train, y_train, n_splits=5, n_iter=1000, n_jobs=42, scoring="r2", stratified=False):
     """
         Tries all possible values of parameters and returns the best regressor/classifier.
         Cross Validation done is stratified.
