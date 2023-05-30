@@ -44,7 +44,10 @@ print(train_drug_cell_df.columns)
 #We now focus on oncogenes, pathway enrichments, module enrichments, mutations in genes, mutation classes
 rev_train_feature_df = train_feature_df
 rev_test_feature_df = test_feature_df
-print(rev_train_feature_df.columns)
+
+import matplotlib.pyplot as plt
+plt.hist(train_drug_cell_df["auc"],bins=np.linspace(0,300,100))
+plt.hist(test_drug_cell_df["auc"],bins=np.linspace(0,300,100))
 # -
 
 #Merge the dataframes containing drug-cell info and cell line info df
@@ -84,5 +87,7 @@ print(final_test_drug_mfp_cell_feature_df.shape)
 final_train_drug_mfp_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
 final_test_drug_mfp_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
 # -
+final_train_drug_feature_cell_feature_df.columns[200:300]
+
 
 

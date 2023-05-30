@@ -44,7 +44,9 @@ print(train_drug_cell_df.columns)
 #We now focus on oncogenes, pathway enrichments, module enrichments, mutations in genes, mutation classes
 rev_train_feature_df = train_feature_df
 rev_test_feature_df = test_feature_df
-print(rev_train_feature_df.columns)
+
+import matplotlib.pyplot as plt
+plt.hist(train_drug_cell_df["ic50"],bins=np.linspace(0,10,100))
 # -
 
 #Merge the dataframes containing drug-cell info and cell line info df
