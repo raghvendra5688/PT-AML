@@ -39,7 +39,7 @@ from sklearn.utils.fixes import loguniform
 import scipy
 import argparse
 
-from misc import save_model, load_model, regression_results, grid_search_cv, calculate_regression_metrics, supervised_learning_steps
+from misc import save_model, load_model, regression_results, grid_search_cv, calculate_regression_metrics, supervised_learning_steps, get_CV_results
 # -
 #Get the setting with different X_trains and X_tests
 train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
