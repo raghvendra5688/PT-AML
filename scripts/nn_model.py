@@ -100,7 +100,7 @@ params_nn = {
 
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 50
+n_iter = 100
 scaler = preprocessing.StandardScaler()
 X_train_copy = scaler.fit_transform(rev_X_train)
 nn_gs=supervised_learning_steps("nn","r2",data_type,classification_task,model,params_nn,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
