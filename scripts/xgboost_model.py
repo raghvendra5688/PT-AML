@@ -39,7 +39,7 @@ import scipy
 import argparse
 from scipy.stats import randint
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics,get_CV_results
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -106,7 +106,7 @@ params_xgb = {
 
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
+n_iter = 200
 xgb_gs=supervised_learning_steps("xgb","r2",data_type,classification_task,model,params_xgb,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
@@ -165,7 +165,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top XGB VI (MFP + Feat)",fontsize=9)
+ax.axes.set_title("Top XGB VI (LS + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
