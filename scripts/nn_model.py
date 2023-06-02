@@ -63,7 +63,6 @@ big_test_df = pd.read_pickle(test_options[input_option],compression="zip")
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric valuessudo apt-get update
-sudo apt-get install python-multiprocessing
     metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["auc"].to_numpy().flatten()
     metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["auc"].to_numpy().flatten()
 elif (input_option==1):
