@@ -52,7 +52,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 1                                                 #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                 #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -83,18 +83,18 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-plt.hist(Y_train)
-plt.hist(Y_test)
+#plt.hist(Y_train)
+#plt.hist(Y_test)
 
 # +
 #Build the Neural Network model
-model = neural_network.MLPRegressor(activation='identity', solver='adam', alpha=1e-5, batch_size=2056, max_iter=1000, random_state=42, tol=1e-4, shuffle=False, verbose=False, warm_start=False, early_stopping=False,beta_2=0.999, epsilon=1e-08, n_iter_no_change=50, validation_fraction=0.2)
+model = neural_network.MLPRegressor(activation='relu', solver='adam', alpha=1e-5, batch_size=256, max_iter=1000, random_state=42, tol=1e-4, shuffle=False, verbose=False, warm_start=True, early_stopping=True,beta_2=0.999, epsilon=1e-08, n_iter_no_change=50, validation_fraction=0.2)
 # Grid parameters
 params_nn = {
         "hidden_layer_sizes": [(1024, 256, 64), (256,64), (512, 128, 32), (256, 128, 64)],
-        "alpha": loguniform(1e-8,1e-2),
+        "alpha": loguniform(1e-6,1e-1),
         "learning_rate_init" : loguniform(1e-4,1e-3),
-        "beta_1" : [0.7,0.8,0.9]
+        "beta_1" : [0.8,0.9]
 }   
 
         
@@ -139,7 +139,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("NN Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("NN Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("Label",fontsize=10)

@@ -39,7 +39,7 @@ import scipy
 import argparse
 from scipy.stats import randint
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics, get_CV_results
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -105,7 +105,7 @@ param_rf={'max_depth':list(np.arange(1, 10, step=2)) + [None],
          }
 
 #It will select 100 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 50
+n_iter = 100
 rf_gs=supervised_learning_steps("rf","r2",data_type,classification_task,model,param_rf,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
