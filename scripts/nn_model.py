@@ -52,7 +52,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                 #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                 #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -102,11 +102,11 @@ params_nn = {
 n_iter = 100
 scaler = preprocessing.StandardScaler()
 X_train_copy = scaler.fit_transform(rev_X_train)
-nn_gs=supervised_learning_steps("nn","r2",data_type,classification_task,model,params_nn,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
+#nn_gs=supervised_learning_steps("nn","r2",data_type,classification_task,model,params_nn,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(nn_gs.cv_results_)
-save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("nn","nn",data_type))
+#save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("nn","nn",data_type))
 # -
 
 nn_gs = load_model("nn_models/nn_"+data_type+"_regressor_gs.pk")
@@ -139,7 +139,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("NN Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("NN Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("Label",fontsize=10)
