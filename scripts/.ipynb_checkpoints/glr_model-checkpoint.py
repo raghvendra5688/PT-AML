@@ -87,11 +87,15 @@ print(rev_X_train.shape)
 print(rev_X_test.shape)
 
 from matplotlib import pyplot
+pyplot.rcParams.update({'font.size': 20})
 bins = np.linspace(0, 300, 100)
 pyplot.hist(Y_train, bins, alpha=0.5, label='Y_train')
 pyplot.hist(Y_test, bins, alpha=0.5, label='Y_test')
 pyplot.legend(loc='upper right')
-pyplot.show()
+pyplot.xlabel("AUC")
+pyplot.ylabel("Frequency")
+pyplot.title("AUC distribution")
+pyplot.savefig("../Results/Train_Test_Y_distribution.pdf",bbox_inches="tight")
 
 # +
 #Build the Generalized Linear Regression model
@@ -114,7 +118,7 @@ X_train_copy = scaler.fit_transform(rev_X_train)
 glr_gs=supervised_learning_steps("glr","r2",data_type,classification_task,model,params_glr,X_train_copy,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(glr_gs.cv_results_)
+#print(glr_gs.cv_results_)
 save_model(scaler, "%s_models/%s_%s_scaling_gs.pk" % ("glr","glr",data_type))
 # -
 
@@ -149,16 +153,17 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (MFP + Feat)",fontsize=10)
-ax.set_xlim(0, 12)
-ax.set_ylim(0, 12)
+ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
+ax.set_xlim(0,300)
+ax.set_ylim(0,300)
 ax.set_xlabel("Label",fontsize=10)
 ax.set_ylabel("Prediction",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
+plt.text(25, 25, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(25, 50, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
+
 # +
 #Get the top coefficients and matching column information
 glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
@@ -173,7 +178,7 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
+ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
 ax.set_xlabel("Features",fontsize=10)
 ax.set_ylabel("Coefficient Value",fontsize=10)
 ax.tick_params(labelsize=10)

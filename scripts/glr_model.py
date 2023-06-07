@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat","MFP_Feat"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -86,12 +86,16 @@ print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
 
-#from matplotlib import pyplot
-#bins = np.linspace(0, 300, 100)
-#pyplot.hist(Y_train, bins, alpha=0.5, label='Y_train')
-#pyplot.hist(Y_test, bins, alpha=0.5, label='Y_test')
-#pyplot.legend(loc='upper right')
-#pyplot.show()
+from matplotlib import pyplot
+pyplot.rcParams.update({'font.size': 20})
+bins = np.linspace(0, 300, 100)
+pyplot.hist(Y_train, bins, alpha=0.5, label='Y_train')
+pyplot.hist(Y_test, bins, alpha=0.5, label='Y_test')
+pyplot.legend(loc='upper right')
+pyplot.xlabel("AUC")
+pyplot.ylabel("Frequency")
+pyplot.title("AUC distribution")
+pyplot.savefig("../Results/Train_Test_Y_distribution.pdf",bbox_inches="tight")
 
 # +
 #Build the Generalized Linear Regression model
@@ -159,6 +163,7 @@ plt.text(25, 25, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
 plt.text(25, 50, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/GLR_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
+
 # +
 #Get the top coefficients and matching column information
 glr_best = load_model("glr_models/glr_"+data_type+"_regressor_best_estimator.pk")
