@@ -89,7 +89,7 @@ print(rev_X_test.shape)
 
 # +
 #Build the LightGBM Regression model
-model = lightgbm.LGBMRegressor(boosting_type='gbdt',random_state=0, n_jobs=36, objective="regression")
+model = lightgbm.LGBMRegressor(boosting_type='gbdt',random_state=0, n_jobs=42, objective="regression")
 
 # Grid parameters
 params_lgbm = {

@@ -89,7 +89,7 @@ print(rev_X_test.shape)
 
 # +
 #Build the Xgboost Regression model
-model = xgb.XGBRegressor(tree_method = "hist",random_state=0, n_jobs=36, objective="reg:squarederror")
+model = xgb.XGBRegressor(tree_method = "hist",random_state=0, n_jobs=42, objective="reg:squarederror")
 
 # Grid parameters
 params_xgb = {

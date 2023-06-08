@@ -90,7 +90,7 @@ print(rev_X_test.shape)
 
 # +
 #Build the LightGBM Regression model
-model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE",thread_count=36)
+model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE",thread_count=42)
 
 # Grid parameters
 params_catboost = {
