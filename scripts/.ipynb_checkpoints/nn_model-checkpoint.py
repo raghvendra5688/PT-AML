@@ -42,11 +42,11 @@ from misc import save_model, load_model, regression_results, grid_search_cv, sup
 # -
 
 #Get the setting with different X_trains and X_tests
-train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
-                 "../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",
+train_options = ["../Data/Training_Set_Var_with_Drug_Embedding_Cell_Info.pkl",
+                 "../Data/Training_Set_Var_with_Drug_MFP_Cell_Info.pkl",
                  ".."]
-test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
-                "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
+test_options = ["../Data/Test_Set_Var_with_Drug_Embedding_Cell_Info.pkl",
+                "../Data/Test_Set_Var_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
 data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
