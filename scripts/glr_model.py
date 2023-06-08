@@ -44,13 +44,13 @@ from misc import save_model, load_model, regression_results, grid_search_cv, sup
 # -
 
 #Get the setting with different X_trains and X_tests
-train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
-                 "../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",
+train_options = ["../Data/Training_Set_Var_with_Drug_Embedding_Cell_Info.pkl",
+                 "../Data/Training_Set_Var_with_Drug_MFP_Cell_Info.pkl",
                  ".."]
-test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
-                "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
+test_options = ["../Data/Test_Set_Var_with_Drug_Embedding_Cell_Info.pkl",
+                "../Data/Test_Set_Var_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
-data_type_options = ["LS_Feat","MFP_Feat"]
+data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options
@@ -153,7 +153,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("GLR Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("GLR Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0,300)
 ax.set_ylim(0,300)
 ax.set_xlabel("Label",fontsize=10)
@@ -178,7 +178,7 @@ fig.set_facecolor("white")
 ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
-ax.axes.set_title("Top GLR Coefficients (LS + Feat)",fontsize=10)
+ax.axes.set_title("Top GLR Coefficients (MFP + Feat)",fontsize=10)
 ax.set_xlabel("Features",fontsize=10)
 ax.set_ylabel("Coefficient Value",fontsize=10)
 ax.tick_params(labelsize=10)

@@ -49,12 +49,12 @@ train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
 test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
-data_type_options = ["LS_Feat","MFP_Feat"]
+data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -67,11 +67,11 @@ big_test_df = big_test_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '',
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric values
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["auc"].to_numpy().flatten()
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["auc"].to_numpy().flatten()
 elif (input_option==1):
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["auc"].to_numpy().flatten()
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["auc"].to_numpy().flatten()
 
 #Keep only numeric training and test set and those which have no Nans
 X_train_numerics_only = X_train.select_dtypes(include=np.number)
@@ -87,18 +87,16 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-plt.hist(Y_train)
-plt.hist(Y_test)
 
 # +
 #Build the LightGBM Regression model
-model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE")
+model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE",thread_count=36)
 
 # Grid parameters
 params_catboost = {
     'iterations': [250,500,1000],
     'learning_rate':loguniform(1e-7,1),
-    'depth': scipy.stats.randint(3, 9),
+    'depth': scipy.stats.randint(3, 12),
     'subsample': loguniform(0.8, 1e0),
     'colsample_bylevel': [0.1, 0.3, 0.5, 0.7, 0.9],
     'reg_lambda': loguniform(1,100)
@@ -110,11 +108,12 @@ n_iter = 100
 catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(catboost_gs.cv_results_)
+#print(catboost_gs.cv_results_)
 # -
 
 catboost_gs = load_model("catboost_models/catboost_"+data_type+"_regressor_gs.pk")
-
+results = get_CV_results(catboost_gs,pd.DataFrame(rev_X_train),Y_train,n_splits=5)
+print(results)
 
 # +
 #Test the linear regression model on separate test set  
@@ -140,13 +139,13 @@ fig.set_facecolor("white")
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
 ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
-ax.set_xlim(0, 12)
-ax.set_ylim(0, 12)
+ax.set_xlim(0, 300)
+ax.set_ylim(0, 300)
 ax.set_xlabel("",fontsize=10)
 ax.set_ylabel("",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(1, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
+plt.text(25, 25, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(25, 50, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/Catboost_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 

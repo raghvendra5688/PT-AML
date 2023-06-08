@@ -49,7 +49,7 @@ train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
 test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
-data_type_options = ["LS_Feat","MFP_Feat"]
+data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options

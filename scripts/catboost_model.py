@@ -49,12 +49,12 @@ train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
 test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
-data_type_options = ["LS_Feat","MFP_Feat"]
+data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 

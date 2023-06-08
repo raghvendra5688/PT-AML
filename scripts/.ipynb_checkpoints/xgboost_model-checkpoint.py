@@ -39,7 +39,7 @@ import scipy
 import argparse
 from scipy.stats import randint
 
-from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics
+from misc import save_model, load_model, regression_results, grid_search_cv, supervised_learning_steps, regression_results, calculate_regression_metrics,get_CV_results
 # -
 
 #Get the setting with different X_trains and X_tests
@@ -49,11 +49,11 @@ train_options = ["../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl",
 test_options = ["../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",
                 "../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",
                 ".."]
-data_type_options = ["LS_Feat","MFP_Feat"]
+data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -66,11 +66,11 @@ big_test_df = big_test_df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '',
 total_length = len(big_train_df.columns)
 if (input_option==0):
     #Consider only those columns which have numeric values
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_train_df["auc"].to_numpy().flatten()
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,262,1)]+[*range(288,total_length,1)]], big_test_df["auc"].to_numpy().flatten()
 elif (input_option==1):
-    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["ic50"].to_numpy().flatten()
-    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["ic50"].to_numpy().flatten()
+    metadata_X_train,X_train, Y_train = big_train_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_train_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_train_df["auc"].to_numpy().flatten()
+    metadata_X_test,X_test, Y_test = big_test_df.loc[:,["dbgap_rnaseq_sample","inhibitor"]], big_test_df.iloc[:,[1,4]+[*range(6,1030,1)]+[*range(1056,total_length,1)]], big_test_df["auc"].to_numpy().flatten()
 
 #Keep only numeric training and test set and those which have no Nans
 X_train_numerics_only = X_train.select_dtypes(include=np.number)
@@ -86,8 +86,6 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-plt.hist(Y_train)
-plt.hist(Y_test)
 
 # +
 #Build the Xgboost Regression model
@@ -108,11 +106,16 @@ params_xgb = {
 
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
-n_iter = 100
+n_iter = 200
 xgb_gs=supervised_learning_steps("xgb","r2",data_type,classification_task,model,params_xgb,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
-print(xgb_gs.cv_results_)
+#print(xgb_gs.cv_results_)
+# -
+
+xgb_gs = load_model("xgb_models/xgb_"+data_type+"_regressor_gs.pk")
+results = get_CV_results(xgb_gs,pd.DataFrame(rev_X_train),Y_train,n_splits=5)
+print(results)
 
 # +
 #Test the linear regression model on separate test set  
@@ -137,14 +140,14 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("XGB Predictions (LS + Feat)",fontsize=10)
-ax.set_xlim(0, 12)
-ax.set_ylim(0, 12)
+ax.axes.set_title("XGB Predictions (MFP + Feat)",fontsize=10)
+ax.set_xlim(0, 300)
+ax.set_ylim(0, 300)
 ax.set_xlabel("",fontsize=10)
 ax.set_ylabel("",fontsize=10)
 ax.tick_params(labelsize=10, color="black")
-plt.text(2, 2, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
-plt.text(1, 1, 'MAE ='+str(test_metrics[0]),fontsize=10)
+plt.text(25, 25, 'Pearson r =' +str(test_metrics[3]), fontsize = 10)
+plt.text(25, 50, 'MAE ='+str(test_metrics[0]),fontsize=10)
 outfilename = "../Results/XGB_"+data_type+"_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
 

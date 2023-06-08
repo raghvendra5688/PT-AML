@@ -73,8 +73,8 @@ rev_test_cell_drug_df <- rev_test_cell_drug_df[complete.cases(rev_test_cell_drug
 train_cell_line_part1_df <- fread("Data/Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",header=T,quote="",sep="\t")
 train_cell_line_part2_df <- fread("Data/Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",header=T,quote="",sep="\t")
 test_cell_line_df <- fread("Data/Test_Set_with_Expr_Clin_PA_CTS.csv.gz",header=T,quote="",sep="\t")
-train_onco_cell_line_df <- fread("Data/Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",header=T,quote="",sep="\t")
-test_onco_cell_line_df <- fread("Data/Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",header=T,quote="",sep="\t")
+train_onco_cell_line_df <- fread("Data/Training_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",header=T,quote="",sep="\t")
+test_onco_cell_line_df <- fread("Data/Test_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",header=T,quote="",sep="\t")
 train_cell_line_part1_df <- as.data.frame(train_cell_line_part1_df)
 train_cell_line_part2_df <- as.data.frame(train_cell_line_part2_df)
 test_cell_line_df <- as.data.frame(test_cell_line_df)
@@ -90,7 +90,7 @@ rev_test_onco_cell_line_df <- test_onco_cell_line_df[test_onco_cell_line_df$dbga
 ################################################################################
 set.seed(123)
 rev_cell_line_df <- as.data.frame(rbind(rev_train_onco_cell_line_df, rev_test_onco_cell_line_df))
-final_rev_cell_line_df <- rev_cell_line_df[,c(2:653,654,655,672,696,717,718,721:727,729:732,734,735,740,743,751:824)]
+final_rev_cell_line_df <- rev_cell_line_df[,c(2:794,795,796,813,837,858,859,862:868,870:873,875,876,881,884,892:965)]
 
 #Remove columns with NA or characters
 na_col_ids <- which(colSums(is.na(final_rev_cell_line_df))>0)
@@ -125,8 +125,8 @@ dev.off()
 write.table(rev_train_cell_line_part1_df,file="Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv",row.names=F, col.names=T, quote=F,sep="\t")
 write.table(rev_train_cell_line_part2_df,file="Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv",row.names=F, col.names=T, quote=F,sep="\t")
 write.table(rev_test_cell_line_df,file="Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv",row.names=F,col.names=T,quote=F,sep="\t")
-write.table(rev_train_onco_cell_line_df,file="Data/Revised_Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F,sep="\t")
-write.table(rev_test_onco_cell_line_df,file="Data/Revised_Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F,sep="\t")
+write.table(rev_train_onco_cell_line_df,file="Data/Revised_Training_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F,sep="\t")
+write.table(rev_test_onco_cell_line_df,file="Data/Revised_Test_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",row.names=F, col.names=T, quote=F,sep="\t")
 
 final_train_cell_line_df <- as.data.frame(rbind(rev_train_cell_line_part1_df, rev_train_cell_line_part2_df))
 

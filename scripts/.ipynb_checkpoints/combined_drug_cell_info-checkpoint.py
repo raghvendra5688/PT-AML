@@ -23,11 +23,11 @@ command = "python preprocess_cellline.py"
 os.system(command)
 
 #Load the training and test set with gene expression, clinical traits, pathway activations, celltype and module activations, mutations
-train_feature_df = pd.read_pickle("../Data/Training_Set_Mod.pkl",compression="zip")
-test_feature_df = pd.read_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
+train_feature_df = pd.read_pickle("../Data/Training_Set_Var_Mod.pkl",compression="zip")
+test_feature_df = pd.read_pickle("../Data/Test_Set_Var_Mod.pkl",compression="zip")
 print(train_feature_df.shape)
 print(test_feature_df.shape)
-print(train_feature_df.columns[748:1100])
+print(train_feature_df.columns[881:1242])
 
 # +
 #Load the training and test drug, cell combination file
@@ -46,7 +46,8 @@ rev_train_feature_df = train_feature_df
 rev_test_feature_df = test_feature_df
 
 import matplotlib.pyplot as plt
-plt.hist(train_drug_cell_df["ic50"],bins=np.linspace(0,10,100))
+plt.hist(train_drug_cell_df["auc"],bins=np.linspace(0,300,100))
+plt.hist(test_drug_cell_df["auc"],bins=np.linspace(0,300,100))
 # -
 
 #Merge the dataframes containing drug-cell info and cell line info df
@@ -68,8 +69,8 @@ final_test_drug_feature_cell_feature_df = pd.merge(drug_embed_df, test_drug_cell
 print(final_test_drug_feature_cell_feature_df.shape)
 
 #Write the pickle files
-final_train_drug_feature_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_Embedding_Cell_Info.pkl", compression="zip")
-final_test_drug_feature_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_Embedding_Cell_Info.pkl",compression="zip")
+final_train_drug_feature_cell_feature_df.to_pickle("../Data/Training_Set_Var_with_Drug_Embedding_Cell_Info.pkl", compression="zip")
+final_test_drug_feature_cell_feature_df.to_pickle("../Data/Test_Set_Var_with_Drug_Embedding_Cell_Info.pkl",compression="zip")
 
 # +
 drug_morgan_df = pd.read_csv("../Results/Drugs_file_with_morgan_fps.csv",header='infer')
@@ -83,8 +84,10 @@ final_test_drug_mfp_cell_feature_df = pd.merge(drug_morgan_df, test_drug_cell_fe
 print(final_test_drug_mfp_cell_feature_df.shape)
 
 #Write the pickle files
-final_train_drug_mfp_cell_feature_df.to_pickle("../Data/Training_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
-final_test_drug_mfp_cell_feature_df.to_pickle("../Data/Test_Set_with_Drug_MFP_Cell_Info.pkl",compression="zip")
+final_train_drug_mfp_cell_feature_df.to_pickle("../Data/Training_Set_Var_with_Drug_MFP_Cell_Info.pkl",compression="zip")
+final_test_drug_mfp_cell_feature_df.to_pickle("../Data/Test_Set_Var_with_Drug_MFP_Cell_Info.pkl",compression="zip")
 # -
+final_train_drug_feature_cell_feature_df.columns[288:]
+
 
 

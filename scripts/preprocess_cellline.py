@@ -21,8 +21,8 @@ import pyreadr
 #train_part1_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P1.csv.gz",sep="\t",low_memory=False)
 #train_part2_df = pd.read_csv("../Data/Revised_Training_Set_with_Expr_Clin_PA_CTS_P2.csv.gz",sep="\t",low_memory=False)
 #test_df = pd.read_csv("../Data/Revised_Test_Set_with_Expr_Clin_PA_CTS.csv.gz",sep="\t",low_memory=False)
-train_df = pd.read_csv("../Data/Revised_Training_Set_with_Onco_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
-test_df = pd.read_csv("../Data/Revised_Test_Set_with_Onco_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
+train_df = pd.read_csv("../Data/Revised_Training_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
+test_df = pd.read_csv("../Data/Revised_Test_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv",sep="\t",low_memory=False)
 #train_part1_df.head()
 print(train_df.shape)
 print(test_df.shape)
@@ -45,10 +45,10 @@ all_columns = list(train_df.columns)
 sample_names = all_columns[0]
 
 #Gene names
-gene_names = all_columns[1:653]
+gene_names = all_columns[1:794]
 
 #Clinical traits with T-sne
-clin_traits = all_columns[653:750]
+clin_traits = all_columns[794:891]
 clin_trait_of_use = ['Tsne1','Tsne2','consensus_sex','ageAtDiagnosis','diseaseStageAtSpecimenCollection','vitalStatus',
                      'overallSurvival', '%.Blasts.in.BM', '%.Blasts.in.PB', '%.Eosinophils.in.PB', '%.Lymphocytes.in.PB', 
                      '%.Monocytes.in.PB', '%.Neutrophils.in.PB','ALT', 'AST', 'albumin', 'creatinine', 
@@ -58,10 +58,10 @@ clin_trait_of_use = ['Tsne1','Tsne2','consensus_sex','ageAtDiagnosis','diseaseSt
 train_df[clin_trait_of_use].describe()
 
 #Get the information about pathways
-pathway_names = all_columns[750:804]
+pathway_names = all_columns[891:945]
 
 #Get the information about celltypes and modules
-cts_names = all_columns[804:824]
+cts_names = all_columns[945:965]
 
 #Print all columns of interest
 all_cols_of_interest = [sample_names]+gene_names+clin_trait_of_use+pathway_names+cts_names
@@ -88,10 +88,10 @@ print(big_test_df.shape)
 sum(big_train_df.columns==big_test_df.columns)
 # -
 #Write the data frames as pickle files
-big_train_df.to_pickle("../Data/Training_Set_Mod.pkl", compression="zip")
-big_test_df.to_pickle("../Data/Test_Set_Mod.pkl",compression="zip")
-big_train_df.to_csv("../Data/Training_Set_Mod.csv",index=None,sep="\t")
-big_test_df.to_csv("../Data/Test_Set_Mod.csv",index=None,sep="\t")
+big_train_df.to_pickle("../Data/Training_Set_Var_Mod.pkl", compression="zip")
+big_test_df.to_pickle("../Data/Test_Set_Var_Mod.pkl",compression="zip")
+big_train_df.to_csv("../Data/Training_Set_Var_Mod.csv",index=None,sep="\t")
+big_test_df.to_csv("../Data/Test_Set_Var_Mod.csv",index=None,sep="\t")
 
 
 
