@@ -54,7 +54,7 @@ data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -105,7 +105,7 @@ params_catboost = {
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
-catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
+#catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(catboost_gs.cv_results_)
@@ -138,7 +138,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("Catboost Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("",fontsize=10)
@@ -163,7 +163,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top Catboost VI (MFP + Feat)",fontsize=9)
+ax.axes.set_title("Top Catboost VI (LS + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
