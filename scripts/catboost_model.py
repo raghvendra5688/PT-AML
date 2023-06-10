@@ -96,7 +96,7 @@ model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_fu
 params_catboost = {
     'iterations': [250,500,1000],
     'learning_rate':loguniform(1e-7,1),
-    'depth': scipy.stats.randint(3, 12),
+    'depth': scipy.stats.randint(3, 10),
     'subsample': loguniform(0.8, 1e0),
     'colsample_bylevel': [0.1, 0.3, 0.5, 0.7, 0.9],
     'reg_lambda': loguniform(1,100)
