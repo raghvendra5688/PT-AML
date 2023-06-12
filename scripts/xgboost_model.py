@@ -53,7 +53,7 @@ data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options
-input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -94,14 +94,14 @@ model = xgb.XGBRegressor(tree_method = "hist",random_state=0, n_jobs=42, objecti
 # Grid parameters
 params_xgb = {
         "n_estimators": scipy.stats.randint(100, 500),
-        "max_depth": scipy.stats.randint(3, 12),
+        "max_depth": scipy.stats.randint(3, 10),
         "gamma": loguniform(1e-8, 1.0),
         "min_child_weight": scipy.stats.randint(3, 15),
         "learning_rate": loguniform(1e-4, 1e-1),
         "subsample": loguniform(0.8, 1e0),
-        "colsample_bytree": [0.1, 0.3, 0.5, 0.7],
-        "reg_alpha": loguniform(1e-1, 1e1),
-        "reg_lambda": loguniform(1, 1e1)
+        "colsample_bytree": [0.1, 0.2, 0.3, 0.4, 0.5],
+        "reg_alpha": loguniform(1e-2, 1e1),
+        "reg_lambda": loguniform(1e-1, 1e1)
 }   
 
         
@@ -140,7 +140,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("XGB Predictions (MFP + Feat)",fontsize=10)
+ax.axes.set_title("XGB Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("",fontsize=10)
@@ -165,7 +165,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top XGB VI (MFP + Feat)",fontsize=9)
+ax.axes.set_title("Top XGB VI (LS + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
