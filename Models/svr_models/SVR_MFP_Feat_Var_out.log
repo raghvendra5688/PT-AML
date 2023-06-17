@@ -1,0 +1,534 @@
+Loaded training file
+Shape of training set after removing non-numeric cols
+(34387, 2346)
+(19184, 2346)
+Shape of training set after removing cols with NaNs
+(34387, 2333)
+(19184, 2333)
+Fitting 5 folds for each of 100 candidates, totalling 500 fits
+[CV] END C=0.8800667561385502, epsilon=0.3042422429595377, max_iter=10000; total time=23.1min
+[CV] END C=0.02078369792133813, epsilon=0.5986584841970366, max_iter=5000; total time= 8.6min
+[CV] END C=0.019853681526881356, epsilon=0.5986584841970366, max_iter=5000; total time= 7.7min
+[CV] END C=0.9085962729593783, epsilon=0.5986584841970366, max_iter=5000; total time=19.1min
+[CV] END C=8.516933662231994, epsilon=0.8661761457749352, max_iter=10000; total time=18.0min
+[CV] END C=0.024853845095262, epsilon=0.3745401188473625, max_iter=5000; total time= 7.6min
+[CV] END C=0.010329669551879734, epsilon=0.7319939418114051, max_iter=10000; total time= 5.7min
+[CV] END C=0.21947049130435387, epsilon=0.15601864044243652, max_iter=10000; total time=10.1min
+[CV] END C=0.0870271969973679, epsilon=0.18182496720710062, max_iter=10000; total time= 9.2min
+[CV] END C=4.3187351443496365, epsilon=0.18340450985343382, max_iter=10000; total time=11.6min
+[CV] END C=0.028076625808718805, epsilon=0.18340450985343382, max_iter=5000; total time= 8.2min
+[CV] END C=0.012579609383535598, epsilon=0.7080725777960455, max_iter=10000; total time= 5.8min
+[CV] END C=0.1202082275041248, epsilon=0.9507143064099162, max_iter=5000; total time=14.2min
+[CV] END C=1.0896119231290546, epsilon=0.43194501864211576, max_iter=5000; total time=17.0min
+[CV] END C=1.704133586324829, epsilon=0.43194501864211576, max_iter=5000; total time=16.0min
+[CV] END C=0.4430375245218265, epsilon=0.3745401188473625, max_iter=10000; total time=16.2min
+[CV] END C=2.5277391559845515, epsilon=0.2912291401980419, max_iter=10000; total time=13.9min
+[CV] END C=0.019853681526881356, epsilon=0.5986584841970366, max_iter=5000; total time= 8.0min
+[CV] END C=0.7995068220796497, epsilon=0.05808361216819946, max_iter=5000; total time=11.2min
+[CV] END C=0.9310837957239838, epsilon=0.5247564316322378, max_iter=10000; total time=20.3min
+[CV] END C=0.5009615137983936, epsilon=0.5247564316322378, max_iter=5000; total time=18.0min
+[CV] END C=0.15427474110183123, epsilon=0.7319939418114051, max_iter=5000; total time=16.3min
+[CV] END C=0.26582911549201454, epsilon=0.05808361216819946, max_iter=10000; total time=11.5min
+[CV] END C=0.20304615777978818, epsilon=0.15599452033620265, max_iter=10000; total time=10.9min
+[CV] END C=2.6421463889976042, epsilon=0.5986584841970366, max_iter=10000; total time=18.5min
+[CV] END C=0.05172237564581168, epsilon=0.5986584841970366, max_iter=10000; total time= 9.3min
+[CV] END C=0.22715751293247397, epsilon=0.18340450985343382, max_iter=10000; total time=11.0min
+[CV] END C=0.03457888877316664, epsilon=0.18182496720710062, max_iter=10000; total time=11.4min
+[CV] END C=0.01000382464797508, epsilon=0.6011150117432088, max_iter=10000; total time= 5.3min
+[CV] END C=0.2710162626224751, epsilon=0.8661761457749352, max_iter=10000; total time=23.9min
+[CV] END C=2.102330874348011, epsilon=0.7319939418114051, max_iter=5000; total time=11.5min
+[CV] END C=0.12334805700860013, epsilon=0.020584494295802447, max_iter=5000; total time=10.9min
+[CV] END C=0.02998532434945438, epsilon=0.21233911067827616, max_iter=10000; total time= 9.2min
+[CV] END C=8.499206771743683, epsilon=0.7319939418114051, max_iter=5000; total time=17.8min
+[CV] END C=0.5343668232660405, epsilon=0.020584494295802447, max_iter=5000; total time=12.1min
+[CV] END C=1.2918492513656108, epsilon=0.9699098521619943, max_iter=10000; total time=15.9min
+[CV] END C=0.5826332361509408, epsilon=0.2912291401980419, max_iter=10000; total time=10.9min
+[CV] END C=4.893727555349509, epsilon=0.020584494295802447, max_iter=5000; total time=11.8min
+[CV] END C=0.023521225662317322, epsilon=0.2912291401980419, max_iter=5000; total time= 7.6min
+[CV] END C=0.011217185998132864, epsilon=0.21233911067827616, max_iter=10000; total time= 6.3min
+[CV] END C=2.404878335900933, epsilon=0.15599452033620265, max_iter=5000; total time=11.1min
+[CV] END C=1.0896119231290546, epsilon=0.43194501864211576, max_iter=5000; total time=17.6min
+[CV] END C=1.0745947688453805, epsilon=0.9699098521619943, max_iter=10000; total time=15.6min
+[CV] END C=0.7424908231815005, epsilon=0.43194501864211576, max_iter=5000; total time=18.4min
+[CV] END C=0.026919058249260688, epsilon=0.3745401188473625, max_iter=10000; total time=10.4min
+[CV] END C=0.6905424378423518, epsilon=0.9507143064099162, max_iter=10000; total time=25.0min
+[CV] END C=3.2646356775235206, epsilon=0.7319939418114051, max_iter=5000; total time=25.3min
+[CV] END C=0.07382751981499336, epsilon=0.2912291401980419, max_iter=5000; total time=21.4min
+[CV] END C=0.5826332361509408, epsilon=0.2912291401980419, max_iter=10000; total time=23.2min
+[CV] END C=0.023521225662317322, epsilon=0.2912291401980419, max_iter=5000; total time=10.7min
+[CV] END C=0.1202082275041248, epsilon=0.9507143064099162, max_iter=5000; total time=20.7min
+[CV] END C=1.1006115690601632, epsilon=0.8661761457749352, max_iter=10000; total time=10.6min
+[CV] END C=1.704133586324829, epsilon=0.43194501864211576, max_iter=5000; total time=10.9min
+[CV] END C=0.01000382464797508, epsilon=0.6011150117432088, max_iter=10000; total time= 5.7min
+[CV] END C=0.07809150983452716, epsilon=0.8324426408004217, max_iter=5000; total time=17.5min
+[CV] END C=0.026919058249260688, epsilon=0.3745401188473625, max_iter=10000; total time=11.3min
+[CV] END C=0.6905424378423518, epsilon=0.9507143064099162, max_iter=10000; total time=21.7min
+[CV] END C=2.9038868465087937, epsilon=0.3745401188473625, max_iter=10000; total time=16.1min
+[CV] END C=0.01557551764150476, epsilon=0.43194501864211576, max_iter=5000; total time=10.1min
+[CV] END C=0.024853845095262, epsilon=0.3745401188473625, max_iter=5000; total time=11.4min
+[CV] END C=0.046692260295589774, epsilon=0.8324426408004217, max_iter=10000; total time=15.9min
+[CV] END C=0.26582911549201454, epsilon=0.05808361216819946, max_iter=10000; total time=15.2min
+[CV] END C=0.11400790983431013, epsilon=0.9699098521619943, max_iter=10000; total time=21.4min
+[CV] END C=1.297905897383722, epsilon=0.9507143064099162, max_iter=10000; total time=25.4min
+[CV] END C=1.704133586324829, epsilon=0.43194501864211576, max_iter=5000; total time=16.4min
+[CV] END C=3.2228217847874063, epsilon=0.6011150117432088, max_iter=10000; total time=23.1min
+[CV] END C=0.02078369792133813, epsilon=0.5986584841970366, max_iter=5000; total time=17.2min
+[CV] END C=0.9105944026265277, epsilon=0.6011150117432088, max_iter=5000; total time=25.1min
+[CV] END C=0.01557551764150476, epsilon=0.43194501864211576, max_iter=5000; total time= 9.7min
+[CV] END C=0.09030397288885929, epsilon=0.9699098521619943, max_iter=5000; total time=21.1min
+[CV] END C=0.1547095854930993, epsilon=0.3042422429595377, max_iter=5000; total time=14.2min
+[CV] END C=0.018928738363913202, epsilon=0.9507143064099162, max_iter=10000; total time=15.7min
+[CV] END C=2.6421463889976042, epsilon=0.5986584841970366, max_iter=10000; total time=24.6min
+[CV] END C=0.45996766787494736, epsilon=0.7319939418114051, max_iter=10000; total time=23.9min
+[CV] END C=0.011533284318779018, epsilon=0.5986584841970366, max_iter=10000; total time= 8.3min
+[CV] END C=0.07809150983452716, epsilon=0.8324426408004217, max_iter=5000; total time=21.2min
+[CV] END C=0.026919058249260688, epsilon=0.3745401188473625, max_iter=10000; total time=16.9min
+[CV] END C=0.7995068220796497, epsilon=0.05808361216819946, max_iter=5000; total time=17.5min
+[CV] END C=8.499206771743683, epsilon=0.7319939418114051, max_iter=5000; total time=26.2min
+[CV] END C=0.5748291778269795, epsilon=0.6011150117432088, max_iter=10000; total time=25.1min
+[CV] END C=0.14137957607647123, epsilon=0.7080725777960455, max_iter=5000; total time=22.1min
+[CV] END C=0.012579609383535598, epsilon=0.7080725777960455, max_iter=10000; total time= 9.0min
+[CV] END C=2.404878335900933, epsilon=0.15599452033620265, max_iter=5000; total time=14.9min
+[CV] END C=0.04531564033681055, epsilon=0.8324426408004217, max_iter=10000; total time=15.6min
+[CV] END C=0.9755164770887927, epsilon=0.020584494295802447, max_iter=5000; total time=14.5min
+[CV] END C=3.748321662847926, epsilon=0.8661761457749352, max_iter=10000; total time=21.8min
+[CV] END C=0.026919058249260688, epsilon=0.3745401188473625, max_iter=10000; total time=10.0min
+[CV] END C=1.0278118224157007, epsilon=0.18182496720710062, max_iter=5000; total time=16.9min
+[CV] END C=0.9310837957239838, epsilon=0.5247564316322378, max_iter=10000; total time=24.5min
+[CV] END C=0.5343668232660405, epsilon=0.020584494295802447, max_iter=5000; total time=14.4min
+[CV] END C=0.046692260295589774, epsilon=0.8324426408004217, max_iter=10000; total time=12.8min
+[CV] END C=0.5826332361509408, epsilon=0.2912291401980419, max_iter=10000; total time=14.5min
+[CV] END C=0.20304615777978818, epsilon=0.15599452033620265, max_iter=10000; total time=22.8min
+[CV] END C=2.404878335900933, epsilon=0.15599452033620265, max_iter=5000; total time=14.6min
+[CV] END C=0.04531564033681055, epsilon=0.8324426408004217, max_iter=10000; total time=15.7min
+[CV] END C=0.9755164770887927, epsilon=0.020584494295802447, max_iter=5000; total time=15.0min
+[CV] END C=0.2753794429736142, epsilon=0.5247564316322378, max_iter=10000; total time=14.7min
+[CV] END C=4.0762590410962485, epsilon=0.5986584841970366, max_iter=5000; total time=23.6min
+[CV] END C=0.9085962729593783, epsilon=0.5986584841970366, max_iter=5000; total time=26.7min
+[CV] END C=0.08993930726120071, epsilon=0.5986584841970366, max_iter=5000; total time=21.1min
+[CV] END C=0.1994638447276318, epsilon=0.6011150117432088, max_iter=10000; total time=22.5min
+[CV] END C=4.3187351443496365, epsilon=0.18340450985343382, max_iter=10000; total time=14.6min
+[CV] END C=0.030724074111466444, epsilon=0.2912291401980419, max_iter=10000; total time=12.2min
+[CV] END C=0.10428250581988632, epsilon=0.9507143064099162, max_iter=10000; total time=21.8min
+[CV] END C=1.1006115690601632, epsilon=0.8661761457749352, max_iter=10000; total time=25.9min
+[CV] END C=0.2710162626224751, epsilon=0.8661761457749352, max_iter=10000; total time=15.5min
+[CV] END C=2.5277391559845515, epsilon=0.2912291401980419, max_iter=10000; total time=22.3min
+[CV] END C=0.7995068220796497, epsilon=0.05808361216819946, max_iter=5000; total time=15.4min
+[CV] END C=3.2646356775235206, epsilon=0.7319939418114051, max_iter=5000; total time=22.8min
+[CV] END C=0.024853845095262, epsilon=0.3745401188473625, max_iter=5000; total time=11.6min
+[CV] END C=0.046692260295589774, epsilon=0.8324426408004217, max_iter=10000; total time=19.3min
+[CV] END C=0.14137957607647123, epsilon=0.7080725777960455, max_iter=5000; total time=21.8min
+[CV] END C=0.012579609383535598, epsilon=0.7080725777960455, max_iter=10000; total time= 8.6min
+[CV] END C=0.03980976140397892, epsilon=0.15601864044243652, max_iter=5000; total time=12.2min
+[CV] END C=1.7886803537926637, epsilon=0.9507143064099162, max_iter=5000; total time=17.0min
+[CV] END C=1.0745947688453805, epsilon=0.9699098521619943, max_iter=10000; total time=16.2min
+[CV] END C=0.07809150983452716, epsilon=0.8324426408004217, max_iter=5000; total time= 9.2min
+[CV] END C=7.4381593279204035, epsilon=0.18340450985343382, max_iter=10000; total time=16.0min
+[CV] END C=0.04644769479292789, epsilon=0.5247564316322378, max_iter=10000; total time= 9.5min
+[CV] END C=0.024365700014641993, epsilon=0.18182496720710062, max_iter=10000; total time= 7.9min
+[CV] END C=0.9105944026265277, epsilon=0.6011150117432088, max_iter=5000; total time=18.7min
+[CV] END C=1.6511660035531792, epsilon=0.3745401188473625, max_iter=5000; total time=17.7min
+[CV] END C=0.5748291778269795, epsilon=0.6011150117432088, max_iter=10000; total time=11.1min
+[CV] END C=0.21947049130435387, epsilon=0.15601864044243652, max_iter=10000; total time=15.5min
+[CV] END C=1.4067716049198296, epsilon=0.8661761457749352, max_iter=5000; total time=17.0min
+[CV] END C=0.030724074111466444, epsilon=0.2912291401980419, max_iter=10000; total time= 8.3min
+[CV] END C=0.014182877282140969, epsilon=0.5986584841970366, max_iter=10000; total time= 6.6min
+[CV] END C=2.404878335900933, epsilon=0.15599452033620265, max_iter=5000; total time=11.0min
+[CV] END C=1.0896119231290546, epsilon=0.43194501864211576, max_iter=5000; total time=18.0min
+[CV] END C=1.0745947688453805, epsilon=0.9699098521619943, max_iter=10000; total time=16.7min
+[CV] END C=0.2753794429736142, epsilon=0.5247564316322378, max_iter=10000; total time=25.0min
+[CV] END C=0.011385953381489409, epsilon=0.15599452033620265, max_iter=5000; total time= 8.8min
+[CV] END C=0.024365700014641993, epsilon=0.18182496720710062, max_iter=10000; total time=12.5min
+[CV] END C=0.02998532434945438, epsilon=0.21233911067827616, max_iter=10000; total time=13.5min
+[CV] END C=1.6511660035531792, epsilon=0.3745401188473625, max_iter=5000; total time=15.9min
+[CV] END C=0.09030397288885929, epsilon=0.9699098521619943, max_iter=5000; total time=20.7min
+[CV] END C=0.0870271969973679, epsilon=0.18182496720710062, max_iter=10000; total time=14.4min
+[CV] END C=0.018928738363913202, epsilon=0.9507143064099162, max_iter=10000; total time= 9.2min
+[CV] END C=0.11400790983431013, epsilon=0.9699098521619943, max_iter=10000; total time=22.9min
+[CV] END C=1.297905897383722, epsilon=0.9507143064099162, max_iter=10000; total time=24.7min
+[CV] END C=9.35441950421687, epsilon=0.3745401188473625, max_iter=5000; total time=15.6min
+[CV] END C=0.7424908231815005, epsilon=0.43194501864211576, max_iter=5000; total time=25.0min
+[CV] END C=0.011385953381489409, epsilon=0.15599452033620265, max_iter=5000; total time= 9.1min
+[CV] END C=0.024365700014641993, epsilon=0.18182496720710062, max_iter=10000; total time=12.2min
+[CV] END C=0.02998532434945438, epsilon=0.21233911067827616, max_iter=10000; total time=15.9min
+[CV] END C=0.07053763390632227, epsilon=0.7319939418114051, max_iter=10000; total time=20.8min
+[CV] END C=0.010329669551879734, epsilon=0.7319939418114051, max_iter=10000; total time= 7.5min
+[CV] END C=1.2544051430643322, epsilon=0.21233911067827616, max_iter=10000; total time=14.2min
+[CV] END C=1.4067716049198296, epsilon=0.8661761457749352, max_iter=5000; total time=23.3min
+[CV] END C=0.012579609383535598, epsilon=0.7080725777960455, max_iter=10000; total time= 8.5min
+[CV] END C=0.03980976140397892, epsilon=0.15601864044243652, max_iter=5000; total time=12.7min
+[CV] END C=1.7886803537926637, epsilon=0.9507143064099162, max_iter=5000; total time=14.9min
+[CV] END C=0.03457888877316664, epsilon=0.18182496720710062, max_iter=10000; total time=12.4min
+[CV] END C=0.01000382464797508, epsilon=0.6011150117432088, max_iter=10000; total time= 7.4min
+[CV] END C=3.748321662847926, epsilon=0.8661761457749352, max_iter=10000; total time=24.2min
+[CV] END C=2.102330874348011, epsilon=0.7319939418114051, max_iter=5000; total time=23.9min
+[CV] END C=0.9310837957239838, epsilon=0.5247564316322378, max_iter=10000; total time=25.9min
+[CV] END C=0.09030397288885929, epsilon=0.9699098521619943, max_iter=5000; total time=21.4min
+[CV] END C=0.1547095854930993, epsilon=0.3042422429595377, max_iter=5000; total time=23.0min
+[CV] END C=0.11400790983431013, epsilon=0.9699098521619943, max_iter=10000; total time=22.0min
+[CV] END C=1.297905897383722, epsilon=0.9507143064099162, max_iter=10000; total time=21.9min
+[CV] END C=4.395554676222921, epsilon=0.9699098521619943, max_iter=10000; total time=21.8min
+[CV] END C=0.7424908231815005, epsilon=0.43194501864211576, max_iter=5000; total time=15.4min
+[CV] END C=2.5277391559845515, epsilon=0.2912291401980419, max_iter=10000; total time=13.9min
+[CV] END C=0.019853681526881356, epsilon=0.5986584841970366, max_iter=5000; total time= 8.1min
+[CV] END C=0.12334805700860013, epsilon=0.020584494295802447, max_iter=5000; total time=11.7min
+[CV] END C=0.9310837957239838, epsilon=0.5247564316322378, max_iter=10000; total time=19.2min
+[CV] END C=0.5009615137983936, epsilon=0.5247564316322378, max_iter=5000; total time=19.7min
+[CV] END C=0.046692260295589774, epsilon=0.8324426408004217, max_iter=10000; total time=16.0min
+[CV] END C=0.26582911549201454, epsilon=0.05808361216819946, max_iter=10000; total time=15.5min
+[CV] END C=0.11400790983431013, epsilon=0.9699098521619943, max_iter=10000; total time=21.4min
+[CV] END C=1.297905897383722, epsilon=0.9507143064099162, max_iter=10000; total time=24.2min
+[CV] END C=0.03457888877316664, epsilon=0.18182496720710062, max_iter=10000; total time=11.7min
+[CV] END C=0.01000382464797508, epsilon=0.6011150117432088, max_iter=10000; total time= 7.3min
+[CV] END C=0.2710162626224751, epsilon=0.8661761457749352, max_iter=10000; total time=22.7min
+[CV] END C=0.02078369792133813, epsilon=0.5986584841970366, max_iter=5000; total time=12.6min
+[CV] END C=0.024365700014641993, epsilon=0.18182496720710062, max_iter=10000; total time= 7.9min
+[CV] END C=0.25057187257477664, epsilon=0.5986584841970366, max_iter=5000; total time=18.9min
+[CV] END C=0.07053763390632227, epsilon=0.7319939418114051, max_iter=10000; total time=15.0min
+[CV] END C=0.07382751981499336, epsilon=0.2912291401980419, max_iter=5000; total time= 9.2min
+[CV] END C=0.1994638447276318, epsilon=0.6011150117432088, max_iter=10000; total time=15.3min
+[CV] END C=0.1529705683760267, epsilon=0.15601864044243652, max_iter=10000; total time= 9.6min
+[CV] END C=0.012614652184315867, epsilon=0.5986584841970366, max_iter=5000; total time= 6.0min
+[CV] END C=0.22068789671697564, epsilon=0.9699098521619943, max_iter=5000; total time=26.2min
+[CV] END C=0.03119481895713797, epsilon=0.6011150117432088, max_iter=5000; total time= 8.2min
+[CV] END C=0.04531564033681055, epsilon=0.8324426408004217, max_iter=10000; total time=17.8min
+[CV] END C=0.9755164770887927, epsilon=0.020584494295802447, max_iter=5000; total time=15.0min
+[CV] END C=0.8800667561385502, epsilon=0.3042422429595377, max_iter=10000; total time=14.7min
+[CV] END C=4.0762590410962485, epsilon=0.5986584841970366, max_iter=5000; total time=24.5min
+[CV] END C=0.9085962729593783, epsilon=0.5986584841970366, max_iter=5000; total time=25.3min
+[CV] END C=0.08993930726120071, epsilon=0.5986584841970366, max_iter=5000; total time=21.5min
+[CV] END C=0.1994638447276318, epsilon=0.6011150117432088, max_iter=10000; total time=14.3min
+[CV] END C=0.5826332361509408, epsilon=0.2912291401980419, max_iter=10000; total time=15.3min
+[CV] END C=0.22068789671697564, epsilon=0.9699098521619943, max_iter=5000; total time=22.6min
+[CV] END C=0.10865633249460466, epsilon=0.3042422429595377, max_iter=5000; total time=13.5min
+[CV] END C=0.45996766787494736, epsilon=0.7319939418114051, max_iter=10000; total time=25.1min
+[CV] END C=0.01000382464797508, epsilon=0.6011150117432088, max_iter=10000; total time= 7.7min
+[CV] END C=0.4430375245218265, epsilon=0.3745401188473625, max_iter=10000; total time=15.5min
+[CV] END C=2.5277391559845515, epsilon=0.2912291401980419, max_iter=10000; total time=15.4min
+[CV] END C=0.019853681526881356, epsilon=0.5986584841970366, max_iter=5000; total time= 8.2min
+[CV] END C=0.9085962729593783, epsilon=0.5986584841970366, max_iter=5000; total time=18.9min
+[CV] END C=8.516933662231994, epsilon=0.8661761457749352, max_iter=10000; total time=11.7min
+[CV] END C=0.5009615137983936, epsilon=0.5247564316322378, max_iter=5000; total time=17.3min
+[CV] END C=0.15427474110183123, epsilon=0.7319939418114051, max_iter=5000; total time=15.5min
+[CV] END C=0.26582911549201454, epsilon=0.05808361216819946, max_iter=10000; total time=10.7min
+[CV] END C=0.20304615777978818, epsilon=0.15599452033620265, max_iter=10000; total time=10.3min
+[CV] END C=0.023521225662317322, epsilon=0.2912291401980419, max_iter=5000; total time= 7.6min
+[CV] END C=0.014182877282140969, epsilon=0.5986584841970366, max_iter=10000; total time= 6.5min
+[CV] END C=2.404878335900933, epsilon=0.15599452033620265, max_iter=5000; total time=11.5min
+[CV] END C=1.0896119231290546, epsilon=0.43194501864211576, max_iter=5000; total time=18.2min
+[CV] END C=9.35441950421687, epsilon=0.3745401188473625, max_iter=5000; total time=17.1min
+[CV] END C=0.2753794429736142, epsilon=0.5247564316322378, max_iter=10000; total time=24.3min
+[CV] END C=2.102330874348011, epsilon=0.7319939418114051, max_iter=5000; total time=25.0min
+[CV] END C=0.03888186473153665, epsilon=0.3745401188473625, max_iter=10000; total time=12.5min
+[CV] END C=1.6511660035531792, epsilon=0.3745401188473625, max_iter=5000; total time=15.0min
+[CV] END C=0.07382751981499336, epsilon=0.2912291401980419, max_iter=5000; total time= 9.4min
+[CV] END C=0.1994638447276318, epsilon=0.6011150117432088, max_iter=10000; total time=15.8min
+[CV] END C=0.1529705683760267, epsilon=0.15601864044243652, max_iter=10000; total time= 9.9min
+[CV] END C=4.893727555349509, epsilon=0.020584494295802447, max_iter=5000; total time=11.1min
+[CV] END C=0.030724074111466444, epsilon=0.2912291401980419, max_iter=10000; total time= 8.1min
+[CV] END C=0.011217185998132864, epsilon=0.21233911067827616, max_iter=10000; total time= 6.1min
+[CV] END C=0.03980976140397892, epsilon=0.15601864044243652, max_iter=5000; total time= 9.0min
+[CV] END C=0.05172237564581168, epsilon=0.5986584841970366, max_iter=10000; total time=13.1min
+[CV] END C=0.014765732560531639, epsilon=0.5247564316322378, max_iter=5000; total time= 6.8min
+[CV] END C=1.704133586324829, epsilon=0.43194501864211576, max_iter=5000; total time=18.4min
+[CV] END C=0.8800667561385502, epsilon=0.3042422429595377, max_iter=10000; total time=14.2min
+[CV] END C=4.0762590410962485, epsilon=0.5986584841970366, max_iter=5000; total time=23.9min
+[CV] END C=0.7995068220796497, epsilon=0.05808361216819946, max_iter=5000; total time=16.4min
+[CV] END C=8.499206771743683, epsilon=0.7319939418114051, max_iter=5000; total time=15.7min
+[CV] END C=0.3713164249534621, epsilon=0.7080725777960455, max_iter=5000; total time=23.3min
+[CV] END C=0.1547095854930993, epsilon=0.3042422429595377, max_iter=5000; total time=13.9min
+[CV] END C=0.14137957607647123, epsilon=0.7080725777960455, max_iter=5000; total time=23.0min
+[CV] END C=0.014182877282140969, epsilon=0.5986584841970366, max_iter=10000; total time= 8.4min
+[CV] END C=0.10865633249460466, epsilon=0.3042422429595377, max_iter=5000; total time=13.7min
+[CV] END C=0.04531564033681055, epsilon=0.8324426408004217, max_iter=10000; total time=15.9min
+[CV] END C=0.9755164770887927, epsilon=0.020584494295802447, max_iter=5000; total time=16.1min
+[CV] END C=3.2228217847874063, epsilon=0.6011150117432088, max_iter=10000; total time=26.1min
+[CV] END C=5.102645844032955, epsilon=0.020584494295802447, max_iter=5000; total time=16.1min
+[CV] END C=0.9105944026265277, epsilon=0.6011150117432088, max_iter=5000; total time=24.9min
+[CV] END C=0.5009615137983936, epsilon=0.5247564316322378, max_iter=5000; total time=14.4min
+[CV] END C=0.5748291778269795, epsilon=0.6011150117432088, max_iter=10000; total time=22.8min
+[CV] END C=1.4067716049198296, epsilon=0.8661761457749352, max_iter=5000; total time=25.2min
+[CV] END C=0.13178690305790589, epsilon=0.18182496720710062, max_iter=5000; total time=14.9min
+[CV] END C=0.03119481895713797, epsilon=0.6011150117432088, max_iter=5000; total time=17.8min
+[CV] END C=4.395554676222921, epsilon=0.9699098521619943, max_iter=10000; total time=22.6min
+[CV] END C=0.07809150983452716, epsilon=0.8324426408004217, max_iter=5000; total time=14.1min
+[CV] END C=4.0762590410962485, epsilon=0.5986584841970366, max_iter=5000; total time=12.6min
+[CV] END C=0.6905424378423518, epsilon=0.9507143064099162, max_iter=10000; total time=24.1min
+[CV] END C=3.2646356775235206, epsilon=0.7319939418114051, max_iter=5000; total time=14.5min
+[CV] END C=0.08993930726120071, epsilon=0.5986584841970366, max_iter=5000; total time=13.7min
+[CV] END C=0.07382751981499336, epsilon=0.2912291401980419, max_iter=5000; total time=13.4min
+[CV] END C=1.2544051430643322, epsilon=0.21233911067827616, max_iter=10000; total time=16.1min
+[CV] END C=4.3187351443496365, epsilon=0.18340450985343382, max_iter=10000; total time=20.9min
+[CV] END C=0.13178690305790589, epsilon=0.18182496720710062, max_iter=5000; total time=15.6min
+[CV] END C=0.05172237564581168, epsilon=0.5986584841970366, max_iter=10000; total time=17.0min
+[CV] END C=4.395554676222921, epsilon=0.9699098521619943, max_iter=10000; total time=22.7min
+[CV] END C=0.7424908231815005, epsilon=0.43194501864211576, max_iter=5000; total time=17.5min
+[CV] END C=0.026919058249260688, epsilon=0.3745401188473625, max_iter=10000; total time=17.9min
+[CV] END C=0.12334805700860013, epsilon=0.020584494295802447, max_iter=5000; total time=14.2min
+[CV] END C=0.03888186473153665, epsilon=0.3745401188473625, max_iter=10000; total time=18.6min
+[CV] END C=0.5009615137983936, epsilon=0.5247564316322378, max_iter=5000; total time=24.5min
+[CV] END C=0.1547095854930993, epsilon=0.3042422429595377, max_iter=5000; total time=14.4min
+[CV] END C=0.14137957607647123, epsilon=0.7080725777960455, max_iter=5000; total time=22.3min
+[CV] END C=0.13178690305790589, epsilon=0.18182496720710062, max_iter=5000; total time=14.6min
+[CV] END C=0.03119481895713797, epsilon=0.6011150117432088, max_iter=5000; total time=10.6min
+[CV] END C=0.22715751293247397, epsilon=0.18340450985343382, max_iter=10000; total time=15.6min
+[CV] END C=0.9755164770887927, epsilon=0.020584494295802447, max_iter=5000; total time=14.7min
+MAE: 29.931, MSE: 40.187, R2: 0.572, Pearson R: 0.756, Spearman R: 0.755
+Parameters
+----------
+C : 0.018928738363913202
+dual : False
+epsilon : 0.9507143064099162
+fit_intercept : True
+intercept_scaling : 1.0
+loss : squared_epsilon_insensitive
+max_iter : 10000
+random_state : 42
+tol : 0.0001
+verbose : 0
+--------------------------------------------------------------------------------
+Saved model to file: ../Models/svr_models/svr_MFP_Feat_Var_regressor_gs.pk
+Saved model to file: ../Models/svr_models/svr_MFP_Feat_Var_regressor_best_estimator.pk
+Saved model to file: ../Models/svr_models/svr_MFP_Feat_Var_scaling_gs.pk
+Load model to file: ../Models/svr_models/svr_MFP_Feat_Var_regressor_gs.pk
+Load model to file: ../Models/svr_models/svr_MFP_Feat_Var_scaling_gs.pk
+[26.854, 30.93, 29.68, 29.49, 32.716] [35.448, 41.264, 39.947, 39.397, 44.386] [0.558, 0.524, 0.66, 0.52, 0.534]
+(29.934, 1.922, 40.088, 2.894, 0.559, 0.052, 0.747, 0.034, 0.745, 0.033)
+Load model to file: ../Models/svr_models/svr_MFP_Feat_Var_regressor_gs.pk
+Load model to file: ../Models/svr_models/svr_MFP_Feat_Var_scaling_gs.pk
+(43.894, 57.731, 0.328, 0.572, 0.571)
+Finished writing predictions
+Load model to file: ../Models/svr_models/svr_MFP_Feat_Var_regressor_best_estimator.pk
+[CV] END C=7.4381593279204035, epsilon=0.18340450985343382, max_iter=10000; total time=16.5min
+[CV] END C=0.022637229697395473, epsilon=0.3745401188473625, max_iter=10000; total time=13.2min
+[CV] END C=0.019853681526881356, epsilon=0.5986584841970366, max_iter=5000; total time=12.7min
+[CV] END C=0.9105944026265277, epsilon=0.6011150117432088, max_iter=5000; total time=20.5min
+[CV] END C=0.07053763390632227, epsilon=0.7319939418114051, max_iter=10000; total time=10.0min
+[CV] END C=0.3713164249534621, epsilon=0.7080725777960455, max_iter=5000; total time=17.4min
+[CV] END C=1.2544051430643322, epsilon=0.21233911067827616, max_iter=10000; total time=10.9min
+[CV] END C=0.5826332361509408, epsilon=0.2912291401980419, max_iter=10000; total time=10.8min
+[CV] END C=4.893727555349509, epsilon=0.020584494295802447, max_iter=5000; total time=11.0min
+[CV] END C=0.030724074111466444, epsilon=0.2912291401980419, max_iter=10000; total time= 8.8min
+[CV] END C=0.011217185998132864, epsilon=0.21233911067827616, max_iter=10000; total time= 6.3min
+[CV] END C=0.10865633249460466, epsilon=0.3042422429595377, max_iter=5000; total time=10.0min
+[CV] END C=1.0896119231290546, epsilon=0.43194501864211576, max_iter=5000; total time=12.3min
+[CV] END C=0.014765732560531639, epsilon=0.5247564316322378, max_iter=5000; total time=10.3min
+[CV] END C=0.011533284318779018, epsilon=0.5986584841970366, max_iter=10000; total time= 5.7min
+[CV] END C=0.14138120619090758, epsilon=0.18182496720710062, max_iter=10000; total time= 9.3min
+[CV] END C=0.4430375245218265, epsilon=0.3745401188473625, max_iter=10000; total time=26.0min
+[CV] END C=0.04644769479292789, epsilon=0.5247564316322378, max_iter=10000; total time=18.5min
+[CV] END C=0.25057187257477664, epsilon=0.5986584841970366, max_iter=5000; total time=11.0min
+[CV] END C=8.499206771743683, epsilon=0.7319939418114051, max_iter=5000; total time=18.5min
+[CV] END C=0.5343668232660405, epsilon=0.020584494295802447, max_iter=5000; total time=10.8min
+[CV] END C=1.2918492513656108, epsilon=0.9699098521619943, max_iter=10000; total time=16.8min
+[CV] END C=0.1529705683760267, epsilon=0.15601864044243652, max_iter=10000; total time=10.3min
+[CV] END C=0.012614652184315867, epsilon=0.5986584841970366, max_iter=5000; total time= 6.3min
+[CV] END C=0.22068789671697564, epsilon=0.9699098521619943, max_iter=5000; total time=16.9min
+[CV] END C=0.10428250581988632, epsilon=0.9507143064099162, max_iter=10000; total time=14.7min
+[CV] END C=1.7886803537926637, epsilon=0.9507143064099162, max_iter=5000; total time=24.9min
+[CV] END C=0.14138120619090758, epsilon=0.18182496720710062, max_iter=10000; total time=11.4min
+[CV] END C=3.2228217847874063, epsilon=0.6011150117432088, max_iter=10000; total time=25.8min
+[CV] END C=0.04644769479292789, epsilon=0.5247564316322378, max_iter=10000; total time=17.3min
+[CV] END C=0.25057187257477664, epsilon=0.5986584841970366, max_iter=5000; total time=23.8min
+[CV] END C=0.01557551764150476, epsilon=0.43194501864211576, max_iter=5000; total time= 9.3min
+[CV] END C=0.024853845095262, epsilon=0.3745401188473625, max_iter=5000; total time=10.7min
+[CV] END C=0.15427474110183123, epsilon=0.7319939418114051, max_iter=5000; total time=22.3min
+[CV] END C=0.018928738363913202, epsilon=0.9507143064099162, max_iter=10000; total time= 9.8min
+[CV] END C=0.11400790983431013, epsilon=0.9699098521619943, max_iter=10000; total time=32.1min
+[CV] END C=0.45996766787494736, epsilon=0.7319939418114051, max_iter=10000; total time=15.7min
+[CV] END C=9.35441950421687, epsilon=0.3745401188473625, max_iter=5000; total time=11.1min
+[CV] END C=0.18895335775423802, epsilon=0.5247564316322378, max_iter=5000; total time= 8.2min
+[CV] END C=0.2710162626224751, epsilon=0.8661761457749352, max_iter=10000; total time=17.3min
+[CV] END C=0.022637229697395473, epsilon=0.3745401188473625, max_iter=10000; total time=10.6min
+[CV] END C=0.6905424378423518, epsilon=0.9507143064099162, max_iter=10000; total time=22.4min
+[CV] END C=2.9038868465087937, epsilon=0.3745401188473625, max_iter=10000; total time=16.0min
+[CV] END C=0.01557551764150476, epsilon=0.43194501864211576, max_iter=5000; total time= 8.9min
+[CV] END C=0.09030397288885929, epsilon=0.9699098521619943, max_iter=5000; total time=21.2min
+[CV] END C=0.1547095854930993, epsilon=0.3042422429595377, max_iter=5000; total time=15.4min
+[CV] END C=0.012614652184315867, epsilon=0.5986584841970366, max_iter=5000; total time= 8.7min
+[CV] END C=0.028076625808718805, epsilon=0.18340450985343382, max_iter=5000; total time=12.4min
+[CV] END C=0.011217185998132864, epsilon=0.21233911067827616, max_iter=10000; total time= 8.6min
+[CV] END C=1.297905897383722, epsilon=0.9507143064099162, max_iter=10000; total time=22.5min
+[CV] END C=0.03457888877316664, epsilon=0.18182496720710062, max_iter=10000; total time=12.5min
+[CV] END C=0.14138120619090758, epsilon=0.18182496720710062, max_iter=10000; total time= 9.8min
+[CV] END C=0.8800667561385502, epsilon=0.3042422429595377, max_iter=10000; total time=16.5min
+[CV] END C=0.022637229697395473, epsilon=0.3745401188473625, max_iter=10000; total time= 9.1min
+[CV] END C=0.04644769479292789, epsilon=0.5247564316322378, max_iter=10000; total time=20.6min
+[CV] END C=0.02998532434945438, epsilon=0.21233911067827616, max_iter=10000; total time=13.2min
+[CV] END C=8.516933662231994, epsilon=0.8661761457749352, max_iter=10000; total time=26.0min
+[CV] END C=1.2918492513656108, epsilon=0.9699098521619943, max_iter=10000; total time=24.9min
+[CV] END C=0.018928738363913202, epsilon=0.9507143064099162, max_iter=10000; total time=15.6min
+[CV] END C=2.6421463889976042, epsilon=0.5986584841970366, max_iter=10000; total time=25.2min
+[CV] END C=0.45996766787494736, epsilon=0.7319939418114051, max_iter=10000; total time=24.6min
+[CV] END C=0.14138120619090758, epsilon=0.18182496720710062, max_iter=10000; total time=10.5min
+[CV] END C=0.7424908231815005, epsilon=0.43194501864211576, max_iter=5000; total time=24.4min
+[CV] END C=0.011385953381489409, epsilon=0.15599452033620265, max_iter=5000; total time= 9.1min
+[CV] END C=1.0278118224157007, epsilon=0.18182496720710062, max_iter=5000; total time=16.6min
+[CV] END C=0.03888186473153665, epsilon=0.3745401188473625, max_iter=10000; total time=11.4min
+[CV] END C=1.6511660035531792, epsilon=0.3745401188473625, max_iter=5000; total time=24.0min
+[CV] END C=1.2918492513656108, epsilon=0.9699098521619943, max_iter=10000; total time=26.0min
+[CV] END C=0.012614652184315867, epsilon=0.5986584841970366, max_iter=5000; total time=13.8min
+[CV] END C=2.6421463889976042, epsilon=0.5986584841970366, max_iter=10000; total time=25.2min
+[CV] END C=0.45996766787494736, epsilon=0.7319939418114051, max_iter=10000; total time=15.0min
+[CV] END C=1.704133586324829, epsilon=0.43194501864211576, max_iter=5000; total time=21.0min
+[CV] END C=3.748321662847926, epsilon=0.8661761457749352, max_iter=10000; total time=10.8min
+[CV] END C=7.4381593279204035, epsilon=0.18340450985343382, max_iter=10000; total time=13.3min
+[CV] END C=2.102330874348011, epsilon=0.7319939418114051, max_iter=5000; total time=23.3min
+[CV] END C=0.9310837957239838, epsilon=0.5247564316322378, max_iter=10000; total time=15.3min
+[CV] END C=0.07053763390632227, epsilon=0.7319939418114051, max_iter=10000; total time=19.1min
+[CV] END C=0.5748291778269795, epsilon=0.6011150117432088, max_iter=10000; total time=24.8min
+[CV] END C=0.14137957607647123, epsilon=0.7080725777960455, max_iter=5000; total time=22.4min
+[CV] END C=0.13178690305790589, epsilon=0.18182496720710062, max_iter=5000; total time=14.4min
+[CV] END C=0.03119481895713797, epsilon=0.6011150117432088, max_iter=5000; total time=14.9min
+[CV] END C=0.014765732560531639, epsilon=0.5247564316322378, max_iter=5000; total time= 8.4min
+[CV] END C=1.0745947688453805, epsilon=0.9699098521619943, max_iter=10000; total time=20.0min
+[CV] END C=3.2228217847874063, epsilon=0.6011150117432088, max_iter=10000; total time=23.4min
+[CV] END C=0.02078369792133813, epsilon=0.5986584841970366, max_iter=5000; total time=10.5min
+[CV] END C=0.024365700014641993, epsilon=0.18182496720710062, max_iter=10000; total time=12.5min
+[CV] END C=0.02998532434945438, epsilon=0.21233911067827616, max_iter=10000; total time=12.0min
+[CV] END C=8.516933662231994, epsilon=0.8661761457749352, max_iter=10000; total time=24.9min
+[CV] END C=0.010329669551879734, epsilon=0.7319939418114051, max_iter=10000; total time= 8.2min
+[CV] END C=1.2544051430643322, epsilon=0.21233911067827616, max_iter=10000; total time=16.4min
+[CV] END C=4.3187351443496365, epsilon=0.18340450985343382, max_iter=10000; total time=15.4min
+[CV] END C=0.023521225662317322, epsilon=0.2912291401980419, max_iter=5000; total time=11.4min
+[CV] END C=0.1202082275041248, epsilon=0.9507143064099162, max_iter=5000; total time=22.8min
+[CV] END C=0.014765732560531639, epsilon=0.5247564316322378, max_iter=5000; total time= 8.9min
+[CV] END C=1.0745947688453805, epsilon=0.9699098521619943, max_iter=10000; total time=20.3min
+[CV] END C=0.2753794429736142, epsilon=0.5247564316322378, max_iter=10000; total time=26.2min
+[CV] END C=5.102645844032955, epsilon=0.020584494295802447, max_iter=5000; total time=13.5min
+[CV] END C=0.9105944026265277, epsilon=0.6011150117432088, max_iter=5000; total time=12.0min
+[CV] END C=3.2646356775235206, epsilon=0.7319939418114051, max_iter=5000; total time=19.0min
+[CV] END C=0.3713164249534621, epsilon=0.7080725777960455, max_iter=5000; total time=15.7min
+[CV] END C=0.1994638447276318, epsilon=0.6011150117432088, max_iter=10000; total time=16.1min
+[CV] END C=0.1529705683760267, epsilon=0.15601864044243652, max_iter=10000; total time=10.2min
+[CV] END C=4.893727555349509, epsilon=0.020584494295802447, max_iter=5000; total time=12.5min
+[CV] END C=2.6421463889976042, epsilon=0.5986584841970366, max_iter=10000; total time=15.0min
+[CV] END C=0.10865633249460466, epsilon=0.3042422429595377, max_iter=5000; total time=13.7min
+[CV] END C=0.22715751293247397, epsilon=0.18340450985343382, max_iter=10000; total time=22.5min
+[CV] END C=0.14138120619090758, epsilon=0.18182496720710062, max_iter=10000; total time=10.4min
+[CV] END C=0.07809150983452716, epsilon=0.8324426408004217, max_iter=5000; total time=14.6min
+[CV] END C=4.0762590410962485, epsilon=0.5986584841970366, max_iter=5000; total time=21.9min
+[CV] END C=0.12334805700860013, epsilon=0.020584494295802447, max_iter=5000; total time=13.9min
+[CV] END C=2.9038868465087937, epsilon=0.3745401188473625, max_iter=10000; total time=23.6min
+[CV] END C=0.5343668232660405, epsilon=0.020584494295802447, max_iter=5000; total time=16.2min
+[CV] END C=0.21947049130435387, epsilon=0.15601864044243652, max_iter=10000; total time=23.4min
+[CV] END C=0.20304615777978818, epsilon=0.15599452033620265, max_iter=10000; total time=14.9min
+[CV] END C=0.012579609383535598, epsilon=0.7080725777960455, max_iter=10000; total time= 7.7min
+[CV] END C=0.10428250581988632, epsilon=0.9507143064099162, max_iter=10000; total time=22.0min
+[CV] END C=0.014765732560531639, epsilon=0.5247564316322378, max_iter=5000; total time= 9.0min
+[CV] END C=9.35441950421687, epsilon=0.3745401188473625, max_iter=5000; total time=19.9min
+[CV] END C=3.2228217847874063, epsilon=0.6011150117432088, max_iter=10000; total time=15.4min
+[CV] END C=2.5277391559845515, epsilon=0.2912291401980419, max_iter=10000; total time=13.0min
+[CV] END C=0.6905424378423518, epsilon=0.9507143064099162, max_iter=10000; total time=21.5min
+[CV] END C=0.03888186473153665, epsilon=0.3745401188473625, max_iter=10000; total time=13.4min
+[CV] END C=0.08993930726120071, epsilon=0.5986584841970366, max_iter=5000; total time=20.7min
+[CV] END C=1.2918492513656108, epsilon=0.9699098521619943, max_iter=10000; total time=24.7min
+[CV] END C=4.3187351443496365, epsilon=0.18340450985343382, max_iter=10000; total time=16.2min
+[CV] END C=0.023521225662317322, epsilon=0.2912291401980419, max_iter=5000; total time=10.8min
+[CV] END C=0.10428250581988632, epsilon=0.9507143064099162, max_iter=10000; total time=20.8min
+[CV] END C=1.1006115690601632, epsilon=0.8661761457749352, max_iter=10000; total time=22.6min
+[CV] END C=7.217303539978489, epsilon=0.3745401188473625, max_iter=10000; total time= 8.1min
+[CV] END C=0.4430375245218265, epsilon=0.3745401188473625, max_iter=10000; total time=10.8min
+[CV] END C=7.4381593279204035, epsilon=0.18340450985343382, max_iter=10000; total time=13.6min
+[CV] END C=0.011385953381489409, epsilon=0.15599452033620265, max_iter=5000; total time= 8.9min
+[CV] END C=1.0278118224157007, epsilon=0.18182496720710062, max_iter=5000; total time=16.9min
+[CV] END C=2.9038868465087937, epsilon=0.3745401188473625, max_iter=10000; total time=26.4min
+[CV] END C=0.07382751981499336, epsilon=0.2912291401980419, max_iter=5000; total time=13.6min
+[CV] END C=0.21947049130435387, epsilon=0.15601864044243652, max_iter=10000; total time=15.7min
+[CV] END C=1.4067716049198296, epsilon=0.8661761457749352, max_iter=5000; total time=24.7min
+[CV] END C=0.014182877282140969, epsilon=0.5986584841970366, max_iter=10000; total time= 8.9min
+[CV] END C=0.10865633249460466, epsilon=0.3042422429595377, max_iter=5000; total time=13.5min
+[CV] END C=0.22715751293247397, epsilon=0.18340450985343382, max_iter=10000; total time=10.6min
+[CV] END C=4.395554676222921, epsilon=0.9699098521619943, max_iter=10000; total time=16.9min
+[CV] END C=7.217303539978489, epsilon=0.3745401188473625, max_iter=10000; total time= 7.0min
+[CV] END C=0.2710162626224751, epsilon=0.8661761457749352, max_iter=10000; total time=17.3min
+[CV] END C=0.022637229697395473, epsilon=0.3745401188473625, max_iter=10000; total time= 9.1min
+[CV] END C=5.102645844032955, epsilon=0.020584494295802447, max_iter=5000; total time=11.9min
+[CV] END C=0.7995068220796497, epsilon=0.05808361216819946, max_iter=5000; total time=12.1min
+[CV] END C=2.9038868465087937, epsilon=0.3745401188473625, max_iter=10000; total time=11.3min
+[CV] END C=1.6511660035531792, epsilon=0.3745401188473625, max_iter=5000; total time=11.4min
+[CV] END C=0.5343668232660405, epsilon=0.020584494295802447, max_iter=5000; total time=10.8min
+[CV] END C=0.010329669551879734, epsilon=0.7319939418114051, max_iter=10000; total time= 5.9min
+[CV] END C=0.21947049130435387, epsilon=0.15601864044243652, max_iter=10000; total time=10.2min
+[CV] END C=0.0870271969973679, epsilon=0.18182496720710062, max_iter=10000; total time=10.3min
+[CV] END C=0.018928738363913202, epsilon=0.9507143064099162, max_iter=10000; total time= 7.2min
+[CV] END C=0.22068789671697564, epsilon=0.9699098521619943, max_iter=5000; total time=19.9min
+[CV] END C=0.03980976140397892, epsilon=0.15601864044243652, max_iter=5000; total time= 8.5min
+[CV] END C=0.05172237564581168, epsilon=0.5986584841970366, max_iter=10000; total time=10.3min
+[CV] END C=1.1006115690601632, epsilon=0.8661761457749352, max_iter=10000; total time=25.1min
+[CV] END C=7.217303539978489, epsilon=0.3745401188473625, max_iter=10000; total time= 6.5min
+[CV] END C=0.8800667561385502, epsilon=0.3042422429595377, max_iter=10000; total time=26.1min
+[CV] END C=5.102645844032955, epsilon=0.020584494295802447, max_iter=5000; total time=11.1min
+[CV] END C=0.12334805700860013, epsilon=0.020584494295802447, max_iter=5000; total time=17.4min
+[CV] END C=8.499206771743683, epsilon=0.7319939418114051, max_iter=5000; total time=17.9min
+[CV] END C=0.3713164249534621, epsilon=0.7080725777960455, max_iter=5000; total time=15.9min
+[CV] END C=0.046692260295589774, epsilon=0.8324426408004217, max_iter=10000; total time=14.5min
+[CV] END C=0.26582911549201454, epsilon=0.05808361216819946, max_iter=10000; total time=10.3min
+[CV] END C=0.20304615777978818, epsilon=0.15599452033620265, max_iter=10000; total time=10.1min
+[CV] END C=0.030724074111466444, epsilon=0.2912291401980419, max_iter=10000; total time= 8.0min
+[CV] END C=0.011217185998132864, epsilon=0.21233911067827616, max_iter=10000; total time= 5.7min
+[CV] END C=0.03980976140397892, epsilon=0.15601864044243652, max_iter=5000; total time= 8.9min
+[CV] END C=0.05172237564581168, epsilon=0.5986584841970366, max_iter=10000; total time=14.5min
+[CV] END C=4.395554676222921, epsilon=0.9699098521619943, max_iter=10000; total time=17.6min
+[CV] END C=0.18895335775423802, epsilon=0.5247564316322378, max_iter=5000; total time= 9.9min
+[CV] END C=3.748321662847926, epsilon=0.8661761457749352, max_iter=10000; total time=24.2min
+[CV] END C=2.102330874348011, epsilon=0.7319939418114051, max_iter=5000; total time=25.8min
+[CV] END C=0.03888186473153665, epsilon=0.3745401188473625, max_iter=10000; total time=12.5min
+[CV] END C=0.07053763390632227, epsilon=0.7319939418114051, max_iter=10000; total time=13.7min
+[CV] END C=0.024853845095262, epsilon=0.3745401188473625, max_iter=5000; total time=11.1min
+[CV] END C=0.15427474110183123, epsilon=0.7319939418114051, max_iter=5000; total time=34.7min
+[CV] END C=0.028076625808718805, epsilon=0.18340450985343382, max_iter=5000; total time=11.4min
+[CV] END C=0.1202082275041248, epsilon=0.9507143064099162, max_iter=5000; total time=21.9min
+[CV] END C=1.1006115690601632, epsilon=0.8661761457749352, max_iter=10000; total time=23.5min
+[CV] END C=0.18895335775423802, epsilon=0.5247564316322378, max_iter=5000; total time= 9.3min
+[CV] END C=7.4381593279204035, epsilon=0.18340450985343382, max_iter=10000; total time=26.5min
+[CV] END C=5.102645844032955, epsilon=0.020584494295802447, max_iter=5000; total time=16.6min
+[CV] END C=0.25057187257477664, epsilon=0.5986584841970366, max_iter=5000; total time=15.4min
+[CV] END C=8.516933662231994, epsilon=0.8661761457749352, max_iter=10000; total time=24.0min
+[CV] END C=0.010329669551879734, epsilon=0.7319939418114051, max_iter=10000; total time= 8.6min
+[CV] END C=1.2544051430643322, epsilon=0.21233911067827616, max_iter=10000; total time=24.9min
+[CV] END C=0.22068789671697564, epsilon=0.9699098521619943, max_iter=5000; total time=36.2min
+[CV] END C=0.04531564033681055, epsilon=0.8324426408004217, max_iter=10000; total time=18.5min
+[CV] END C=0.011533284318779018, epsilon=0.5986584841970366, max_iter=10000; total time= 8.4min
+[CV] END C=0.18895335775423802, epsilon=0.5247564316322378, max_iter=5000; total time= 9.3min
+[CV] END C=3.748321662847926, epsilon=0.8661761457749352, max_iter=10000; total time=24.6min
+[CV] END C=0.011385953381489409, epsilon=0.15599452033620265, max_iter=5000; total time= 7.8min
+[CV] END C=1.0278118224157007, epsilon=0.18182496720710062, max_iter=5000; total time=19.2min
+[CV] END C=3.2646356775235206, epsilon=0.7319939418114051, max_iter=5000; total time=18.6min
+[CV] END C=0.3713164249534621, epsilon=0.7080725777960455, max_iter=5000; total time=17.3min
+[CV] END C=0.15427474110183123, epsilon=0.7319939418114051, max_iter=5000; total time=14.9min
+[CV] END C=0.1529705683760267, epsilon=0.15601864044243652, max_iter=10000; total time= 9.5min
+[CV] END C=0.012614652184315867, epsilon=0.5986584841970366, max_iter=5000; total time= 9.8min
+[CV] END C=0.028076625808718805, epsilon=0.18340450985343382, max_iter=5000; total time= 8.1min
+[CV] END C=0.014182877282140969, epsilon=0.5986584841970366, max_iter=10000; total time= 6.2min
+[CV] END C=0.10428250581988632, epsilon=0.9507143064099162, max_iter=10000; total time=14.4min
+[CV] END C=1.7886803537926637, epsilon=0.9507143064099162, max_iter=5000; total time=17.5min
+[CV] END C=9.35441950421687, epsilon=0.3745401188473625, max_iter=5000; total time=11.4min
+[CV] END C=0.18895335775423802, epsilon=0.5247564316322378, max_iter=5000; total time= 9.2min
+[CV] END C=0.4430375245218265, epsilon=0.3745401188473625, max_iter=10000; total time=22.5min
+[CV] END C=0.02078369792133813, epsilon=0.5986584841970366, max_iter=5000; total time= 9.7min
+[CV] END C=1.0278118224157007, epsilon=0.18182496720710062, max_iter=5000; total time=11.1min
+[CV] END C=0.25057187257477664, epsilon=0.5986584841970366, max_iter=5000; total time=21.5min
+[CV] END C=0.08993930726120071, epsilon=0.5986584841970366, max_iter=5000; total time=15.0min
+[CV] END C=0.5748291778269795, epsilon=0.6011150117432088, max_iter=10000; total time=16.8min
+[CV] END C=0.0870271969973679, epsilon=0.18182496720710062, max_iter=10000; total time= 9.4min
+[CV] END C=1.4067716049198296, epsilon=0.8661761457749352, max_iter=5000; total time=16.1min
+[CV] END C=0.028076625808718805, epsilon=0.18340450985343382, max_iter=5000; total time=12.5min
+[CV] END C=0.1202082275041248, epsilon=0.9507143064099162, max_iter=5000; total time=15.1min
+[CV] END C=1.7886803537926637, epsilon=0.9507143064099162, max_iter=5000; total time=22.1min
+[CV] END C=0.011533284318779018, epsilon=0.5986584841970366, max_iter=10000; total time= 8.2min
+[CV] END C=7.217303539978489, epsilon=0.3745401188473625, max_iter=10000; total time= 8.7min
+[CV] END C=0.2753794429736142, epsilon=0.5247564316322378, max_iter=10000; total time=16.3min
+[CV] END C=0.022637229697395473, epsilon=0.3745401188473625, max_iter=10000; total time= 9.7min
+[CV] END C=0.04644769479292789, epsilon=0.5247564316322378, max_iter=10000; total time=13.4min
+[CV] END C=0.9085962729593783, epsilon=0.5986584841970366, max_iter=5000; total time=26.7min
+[CV] END C=0.01557551764150476, epsilon=0.43194501864211576, max_iter=5000; total time= 9.7min
+[CV] END C=0.09030397288885929, epsilon=0.9699098521619943, max_iter=5000; total time=22.7min
+[CV] END C=0.0870271969973679, epsilon=0.18182496720710062, max_iter=10000; total time=14.0min
+[CV] END C=4.893727555349509, epsilon=0.020584494295802447, max_iter=5000; total time=16.5min
+[CV] END C=0.13178690305790589, epsilon=0.18182496720710062, max_iter=5000; total time=14.1min
+[CV] END C=0.03119481895713797, epsilon=0.6011150117432088, max_iter=5000; total time=11.5min
+[CV] END C=0.22715751293247397, epsilon=0.18340450985343382, max_iter=10000; total time=10.9min
+[CV] END C=0.03457888877316664, epsilon=0.18182496720710062, max_iter=10000; total time= 8.4min
+[CV] END C=0.011533284318779018, epsilon=0.5986584841970366, max_iter=10000; total time= 6.3min
+[CV] END C=7.217303539978489, epsilon=0.3745401188473625, max_iter=10000; total time= 8.3min
