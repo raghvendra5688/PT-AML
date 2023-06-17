@@ -124,7 +124,7 @@ def grid_search_cv(model, parameters, X_train, y_train, n_splits=5, n_iter=1000,
     else:
         cv = n_splits
 
-    rev_model = model_selection.RandomizedSearchCV(estimator=model, param_distributions=parameters, cv=cv, scoring=scoring, n_iter=n_iter, n_jobs=n_jobs, random_state=0, verbose=2)
+    rev_model = model_selection.RandomizedSearchCV(estimator=model, param_distributions=parameters, cv=cv, scoring=scoring, n_iter=n_iter, n_jobs=42, random_state=0, verbose=2)
     if (model=="xgb"):
         xgbtrain = xgb.DMatrix(X_train, Y_train)
         output = rev_model.fit(xgbtrain)

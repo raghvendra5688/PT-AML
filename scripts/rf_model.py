@@ -53,7 +53,7 @@ data_type_options = ["LS_Feat_Var","MFP_Feat_Var"]
 
 # +
 #Choose the options
-input_option = 0                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
+input_option = 1                                                  #Choose 0 for LS for Drug and LS for Cell Line , 1 for MFP for Drug and LS for Cell Line 
 classification_task = False
 data_type = data_type_options[input_option]
 
@@ -88,11 +88,11 @@ print(rev_X_test.shape)
 # +
 model = ensemble.RandomForestRegressor(n_estimators=100, criterion='squared_error',
                                                 max_depth=None, min_samples_split=2,
-                                                min_samples_leaf=1, min_weight_fraction_leaf=0.0,
+                                                min_samples_leaf=4, min_weight_fraction_leaf=0.0,
                                                 max_features='auto', max_leaf_nodes=None,
                                                 min_impurity_decrease=0.1,
                                                 bootstrap=True, oob_score=False,
-                                                n_jobs=42, random_state=328, verbose=0,
+                                                n_jobs=42, random_state=328, verbose=1,
                                                 warm_start=False, ccp_alpha=0.0, max_samples=None)
 
 
@@ -140,7 +140,7 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("RF Predictions (LS + Feat)",fontsize=10)
+ax.axes.set_title("RF Predictions (MFP + Feat)",fontsize=10)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("Label",fontsize=10)
@@ -165,7 +165,7 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top RF VI (LS + Feat)",fontsize=9)
+ax.axes.set_title("Top RF VI (MFP + Feat)",fontsize=9)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
