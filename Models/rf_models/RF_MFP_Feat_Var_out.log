@@ -1,0 +1,288 @@
+Loaded training file
+Shape of training set after removing non-numeric cols
+(34387, 2346)
+(19184, 2346)
+Shape of training set after removing cols with NaNs
+(34387, 2333)
+(19184, 2333)
+Fitting 5 folds for each of 50 candidates, totalling 250 fits
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=1083.7min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time=1418.1min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=328.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=291.9min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time= 6.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time= 4.3min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time= 4.4min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=18.6min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=18.4min
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=  46.3s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=  55.1s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=  24.6s
+[CV] END criterion=squared_error, max_depth=7, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 4.9min
+[CV] END criterion=absolute_error, max_depth=7, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=141.4min
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=12, n_estimators=100; total time=  50.0s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=12, n_estimators=100; total time=  44.9s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=12, n_estimators=100; total time=  41.4s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=12, n_estimators=100; total time=  20.2s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=12, n_estimators=100; total time=  47.6s
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=12, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=12, n_estimators=100; total time= 2.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=12, n_estimators=100; total time= 2.4min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1878.3min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=4, n_estimators=250; total time=781.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=297.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time= 6.0min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time= 6.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time= 6.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time= 4.8min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time= 4.7min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=18.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time= 3.9min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time= 3.9min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time= 4.0min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time= 3.6min
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=  52.9s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=  52.9s
+[CV] END criterion=squared_error, max_depth=None, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=13.5min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=1390.2min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=822.2min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=4, n_estimators=250; total time=759.8min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=4, n_estimators=100; total time=141.3min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time= 5.7min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time= 4.3min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=19.0min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=17.4min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time= 3.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=821.1min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=100; total time=2239.2min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=4, n_estimators=100; total time=132.8min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=1051.6min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=100; total time=2180.6min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=843.1min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=100; total time=2403.9min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time= 1.0min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time=1036.7min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=100; total time=2219.7min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time= 1.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=141.0min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=142.9min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=8, n_estimators=100; total time=1016.6min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time=324.6min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=1738.7min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1299.3min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time=312.2min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=1783.1min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=13.8min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=143.4min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1567.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=1749.2min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=586.4min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=652.3min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=10.9min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=11.0min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=10.4min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=10.6min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=10.6min
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  48.1s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  32.0s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  39.5s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  24.1s
+[CV] END criterion=squared_error, max_depth=5, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  43.1s
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time=334.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=1863.3min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=584.7min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=649.8min
+[CV] END criterion=absolute_error, max_depth=None, max_features=sqrt, min_samples_leaf=8, n_estimators=250; total time=325.4min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=1949.8min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=11.7min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=3513.6min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=13.5min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=1281.4min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time=326.2min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=1905.7min
+[CV] END criterion=squared_error, max_depth=7, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 5.2min
+[CV] END criterion=squared_error, max_depth=5, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 4.1min
+[CV] END criterion=squared_error, max_depth=5, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 3.4min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=3542.8min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=699.6min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=602.0min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time=341.0min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=1916.2min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=581.4min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=8, n_estimators=100; total time=989.8min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.1, min_samples_leaf=16, n_estimators=250; total time=1991.7min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=11.3min
+[CV] END criterion=squared_error, max_depth=5, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 3.8min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=148.6min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1731.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=1712.7min
+[CV] END criterion=squared_error, max_depth=7, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 4.8min
+[CV] END criterion=absolute_error, max_depth=7, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=134.1min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=142.8min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1586.0min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=1780.3min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=11.9min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=3676.3min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=11.3min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=3678.7min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=584.2min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=8, n_estimators=100; total time=903.4min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=2277.9min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=11.4min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=3774.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1200.1min
+[CV] END criterion=absolute_error, max_depth=None, max_features=sqrt, min_samples_leaf=8, n_estimators=250; total time=324.0min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=2275.0min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time=1108.9min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=10.7min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=10.0min
+[CV] END criterion=absolute_error, max_depth=None, max_features=sqrt, min_samples_leaf=8, n_estimators=250; total time=349.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=2351.6min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.2, min_samples_leaf=12, n_estimators=250; total time=579.0min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=8, n_estimators=100; total time=938.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=2338.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1194.9min
+[CV] END criterion=absolute_error, max_depth=None, max_features=sqrt, min_samples_leaf=8, n_estimators=250; total time=288.2min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=8, n_estimators=250; total time=2384.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1327.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=3086.1min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=12.7min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=1361.1min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=3104.2min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.3, min_samples_leaf=16, n_estimators=100; total time=13.7min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=1294.7min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=3208.6min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=778.0min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=599.3min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=815.3min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=4, n_estimators=250; total time=748.3min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=4, n_estimators=100; total time=139.2min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=12.1min
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=8, n_estimators=100; total time=  39.8s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=8, n_estimators=100; total time=  43.7s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=8, n_estimators=100; total time=  46.3s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=8, n_estimators=100; total time=  46.2s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.1, min_samples_leaf=8, n_estimators=100; total time=  35.3s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=  57.3s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 1.1min
+[CV] END criterion=squared_error, max_depth=1, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=  50.5s
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=1435.5min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time= 1.5min
+[CV] END criterion=absolute_error, max_depth=7, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=150.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=12, n_estimators=100; total time= 2.6min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=12, n_estimators=100; total time= 2.9min
+[CV] END criterion=absolute_error, max_depth=None, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1959.0min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=4, n_estimators=250; total time=776.9min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time= 2.6min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time= 2.5min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.1, min_samples_leaf=16, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 2.3min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 2.4min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 2.5min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=4, n_estimators=100; total time=156.0min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=11.7min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=11.7min
+[CV] END criterion=squared_error, max_depth=1, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=  58.3s
+[CV] END criterion=squared_error, max_depth=1, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=  58.3s
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=1439.3min
+[CV] END criterion=squared_error, max_depth=7, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 5.1min
+[CV] END criterion=absolute_error, max_depth=7, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=139.8min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=142.8min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=8, n_estimators=100; total time=1036.1min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=3216.2min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time=1338.0min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=3204.3min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.1, min_samples_leaf=4, n_estimators=100; total time=764.8min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.2, min_samples_leaf=4, n_estimators=100; total time=643.5min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=824.7min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.1, min_samples_leaf=4, n_estimators=250; total time=724.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=4, n_estimators=100; total time=128.7min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=11.9min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=1450.5min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time=1086.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time=1379.9min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time= 2.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time= 2.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time= 2.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time= 2.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time= 1.7min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=337.0min
+[CV] END criterion=absolute_error, max_depth=9, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=273.1min
+[CV] END criterion=squared_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=11.7min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=1451.4min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time= 1.2min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time=1020.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=4, n_estimators=100; total time=2077.1min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.3, min_samples_leaf=4, n_estimators=250; total time=1452.8min
+[CV] END criterion=squared_error, max_depth=3, max_features=0.2, min_samples_leaf=12, n_estimators=100; total time= 1.2min
+[CV] END criterion=absolute_error, max_depth=5, max_features=0.2, min_samples_leaf=16, n_estimators=100; total time=1086.2min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time=1270.9min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=2221.3min
+MAE: 20.749, MSE: 28.346, R2: 0.819, Pearson R: 0.905, Spearman R: 0.902
+Parameters
+----------
+bootstrap : True
+ccp_alpha : 0.0
+criterion : squared_error
+max_depth : None
+max_features : 0.1
+max_leaf_nodes : None
+max_samples : None
+min_impurity_decrease : 0.1
+min_samples_leaf : 8
+min_samples_split : 2
+min_weight_fraction_leaf : 0.0
+n_estimators : 250
+n_jobs : 42
+oob_score : False
+random_state : 328
+verbose : 1
+warm_start : False
+--------------------------------------------------------------------------------
+Saved model to file: ../Models/rf_models/rf_MFP_Feat_Var_regressor_gs.pk
+Saved model to file: ../Models/rf_models/rf_MFP_Feat_Var_regressor_best_estimator.pk
+Load model to file: ../Models/rf_models/rf_MFP_Feat_Var_regressor_gs.pk
+[18.516, 21.631, 20.596, 20.984, 22.019] [24.843, 29.134, 28.402, 28.769, 30.286] [0.834, 0.801, 0.846, 0.788, 0.816]
+(20.749, 1.221, 28.287, 1.834, 0.817, 0.021, 0.904, 0.012, 0.9, 0.01)
+Load model to file: ../Models/rf_models/rf_MFP_Feat_Var_regressor_gs.pk
+(40.156, 52.528, 0.437, 0.661, 0.649)
+Finished writing predictions
+Load model to file: ../Models/rf_models/rf_MFP_Feat_Var_regressor_best_estimator.pk
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=1055.6min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time=1375.2min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=2157.6min
+[CV] END criterion=squared_error, max_depth=7, max_features=0.3, min_samples_leaf=12, n_estimators=100; total time= 5.2min
+[CV] END criterion=squared_error, max_depth=5, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 4.1min
+[CV] END criterion=squared_error, max_depth=5, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time= 3.8min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=1395.2min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=828.0min
+[CV] END criterion=squared_error, max_depth=3, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time= 1.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time= 1.0min
+[CV] END criterion=squared_error, max_depth=3, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=  59.4s
+[CV] END criterion=squared_error, max_depth=3, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time= 1.1min
+[CV] END criterion=squared_error, max_depth=3, max_features=sqrt, min_samples_leaf=12, n_estimators=250; total time=  52.1s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=  42.2s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=  42.1s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=  40.1s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=  41.5s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=16, n_estimators=100; total time=  45.9s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  44.7s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  44.1s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  38.4s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  50.6s
+[CV] END criterion=squared_error, max_depth=1, max_features=sqrt, min_samples_leaf=4, n_estimators=250; total time=  43.5s
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=2341.4min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=1092.8min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time= 9.9min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=10.1min
+[CV] END criterion=squared_error, max_depth=None, max_features=0.1, min_samples_leaf=8, n_estimators=250; total time=10.6min
+[CV] END criterion=absolute_error, max_depth=None, max_features=sqrt, min_samples_leaf=8, n_estimators=250; total time=353.2min
+[CV] END criterion=absolute_error, max_depth=1, max_features=0.3, min_samples_leaf=12, n_estimators=250; total time=827.4min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=2288.3min
+[CV] END criterion=absolute_error, max_depth=3, max_features=0.3, min_samples_leaf=8, n_estimators=100; total time=1085.0min
+[CV] END criterion=absolute_error, max_depth=7, max_features=0.1, min_samples_leaf=12, n_estimators=250; total time=1276.0min
+[CV] END criterion=absolute_error, max_depth=9, max_features=0.3, min_samples_leaf=8, n_estimators=250; total time=2231.8min
