@@ -87,8 +87,39 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-# -
+# +
+all_columns = rev_X_train.columns.tolist()
+drug_columns = range(0,1026)
+auc_columns = range(1026,1080)
+var_onco_columns = range(1080,1873)
+clinical_columns = range(1873,1876)
+pathway_columns = range(1876,1930)
+module_columns = range(1930,1950)
+mutation_columns = range(1950,2333)
 
+data_types = ["MFP_AUC","MFP_AUC_Onco_Var","MFP_AUC_Pathways","MFP_AUC_Module","MFP_AUC_Mutation",
+            "MFP_AUC_Onco_Var_Pathways","MFP_AUC_Onco_Var_Module","MFP_AUC_Onco_Var_Mutation",
+            "MFP_AUC_Pathways_Module","MFP_AUC_Pathways_Mutation","MFP_AUC_Module_Mutation",
+            "MFP_AUC_Onco_Var_Pathways_Module","MFP_AUC_Onco_Var_Pathways_Mutation",
+            "MFP_AUC_Onco_Var_Module_Mutation","MFP_AUC_Pathways_Module_Mutation"]
+
+#Choose the ablation combination to study
+ablation_option = 0
+data_type = data_types[ablation_option]
+
+#Make the list of column slices
+default_columns = list(drug_columns)+list(auc_columns)+list(clinical_columns)
+ablation_combinations = [default_columns, default_columns+list(var_onco_columns), default_columns+list(pathway_columns),
+                        default_columns+list(module_columns),default_columns+list(mutation_columns),default_columns+list(var_onco_columns)+list(pathway_columns),
+                        default_columns+list(var_onco_columns)+list(module_columns),default_columns+list(var_onco_columns)+list(mutation_columns),default_columns+list(pathway_columns)+list(module_columns),
+                        default_columns+list(pathway_columns)+list(mutation_columns),default_columns+list(module_columns)+list(mutation_columns),
+                        default_columns+list(var_onco_columns)+list(pathway_columns)+list(module_columns),default_columns+list(var_onco_columns)+list(pathway_columns)+list(mutation_columns),
+                        default_columns+list(var_onco_columns)+list(module_columns)+list(mutation_columns),default_columns+list(pathway_columns)+list(module_columns)+list(mutation_columns)]
+
+#Creat the final training and test set for MFP + AUC + combination accordingly
+final_rev_X_train,final_rev_X_test = rev_X_train.iloc[:,ablation_combinations[ablation_option]],rev_X_test.iloc[:,ablation_combinations[ablation_option]]
+print(final_rev_X_train.shape)
+print(final_rev_X_test.shape)
 
 
 # +
@@ -108,7 +139,7 @@ params_catboost = {
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
-#catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
+catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,final_rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(catboost_gs.cv_results_)
@@ -141,7 +172,8 @@ fig.set_facecolor("white")
 
 ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
                 line_kws={"color": "red"})
-ax.axes.set_title("Catboost Predictions (MFP + Feat)",fontsize=10)
+title_text = "Catboost Prediction ("+data_type+")"
+ax.axes.set_title(title_text,fontsize=6)
 ax.set_xlim(0, 300)
 ax.set_ylim(0, 300)
 ax.set_xlabel("",fontsize=10)
@@ -166,7 +198,8 @@ ax = fig.add_subplot(111)
 plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
-ax.axes.set_title("Top Catboost VI (MFP + Feat)",fontsize=9)
+title_text = "Top Catboost VI ("+data_type+")"
+ax.axes.set_title(title_text,fontsize=6)
 ax.set_xlabel("Features",fontsize=9)
 ax.set_ylabel("VI Value",fontsize=9)
 ax.tick_params(labelsize=9)
