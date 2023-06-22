@@ -139,14 +139,14 @@ params_catboost = {
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
-catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,final_rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
+#catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,final_rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(catboost_gs.cv_results_)
 # -
 
 catboost_gs = load_model("catboost_models/catboost_"+data_type+"_regressor_gs.pk")
-results = get_CV_results(catboost_gs,pd.DataFrame(rev_X_train),Y_train,n_splits=5)
+results = get_CV_results(catboost_gs,pd.DataFrame(final_rev_X_train),Y_train,n_splits=5)
 print(results)
 
 # +
@@ -154,7 +154,7 @@ print(results)
 catboost_gs = load_model("catboost_models/catboost_"+data_type+"_regressor_gs.pk")
 np.max(catboost_gs.cv_results_["mean_test_score"])
 catboost_best = catboost_gs.best_estimator_
-y_pred_catboost=catboost_best.predict(rev_X_test)
+y_pred_catboost=catboost_best.predict(final_rev_X_test)
 test_metrics=calculate_regression_metrics(Y_test,y_pred_catboost)
 print(test_metrics)
 
@@ -195,7 +195,7 @@ fig.set_dpi(300)
 fig.set_facecolor("white")
 
 ax = fig.add_subplot(111)
-plt.bar(rev_X_train.columns[index[-20:]],val[-20:])
+plt.bar(final_rev_X_train.columns[index[-20:]],val[-20:])
 plt.xticks(rotation = 90) # Rotates X-Axis Ticks by 45-degrees
 
 title_text = "Top Catboost VI ("+data_type+")"
