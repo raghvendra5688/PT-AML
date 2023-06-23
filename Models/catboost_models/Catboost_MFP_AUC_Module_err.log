@@ -1,0 +1,51 @@
+nohup: ignoring input
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py:378: FitFailedWarning: 
+5 fits failed out of a total of 500.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 686, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 5734, in fit
+    return self._fit(X, y, cat_features, text_features, embedding_features, None, sample_weight, None, None, None, None, baseline,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2341, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2268, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6084, in _catboost._check_train_params
+  File "_catboost.pyx", line 6103, in _catboost._check_train_params
+_catboost.CatBoostError: /src/catboost/catboost/private/libs/options/boosting_options.cpp:79: Learning rate should be non-zero
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_search.py:952: UserWarning: One or more of the test scores are non-finite: [-5.03781372e-02 -5.23737770e-02 -1.55341033e-02  1.21909875e-02
+ -3.02387098e-02 -5.42909625e-02 -5.83651801e-02 -1.15568869e-01
+ -5.23722126e-02 -5.23698007e-02 -6.17636636e-02 -5.99992397e-02
+ -6.12311422e-02 -5.23740717e-02 -4.82417166e-02 -2.32720312e-01
+ -5.34798778e-02 -5.53730916e-02 -5.29333325e-02 -5.23294861e-02
+             nan -5.30909120e-02 -5.23886635e-02 -5.23803632e-02
+ -6.19091734e-02 -6.30716569e-02 -5.48421574e-02  1.59623790e-02
+ -6.11553198e-02 -5.31544970e-02 -5.26575195e-02 -6.25505034e-02
+ -5.23779225e-02 -5.23713648e-02 -1.13429989e-03 -5.23681439e-02
+ -4.64774863e-02 -5.24144969e-02  7.60266494e-04 -5.23987819e-02
+ -5.24099585e-02 -5.53548796e-02 -6.96424149e-02 -5.23716304e-02
+ -3.25340715e-02 -7.74978851e-02 -3.97664424e-02 -6.79450347e-02
+ -4.86490453e-02  1.38122980e-02 -5.23720946e-02 -5.24873476e-02
+ -5.98871025e-02 -3.44145275e-01 -2.91902202e-02 -7.26803769e-02
+ -5.22214917e-02  3.55478507e-02 -5.24273584e-02 -5.28499592e-02
+ -5.26310677e-02 -5.35083619e-02 -5.23738183e-02 -5.23788919e-02
+  5.58703250e-02 -5.23766382e-02  4.38019845e-02 -2.33800839e-02
+ -5.32916425e-02  4.86831300e-02 -5.24681905e-02 -5.25582030e-02
+ -5.23985583e-02 -4.95333594e-02 -2.89675525e-02 -1.69866365e-02
+ -2.67336205e-02 -1.97575487e-01 -5.23739966e-02 -5.36445318e-02
+ -5.23662220e-02 -5.59533221e-02 -5.22354499e-02 -5.81550459e-02
+ -5.23827446e-02 -1.75149706e-01 -8.37138471e-05 -5.27280636e-02
+ -5.95649263e-02 -3.15199879e-01 -5.24527085e-02 -2.83636074e-02
+ -5.56415566e-02 -5.50988605e-02  4.81058328e-02 -5.23849593e-02
+ -6.18478245e-02 -5.76531530e-02  2.73937840e-03 -5.23727836e-02]
+  warnings.warn(

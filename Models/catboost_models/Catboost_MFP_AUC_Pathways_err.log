@@ -1,0 +1,45 @@
+nohup: ignoring input
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py:700: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py:378: FitFailedWarning: 
+5 fits failed out of a total of 500.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 686, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 5734, in fit
+    return self._fit(X, y, cat_features, text_features, embedding_features, None, sample_weight, None, None, None, None, baseline,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2341, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2268, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6084, in _catboost._check_train_params
+  File "_catboost.pyx", line 6103, in _catboost._check_train_params
+_catboost.CatBoostError: /src/catboost/catboost/private/libs/options/boosting_options.cpp:79: Learning rate should be non-zero
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_search.py:952: UserWarning: One or more of the test scores are non-finite: [-0.05412043 -0.05237476 -0.01783652  0.03480215 -0.01166691 -0.05493944
+ -0.05959201 -0.05602951 -0.0523728  -0.05237674 -0.06425528 -0.06763207
+ -0.07868184 -0.05237418 -0.05086513 -0.3350577  -0.05374623 -0.05609984
+ -0.05298579 -0.05234616         nan -0.05337127 -0.05239313 -0.05238225
+ -0.06220259 -0.06518755 -0.05546885  0.00475473 -0.07370922 -0.05323189
+ -0.05265962 -0.06266432 -0.05238024 -0.05237309  0.02927012 -0.05237
+ -0.04933057 -0.05241835  0.01267275 -0.05240994 -0.0524288  -0.05633135
+ -0.07093744 -0.05237172 -0.02245511 -0.10652666 -0.03437256 -0.07068373
+ -0.06231159  0.05031894 -0.0523725  -0.05328793 -0.0578573  -0.37708886
+ -0.01225506 -0.19970733 -0.05231329  0.05299033 -0.05244717 -0.05393903
+ -0.05264879 -0.05384188 -0.05237395 -0.05237922  0.05095452 -0.05237828
+  0.07524242 -0.01572401 -0.05344448  0.05500111 -0.05247389 -0.05263462
+ -0.05240116 -0.05111563 -0.01811068 -0.00833737 -0.01090615 -0.17208946
+ -0.05237399 -0.05400934 -0.05238047 -0.05697639 -0.05288754 -0.06173206
+ -0.05240322 -0.20290789  0.02545888 -0.05275105 -0.06080388 -0.27215839
+ -0.05245406 -0.02164245  0.01076762 -0.06287953  0.0559609  -0.05238864
+ -0.10446112 -0.05784736  0.01693037 -0.05237286]
+  warnings.warn(

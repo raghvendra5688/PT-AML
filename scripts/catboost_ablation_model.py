@@ -104,7 +104,7 @@ data_types = ["MFP_AUC","MFP_AUC_Onco_Var","MFP_AUC_Pathways","MFP_AUC_Module","
             "MFP_AUC_Onco_Var_Module_Mutation","MFP_AUC_Pathways_Module_Mutation"]
 
 #Choose the ablation combination to study
-ablation_option = 0
+ablation_option = 3
 data_type = data_types[ablation_option]
 
 #Make the list of column slices
@@ -139,7 +139,7 @@ params_catboost = {
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
-#catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,final_rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
+catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,final_rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(catboost_gs.cv_results_)
