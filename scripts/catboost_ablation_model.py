@@ -104,7 +104,7 @@ data_types = ["MFP_AUC","MFP_AUC_Onco_Var","MFP_AUC_Pathways","MFP_AUC_Module","
             "MFP_AUC_Onco_Var_Module_Mutation","MFP_AUC_Pathways_Module_Mutation"]
 
 #Choose the ablation combination to study
-ablation_option = 3
+ablation_option = 5
 data_type = data_types[ablation_option]
 
 #Make the list of column slices

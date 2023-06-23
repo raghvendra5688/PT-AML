@@ -1,0 +1,43 @@
+nohup: ignoring input
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py:378: FitFailedWarning: 
+5 fits failed out of a total of 500.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 686, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 5734, in fit
+    return self._fit(X, y, cat_features, text_features, embedding_features, None, sample_weight, None, None, None, None, baseline,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2341, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2268, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6084, in _catboost._check_train_params
+  File "_catboost.pyx", line 6103, in _catboost._check_train_params
+_catboost.CatBoostError: /src/catboost/catboost/private/libs/options/boosting_options.cpp:79: Learning rate should be non-zero
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_search.py:952: UserWarning: One or more of the test scores are non-finite: [-0.0561215  -0.05237525 -0.0081671  -0.00805454 -0.04690722 -0.05519871
+ -0.05890585 -0.03052548 -0.05237243 -0.05237656 -0.06526642 -0.06422262
+ -0.08009002 -0.0523743  -0.05134921 -0.35496355 -0.05395114 -0.05574967
+ -0.05304586 -0.05234061         nan -0.05329973 -0.05239084 -0.05238203
+ -0.06223348 -0.0654436  -0.05524384  0.02106004 -0.07938455 -0.05328966
+ -0.05267153 -0.06331312 -0.05238198 -0.05237275 -0.0108657  -0.05237278
+ -0.04895617 -0.052418   -0.00969573 -0.05241301 -0.05242289 -0.05693924
+ -0.0723076  -0.05237183 -0.06632835 -0.12749682 -0.00741032 -0.07513033
+ -0.06422503 -0.00093108 -0.05237227 -0.05314458 -0.07937918 -0.34307102
+ -0.04089974 -0.16792743 -0.05229034  0.05726368 -0.05245837 -0.05447032
+ -0.05266579 -0.0538339  -0.05237406 -0.05237991  0.06981616 -0.05237829
+  0.03472617 -0.05110469 -0.05342276  0.01958081 -0.05247655 -0.05246074
+ -0.05240264 -0.0511562  -0.05754522 -0.0446842  -0.05566683 -0.13448843
+ -0.05237368 -0.05474074 -0.05241548 -0.05676684 -0.05304012 -0.06115439
+ -0.0523787  -0.13908892 -0.00229094 -0.05279379 -0.06048627 -0.28640541
+ -0.05245384 -0.04132185 -0.05226072 -0.06505525  0.04129993 -0.05239424
+ -0.16316471 -0.05801331 -0.02497904 -0.05237299]
+  warnings.warn(
