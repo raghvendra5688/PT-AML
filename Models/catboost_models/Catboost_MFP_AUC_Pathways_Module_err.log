@@ -1,0 +1,44 @@
+nohup: ignoring input
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py:378: FitFailedWarning: 
+5 fits failed out of a total of 500.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 686, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 5734, in fit
+    return self._fit(X, y, cat_features, text_features, embedding_features, None, sample_weight, None, None, None, None, baseline,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2341, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2268, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6084, in _catboost._check_train_params
+  File "_catboost.pyx", line 6103, in _catboost._check_train_params
+_catboost.CatBoostError: /src/catboost/catboost/private/libs/options/boosting_options.cpp:79: Learning rate should be non-zero
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_search.py:952: UserWarning: One or more of the test scores are non-finite: [-0.05480338 -0.05237303  0.0258706   0.02394485  0.00398498 -0.05447926
+ -0.05891145 -0.03380839 -0.05237296 -0.05237125 -0.05960088 -0.06211422
+ -0.06105626 -0.05237398 -0.04834328 -0.20557321 -0.05346477 -0.05562477
+ -0.05295257 -0.05233233         nan -0.05306114 -0.05238982 -0.05238123
+ -0.06193921 -0.06186879 -0.05524882  0.03428355 -0.05510232 -0.0531785
+ -0.05266642 -0.06269517 -0.05238093 -0.0523716   0.03103421 -0.05236872
+ -0.04703082 -0.05241791  0.02578906 -0.05240202 -0.05240881 -0.05434015
+ -0.06863104 -0.05237184 -0.0112213  -0.09022945 -0.03001426 -0.05941259
+ -0.05031458  0.02715791 -0.05237203 -0.05243411 -0.04656226 -0.26430236
+ -0.00067521 -0.02928718 -0.05221364  0.0467338  -0.05243512 -0.0535801
+ -0.05263876 -0.05338949 -0.05237364 -0.05237841  0.05263829 -0.05237688
+  0.02571907 -0.00673968 -0.05330392  0.05015185 -0.05247538 -0.05239382
+ -0.05239884 -0.04767648 -0.0017681   0.00259466 -0.0034697  -0.14440594
+ -0.05237368 -0.0533336  -0.05241717 -0.05499637 -0.05235661 -0.0583216
+ -0.05236954 -0.1316136   0.01610154 -0.05272427 -0.05886904 -0.39063334
+ -0.0524197  -0.02459972 -0.03492796 -0.05493679  0.06430328 -0.05239101
+ -0.07108132 -0.05768619  0.01673079 -0.05237284]
+  warnings.warn(
+Authorization required, but no authorization protocol specified
