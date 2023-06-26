@@ -93,7 +93,7 @@ print(rev_X_test.shape)
 
 # +
 #Build the LightGBM Regression model
-model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=0, loss_function="MAE",thread_count=42)
+model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=42, loss_function="MAE",thread_count=42)
 
 # Grid parameters
 params_catboost = {
@@ -108,7 +108,7 @@ params_catboost = {
         
 #It will select 200 random combinations for the CV and do 5-fold CV for each combination
 n_iter = 100
-#catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
+catboost_gs=supervised_learning_steps("catboost","r2",data_type,classification_task,model,params_catboost,rev_X_train,Y_train,n_iter=n_iter,n_splits=5)
         
 #Build the model and get 5-fold CV results    
 #print(catboost_gs.cv_results_)

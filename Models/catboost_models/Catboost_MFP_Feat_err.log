@@ -1,0 +1,44 @@
+nohup: ignoring input
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py:378: FitFailedWarning: 
+5 fits failed out of a total of 500.
+The score on these train-test partitions for these parameters will be set to nan.
+If these failures are not expected, you can try to debug them by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+5 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 686, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 5734, in fit
+    return self._fit(X, y, cat_features, text_features, embedding_features, None, sample_weight, None, None, None, None, baseline,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2341, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/catboost/core.py", line 2268, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6084, in _catboost._check_train_params
+  File "_catboost.pyx", line 6103, in _catboost._check_train_params
+_catboost.CatBoostError: /src/catboost/catboost/private/libs/options/boosting_options.cpp:79: Learning rate should be non-zero
+
+  warnings.warn(some_fits_failed_message, FitFailedWarning)
+/home/brc05/anaconda3/envs/BeatAML/lib/python3.11/site-packages/sklearn/model_selection/_search.py:952: UserWarning: One or more of the test scores are non-finite: [-0.05030939 -0.05237257  0.02087423  0.05112124  0.01941568 -0.05442496
+ -0.05746363 -0.04324634 -0.0523716  -0.05236725 -0.06006183 -0.05587042
+ -0.04409024 -0.05237398 -0.04652735 -0.36183317 -0.05342636 -0.05402439
+ -0.05289672 -0.05231829         nan -0.0528072  -0.05238998 -0.05238056
+ -0.06187718 -0.06172039 -0.05488572 -0.05547231 -0.03520561 -0.05311808
+ -0.0526495  -0.06228151 -0.0523786  -0.05237016  0.03914181 -0.05236882
+ -0.04315947 -0.05241493  0.03454784 -0.05239457 -0.05239634 -0.0535842
+ -0.07036673 -0.05237152  0.00576029 -0.06669    -0.02240175 -0.03175605
+ -0.03909553  0.04101904 -0.05237204 -0.05222134 -0.02737289 -0.48461307
+  0.00196439 -0.12793704 -0.05216892  0.06852642 -0.05243514 -0.05300471
+ -0.05264406 -0.0530327  -0.05237359 -0.05237815  0.05100495 -0.05237626
+  0.03961184  0.01919907 -0.0531406   0.05758776 -0.05246544 -0.05208582
+ -0.05239721 -0.0480154   0.01270574  0.02010121  0.01966449 -0.15500539
+ -0.05237366 -0.05295312 -0.05233801 -0.05508344 -0.05254285 -0.05705921
+ -0.05233987 -0.1359938   0.00508092 -0.05269257 -0.05846694 -0.28319046
+ -0.05240573 -0.00673772  0.03058023 -0.05401682  0.05155942 -0.05238739
+ -0.07009688 -0.05767171  0.04113079 -0.05237279]
+  warnings.warn(
+Authorization required, but no authorization protocol specified
