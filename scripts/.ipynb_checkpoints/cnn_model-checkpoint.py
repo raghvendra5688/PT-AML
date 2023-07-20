@@ -1,7 +1,7 @@
 # ---
 # jupyter:
 #   jupytext:
-#     formats: py:light
+#     formats: py:light,ipynb
 #     text_representation:
 #       extension: .py
 #       format_name: light
@@ -100,7 +100,7 @@ print(rev_X_test.shape)
 # +
 #Load the tokenizer and tokenize SMILES using Vocab from DeepChem
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
-tokenizer = SmilesTokenizer("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/Data/vocab.txt")
+tokenizer = SmilesTokenizer("/home/brc05/TII/Projects/Immunoinformatics/Data/vocab.txt")
 
 max_smiles_length=150
 def encode_to_indices(x):
@@ -125,90 +125,95 @@ X_test_copy = scaler.transform(rev_X_test)
 train = data_utils.TensorDataset(X_train_smiles_encoded, torch.Tensor(np.array(X_train_copy)),torch.Tensor(np.array(Y_train)))
 test = data_utils.TensorDataset(X_test_smiles_encoded, torch.Tensor(np.array(X_test_copy)),torch.Tensor(np.array(Y_test)))
 # -
-#Split the data into 0.75 for training and rest for validation stuff
-BATCH_SIZE = 256
-train_dataset, valid_dataset = data_utils.random_split(train, [0.75, 0.25], generator = torch.Generator().manual_seed(42))
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-valid_loader = DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
-test_loader = DataLoader(test, batch_size=BATCH_SIZE, shuffle=False)
+for (i in range(0,10)):
+    #Split the data into 0.8 for training and rest for validation stuff
+    BATCH_SIZE = 4096
+    train_dataset, valid_dataset = data_utils.random_split(train, [0.8, 0.2], generator = torch.Generator().manual_seed(i*42))
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    valid_loader = DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
+    test_loader = DataLoader(test, batch_size=BATCH_SIZE, shuffle=False)
+    
+    #Build model parameters
+    CELL_INPUT_DIM = X_train_copy.shape[1]
+    CELL_OUT_DIM = 256
+    CELL_HID_DIMS = [1024,512]
 
-# +
-#Build model parameters
-CELL_INPUT_DIM = X_train_copy.shape[1]
-CELL_OUT_DIM = 256
-CELL_HID_DIMS = [1024,512]
+    SMILES_INPUT_DIM = tokenizer.vocab_size
+    SMILES_ENC_EMB_DIM = 128
+    SMILES_OUT_DIM = 256
 
-SMILES_INPUT_DIM = tokenizer.vocab_size
-SMILES_ENC_EMB_DIM = 64
-SMILES_OUT_DIM = 256
+    N_FILTERS = 64
+    FILTER_SIZES = [2,3,4,6,7,8,9,10]
 
-N_FILTERS = 128
-FILTER_SIZES = [2,3,4,6,8,9,12]
+    HID_DIM = 256
+    OUT_DIM = 1
+    DROPOUT = 0.2
 
-HID_DIM = 256
-OUT_DIM = 1
-DROPOUT = 0.2
+    cell_enc = NN_Encoder(CELL_INPUT_DIM, CELL_OUT_DIM, CELL_HID_DIMS, DROPOUT)
+    smiles_enc = CNN_Encoder(SMILES_INPUT_DIM, SMILES_ENC_EMB_DIM, SMILES_OUT_DIM, N_FILTERS, FILTER_SIZES, DROPOUT)
 
-cell_enc = NN_Encoder(CELL_INPUT_DIM, CELL_OUT_DIM, CELL_HID_DIMS, DROPOUT)
-smiles_enc = CNN_Encoder(SMILES_INPUT_DIM, SMILES_ENC_EMB_DIM, SMILES_OUT_DIM, N_FILTERS, FILTER_SIZES, DROPOUT)
-
-#Make the model
-model = Seq2Func(cell_enc, smiles_enc, HID_DIM, OUT_DIM, DROPOUT, device=DEVICE).to(DEVICE)
-print("Total parameters in model are: ",count_parameters(model))
-model.apply(init_weights)
-# -
-
-#Model training criterion
-optimizer = optim.Adam(model.parameters(),lr=1e-4,weight_decay=0.01)
-criterion = nn.MSELoss().to(DEVICE)
-
-# +
-#Start training the model
-N_EPOCHS = 1000
-CLIP = 1
-counter = 0
-patience = 400
-train_loss_list = []
-valid_loss_list = []
-best_valid_loss = float('inf')
-for epoch in range(N_EPOCHS):
-    if (counter<patience):
-        print("Counter Id: ",str(counter))
-        start_time = time.time()
-        train_loss = training(model, train_loader, optimizer, criterion, CLIP, DEVICE)
-        valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
-        end_time = time.time()
-        epoch_mins, epoch_secs = epoch_time(start_time, end_time)
+    #Make the model
+    model = Seq2Func(cell_enc, smiles_enc, HID_DIM, OUT_DIM, DROPOUT, device=DEVICE).to(DEVICE)
+    print("Total parameters in model are: ",count_parameters(model))
+    model.apply(init_weights)
+    
+    #Model training criterion
+    optimizer = optim.Adam(model.parameters(),weight_decay=1e-4)
+    criterion = nn.MSELoss().to(DEVICE)
+    
+    #Start training the model
+    outputfile_model = '../Models/cnn_models/cnn_supervised_checkpoint_'+str(i)+'.pt'
+    N_EPOCHS = 5000
+    CLIP = 1
+    counter = 0
+    patience = 1000
+    train_loss_list = []
+    valid_loss_list = []
+    best_valid_loss = float('inf')
+    for epoch in range(N_EPOCHS):
+        if (counter<patience):
+            print("Counter Id: ",str(counter))
+            start_time = time.time()
+            train_loss = training(model, train_loader, optimizer, criterion, CLIP, DEVICE)
+            valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
+            end_time = time.time()
+            epoch_mins, epoch_secs = epoch_time(start_time, end_time)
             
-        train_loss_list.append(train_loss)
-        valid_loss_list.append(valid_loss)
-        if valid_loss < best_valid_loss:
-            counter = 0
-            print("Current Val. Loss: %.3f better than prev Val. Loss: %.3f " %(valid_loss,best_valid_loss))
-            best_valid_loss = valid_loss
-            torch.save(model.state_dict(), '../Models/cnn_models/cnn_supervised_checkpoint.pt')
+            train_loss_list.append(train_loss)
+            valid_loss_list.append(valid_loss)
+            if valid_loss < best_valid_loss:
+                counter = 0
+                print("Current Val. Loss: %.3f better than prev Val. Loss: %.3f " %(valid_loss,best_valid_loss))
+                best_valid_loss = valid_loss
+                torch.save(model.state_dict(), outputfile_model)
         else:
             counter+=1
             print(f'Epoch: {epoch+1:02} | Time: {epoch_mins}m {epoch_secs}s')
             print(f'\tTrain Loss: {train_loss:.3f}')
             print(f'\t Val. Loss: {valid_loss:.3f}')
 
-if (torch.cuda.is_available()):
-    model.load_state_dict(torch.load('../Models/cnn_models/cnn_supervised_checkpoint.pt'))
-else:
-    model.load_state_dict(torch.load('../Models/cnn_models/cnn_supervised_checkpoint.pt',map_location=torch.device('cpu')))
+    if (torch.cuda.is_available()):
+        model.load_state_dict(torch.load(outputfile_model))
+    else:
+        model.load_state_dict(torch.load(outputfile_model,map_location=torch.device('cpu')))
         
-valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
-print(f'| Best Valid Loss: {valid_loss:.3f}')
+    valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
+    print(f'| Best Valid Loss: {valid_loss:.3f}')
 
-test_loss = evaluation(model, test_loader, criterion, DEVICE)
-print(f'| Test Loss: {test_loss: .3f}')
+    test_loss = evaluation(model, test_loader, criterion, DEVICE)
+    print(f'| Test Loss: {test_loss: .3f}')
 
-fout=open("../Models/cnn_model/cnn_supervised_loss_plot.csv","w")
-for i in range(len(train_loss_list)):
-    outputstring = str(train_loss_list[i])+","+str(valid_loss_list[i])+"\n"
-    fout.write(outputstring)
+    fout_filename = "../Models/cnn_models/cnn_supervised_"+str(i)+"_loss_plot.csv"
+    fout=open(fout_filename,"w")
+    for j in range(len(train_loss_list)):
+        outputstring = str(train_loss_list[j])+","+str(valid_loss_list[j])+"\n"
+        fout.write(outputstring)
     fout.close()
-# -
+
+
+
+
+
+
 
 
