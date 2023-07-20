@@ -14,11 +14,6 @@
 # ---
 
 # +
-# #!pip install transformers
-# #!pip install --pre deepchem
-# #!pip install rdkit
-
-# +
 import os
 import pickle
 import re
@@ -60,9 +55,23 @@ import torch.optim as optim
 import inspect
 import random
 import math
-#from seq2func import LSTM_Encoder, CNN_Encoder, Seq2Func, init_weights, count_parameters, train, evaluate, epoch_time
+from dl_model_architecture import NN_Encoder, CNN_Encoder, Seq2Func, init_weights, count_parameters, training, evaluation, epoch_time
 
 from misc import save_model, load_model, regression_results, grid_search_cv, calculate_regression_metrics, supervised_learning_steps, get_CV_results
+# -
+
+#Setting up the environment
+SEED = 123
+random.seed(SEED)
+st = random.getstate()
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+torch.cuda.manual_seed(SEED)
+torch.backends.cudnn.deterministic = True
+torch.cuda.is_available()
+cudaid = int(0)
+DEVICE = torch.device("cuda:%d" % (cudaid) if torch.cuda.is_available() else "cpu")
+print(DEVICE)
 
 # +
 #Get the data for your choice: Canonical SMILES + Cell Line Info
@@ -93,8 +102,9 @@ print(rev_X_test.shape)
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
 tokenizer = SmilesTokenizer("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/Data/vocab.txt")
 
+max_smiles_length=150
 def encode_to_indices(x):
-    return(torch.tensor(tokenizer.encode(x,max_length=150,padding="max_length")))
+    return(torch.tensor(tokenizer.encode(x,max_length=max_smiles_length,padding="max_length")))
 
 #Get the list of training smiles
 X_train_smiles = X_train["CanonicalSMILES"].tolist()
@@ -116,17 +126,89 @@ train = data_utils.TensorDataset(X_train_smiles_encoded, torch.Tensor(np.array(X
 test = data_utils.TensorDataset(X_test_smiles_encoded, torch.Tensor(np.array(X_test_copy)),torch.Tensor(np.array(Y_test)))
 # -
 #Split the data into 0.75 for training and rest for validation stuff
+BATCH_SIZE = 256
 train_dataset, valid_dataset = data_utils.random_split(train, [0.75, 0.25], generator = torch.Generator().manual_seed(42))
-train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
-valid_loader = DataLoader(valid_dataset, batch_size=16, shuffle=False)
-test_loader = DataLoader(test, batch_size=16, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+valid_loader = DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
+test_loader = DataLoader(test, batch_size=BATCH_SIZE, shuffle=False)
 
-for i,batch in enumerate(train_loader):
-    print("Iteration ",str(i))
-    compound_encoding,cell_line_encoding,labels = batch[0],batch[1],batch[2]
-    print(compound_encoding.size())
-    print(cell_line_encoding.size())
-    print(labels.size())
-    break
+# +
+#Build model parameters
+CELL_INPUT_DIM = X_train_copy.shape[1]
+CELL_OUT_DIM = 256
+CELL_HID_DIMS = [1024,512]
+
+SMILES_INPUT_DIM = tokenizer.vocab_size
+SMILES_ENC_EMB_DIM = 64
+SMILES_OUT_DIM = 256
+
+N_FILTERS = 128
+FILTER_SIZES = [2,3,4,6,8,9,12]
+
+HID_DIM = 256
+OUT_DIM = 1
+DROPOUT = 0.2
+
+cell_enc = NN_Encoder(CELL_INPUT_DIM, CELL_OUT_DIM, CELL_HID_DIMS, DROPOUT)
+smiles_enc = CNN_Encoder(SMILES_INPUT_DIM, SMILES_ENC_EMB_DIM, SMILES_OUT_DIM, N_FILTERS, FILTER_SIZES, DROPOUT)
+
+#Make the model
+model = Seq2Func(cell_enc, smiles_enc, HID_DIM, OUT_DIM, DROPOUT, device=DEVICE).to(DEVICE)
+print("Total parameters in model are: ",count_parameters(model))
+model.apply(init_weights)
+# -
+
+#Model training criterion
+optimizer = optim.Adam(model.parameters(),lr=1e-4,weight_decay=0.01)
+criterion = nn.MSELoss().to(DEVICE)
+
+# +
+#Start training the model
+N_EPOCHS = 1000
+CLIP = 1
+counter = 0
+patience = 400
+train_loss_list = []
+valid_loss_list = []
+best_valid_loss = float('inf')
+for epoch in range(N_EPOCHS):
+    if (counter<patience):
+        print("Counter Id: ",str(counter))
+        start_time = time.time()
+        train_loss = training(model, train_loader, optimizer, criterion, CLIP, DEVICE)
+        valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
+        end_time = time.time()
+        epoch_mins, epoch_secs = epoch_time(start_time, end_time)
+            
+        train_loss_list.append(train_loss)
+        valid_loss_list.append(valid_loss)
+        if valid_loss < best_valid_loss:
+            counter = 0
+            print("Current Val. Loss: %.3f better than prev Val. Loss: %.3f " %(valid_loss,best_valid_loss))
+            best_valid_loss = valid_loss
+            torch.save(model.state_dict(), '../Models/cnn_models/cnn_supervised_checkpoint.pt')
+        else:
+            counter+=1
+            print(f'Epoch: {epoch+1:02} | Time: {epoch_mins}m {epoch_secs}s')
+            print(f'\tTrain Loss: {train_loss:.3f}')
+            print(f'\t Val. Loss: {valid_loss:.3f}')
+
+if (torch.cuda.is_available()):
+    model.load_state_dict(torch.load('../Models/cnn_models/cnn_supervised_checkpoint.pt'))
+else:
+    model.load_state_dict(torch.load('../Models/cnn_models/cnn_supervised_checkpoint.pt',map_location=torch.device('cpu')))
+        
+valid_loss = evaluation(model, valid_loader, criterion, DEVICE)
+print(f'| Best Valid Loss: {valid_loss:.3f}')
+
+test_loss = evaluation(model, test_loader, criterion, DEVICE)
+print(f'| Test Loss: {test_loss: .3f}')
+
+fout=open("../Models/cnn_model/cnn_supervised_loss_plot.csv","w")
+for i in range(len(train_loss_list)):
+    outputstring = str(train_loss_list[i])+","+str(valid_loss_list[i])+"\n"
+    fout.write(outputstring)
+    fout.close()
+# -
 
 

@@ -10,18 +10,22 @@ dependencies:
   - _openmp_mutex=4.5=2_gnu
   - _py-xgboost-mutex=2.0=cpu_0
   - blas=1.0=mkl
+  - boltons=23.0.0=py311h06a4308_0
   - boost=1.78.0=py311h59ea3da_4
   - boost-cpp=1.78.0=h75c5d50_1
   - brotli=1.0.9=h166bdaf_8
   - brotli-bin=1.0.9=h166bdaf_8
   - brotlipy=0.7.0=py311h9bf148f_1002
   - bzip2=1.0.8=h7f98852_4
-  - ca-certificates=2022.12.7=ha878542_0
+  - ca-certificates=2023.05.30=h06a4308_0
   - cairo=1.16.0=ha61ee94_1014
-  - certifi=2022.12.7=pyhd8ed1ab_0
+  - certifi=2023.5.7=py311h06a4308_0
   - cffi=1.15.1=py311h9bf148f_3
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
   - chemspipy=2.0.0=py_0
+  - conda=23.5.2=py311h06a4308_0
+  - conda-package-handling=2.1.0=py311h06a4308_0
+  - conda-package-streaming=0.8.0=py311h06a4308_0
   - contourpy=1.0.7=py311ha3edf6b_0
   - cryptography=38.0.4=py311h46ebde7_0
   - cuda-cudart=11.6.55=he381448_0
@@ -54,6 +58,7 @@ dependencies:
   - intel-openmp=2021.4.0=h06a4308_3561
   - joblib=1.2.0=pyhd8ed1ab_0
   - jpeg=9e=h5eee18b_1
+  - jsonpatch=1.32=pyhd3eb1b0_0
   - kiwisolver=1.4.4=py311h4dd048b_1
   - lame=3.100=h7b6447c_0
   - lcms2=2.12=h3be6417_0
@@ -111,17 +116,19 @@ dependencies:
   - numpy-base=1.23.5=py311h0ff3221_0
   - openh264=2.1.1=h4ff587b_0
   - openjpeg=2.5.0=hfec8fc6_2
-  - openssl=3.1.0=hd590300_3
+  - openssl=3.0.9=h7f8727e_0
   - packaging=23.0=pyhd8ed1ab_0
   - pandas=1.5.3=py311h2872171_0
   - pcre2=10.40=hc3806b6_0
   - pillow=9.3.0=py311h3fd9d12_2
   - pip=23.0.1=pyhd8ed1ab_0
   - pixman=0.40.0=h36c2ea0_0
+  - pluggy=1.0.0=py311h06a4308_1
   - pooch=1.7.0=pyha770c72_3
   - pthread-stubs=0.4=h36c2ea0_1001
   - py-xgboost=1.7.4=cpu_py311h4b67847_0
   - pycairo=1.23.0=py311hdece40b_0
+  - pycosat=0.6.4=py311h5eee18b_0
   - pycparser=2.21=pyhd3eb1b0_0
   - pyopenssl=23.0.0=py311h06a4308_0
   - pyparsing=3.0.9=pyhd8ed1ab_0
@@ -129,14 +136,13 @@ dependencies:
   - python=3.11.0=he550d4f_1_cpython
   - python-dateutil=2.8.2=pyhd8ed1ab_0
   - python_abi=3.11=3_cp311
-  - pytorch=2.1.0.dev20230316=py3.11_cpu_0
   - pytorch-cuda=11.6=hfa5cb2e_3
   - pytorch-mutex=1.0=cpu
   - pytz=2022.7.1=pyhd8ed1ab_0
-  - rdkit=2022.09.5=py311h277d903_0
   - readline=8.1.2=h0f457ee_0
   - reportlab=3.6.12=py311h2eb0c47_2
   - requests=2.28.1=py311_0
+  - ruamel.yaml=0.17.21=py311h5eee18b_0
   - scikit-learn=1.2.2=py311h103fc68_1
   - setuptools=67.6.0=pyhd8ed1ab_0
   - six=1.16.0=pyh6c4a22f_0
@@ -144,6 +150,7 @@ dependencies:
   - sympy=1.10.1=py311h06a4308_0
   - threadpoolctl=3.1.0=pyh8a188c0_0
   - tk=8.6.12=h27826a3_0
+  - toolz=0.12.0=py311h06a4308_0
   - torchaudio=2.0.0.dev20230317=py311_cpu
   - torchtext=0.6.0=py_1
   - torchvision=0.16.0.dev20230317=py311_cpu
@@ -168,6 +175,7 @@ dependencies:
   - xorg-xproto=7.0.31=h7f98852_1007
   - xz=5.2.10=h5eee18b_1
   - zlib=1.2.13=h166bdaf_4
+  - zstandard=0.19.0=py311h5eee18b_0
   - zstd=1.5.2=h3eb15da_6
   - pip:
       - aiofiles==22.1.0
@@ -186,12 +194,15 @@ dependencies:
       - comm==0.1.2
       - debugpy==1.6.6
       - decorator==5.1.1
+      - deepchem==2.6.0.dev20220112042427
       - defusedxml==0.7.1
       - executing==1.2.0
       - fastjsonschema==2.16.3
       - fastprogress==1.0.3
       - fqdn==1.5.1
+      - fsspec==2023.6.0
       - gensim==4.3.1
+      - huggingface-hub==0.16.2
       - ipykernel==6.21.3
       - ipython==8.11.0
       - ipython-genutils==0.2.0
@@ -245,14 +256,20 @@ dependencies:
       - pyrsistent==0.19.3
       - python-graphviz==0.20.1
       - python-json-logger==2.0.7
+      - pytorch-triton==2.1.0+9e3e10c5ed
       - pyyaml==6.0
       - pyzmq==25.0.1
+      - rdkit==2023.3.2
+      - rdkit-pypi==2023.3.1b1
+      - regex==2023.6.3
       - rfc3339-validator==0.1.4
       - rfc3986-validator==0.1.1
+      - safetensors==0.3.1
       - scikit-optimize==0.9.0
       - scipy==1.10.1
       - seaborn==0.12.2
       - send2trash==1.8.0
+      - sentencepiece==0.1.99
       - sklearn==0.0.post4
       - smart-open==6.3.0
       - smilespe==0.0.3
@@ -262,9 +279,12 @@ dependencies:
       - tenacity==8.2.2
       - terminado==0.17.1
       - tinycss2==1.2.1
+      - tokenizers==0.13.3
       - toml==0.10.2
+      - torch==2.1.0.dev20230719+cu121
       - tornado==6.2
       - traitlets==5.9.0
+      - transformers==4.30.2
       - uri-template==1.2.0
       - wcwidth==0.2.6
       - webcolors==1.12
