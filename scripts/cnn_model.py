@@ -100,7 +100,7 @@ print(rev_X_test.shape)
 # +
 #Load the tokenizer and tokenize SMILES using Vocab from DeepChem
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
-tokenizer = SmilesTokenizer("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/Data/vocab.txt")
+tokenizer = SmilesTokenizer("/home/brc05/TII/Projects/Immunoinformatics/Data/vocab.txt")
 
 max_smiles_length=150
 def encode_to_indices(x):
@@ -126,8 +126,8 @@ train = data_utils.TensorDataset(X_train_smiles_encoded, torch.Tensor(np.array(X
 test = data_utils.TensorDataset(X_test_smiles_encoded, torch.Tensor(np.array(X_test_copy)),torch.Tensor(np.array(Y_test)))
 # -
 #Split the data into 0.75 for training and rest for validation stuff
-BATCH_SIZE = 256
-train_dataset, valid_dataset = data_utils.random_split(train, [0.75, 0.25], generator = torch.Generator().manual_seed(42))
+BATCH_SIZE = 4096
+train_dataset, valid_dataset = data_utils.random_split(train, [0.8, 0.2], generator = torch.Generator().manual_seed(42))
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 valid_loader = DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
 test_loader = DataLoader(test, batch_size=BATCH_SIZE, shuffle=False)
@@ -139,11 +139,11 @@ CELL_OUT_DIM = 256
 CELL_HID_DIMS = [1024,512]
 
 SMILES_INPUT_DIM = tokenizer.vocab_size
-SMILES_ENC_EMB_DIM = 64
+SMILES_ENC_EMB_DIM = 128
 SMILES_OUT_DIM = 256
 
-N_FILTERS = 128
-FILTER_SIZES = [2,3,4,6,8,9,12]
+N_FILTERS = 64
+FILTER_SIZES = [2,3,4,6,7,8,9,10]
 
 HID_DIM = 256
 OUT_DIM = 1
@@ -159,15 +159,15 @@ model.apply(init_weights)
 # -
 
 #Model training criterion
-optimizer = optim.Adam(model.parameters(),lr=1e-4,weight_decay=0.01)
+optimizer = optim.Adam(model.parameters(),weight_decay=1e-4)
 criterion = nn.MSELoss().to(DEVICE)
 
 # +
 #Start training the model
-N_EPOCHS = 1000
+N_EPOCHS = 5000
 CLIP = 1
 counter = 0
-patience = 400
+patience = 1000
 train_loss_list = []
 valid_loss_list = []
 best_valid_loss = float('inf')

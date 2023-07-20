@@ -151,9 +151,9 @@ dependencies:
   - threadpoolctl=3.1.0=pyh8a188c0_0
   - tk=8.6.12=h27826a3_0
   - toolz=0.12.0=py311h06a4308_0
-  - torchaudio=2.0.0.dev20230317=py311_cpu
+    #  - torchaudio=2.0.0.dev20230317=py311_cpu
   - torchtext=0.6.0=py_1
-  - torchvision=0.16.0.dev20230317=py311_cpu
+    #- torchvision=0.16.0.dev20230317=py311_cpu
   - tqdm=4.64.1=py311h06a4308_0
   - typing-extensions=4.5.0=hd8ed1ab_0
   - typing_extensions=4.5.0=pyha770c72_0
@@ -254,9 +254,9 @@ dependencies:
       - pygments==2.14.0
       - pyreadr==0.4.7
       - pyrsistent==0.19.3
-      - python-graphviz==0.20.1
+        #- python-graphviz==0.20.1
       - python-json-logger==2.0.7
-      - pytorch-triton==2.1.0+9e3e10c5ed
+      #pytorch-triton==2.1.0+9e3e10c5ed
       - pyyaml==6.0
       - pyzmq==25.0.1
       - rdkit==2023.3.2
@@ -281,7 +281,7 @@ dependencies:
       - tinycss2==1.2.1
       - tokenizers==0.13.3
       - toml==0.10.2
-      - torch==2.1.0.dev20230719+cu121
+        #- torch==2.1.0.dev20230719+cu121
       - tornado==6.2
       - traitlets==5.9.0
       - transformers==4.30.2
