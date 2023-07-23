@@ -1,0 +1,3 @@
+nohup: ignoring input
+Setting 'max_len_single_sentence' is now deprecated. This value is automatically set up.
+Setting 'max_len_sentences_pair' is now deprecated. This value is automatically set up.

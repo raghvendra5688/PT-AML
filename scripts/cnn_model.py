@@ -125,7 +125,7 @@ X_test_copy = scaler.transform(rev_X_test)
 train = data_utils.TensorDataset(X_train_smiles_encoded, torch.Tensor(np.array(X_train_copy)),torch.Tensor(np.array(Y_train)))
 test = data_utils.TensorDataset(X_test_smiles_encoded, torch.Tensor(np.array(X_test_copy)),torch.Tensor(np.array(Y_test)))
 # -
-for (i in range(0,10)):
+for i in range(0,10):
     #Split the data into 0.8 for training and rest for validation stuff
     BATCH_SIZE = 4096
     train_dataset, valid_dataset = data_utils.random_split(train, [0.8, 0.2], generator = torch.Generator().manual_seed(i*42))
