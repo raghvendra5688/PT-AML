@@ -24,9 +24,9 @@ import seaborn as sn
 import numpy as np
 import re 
 
-import xgboost as xgb
-import lightgbm
-import catboost
+#import xgboost as xgb
+#import lightgbm
+#import catboost
 from sklearn import ensemble
 from sklearn import dummy
 from sklearn import linear_model
@@ -100,8 +100,8 @@ print(rev_X_test.shape)
 # +
 #Load the tokenizer and tokenize SMILES using Vocab from DeepChem
 from deepchem.feat.smiles_tokenizer import SmilesTokenizer
-#tokenizer = SmilesTokenizer("/home/brc05/TII/Projects/Immunoinformatics/Data/vocab.txt")
-tokenizer = SmilesTokenizer('/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/Data/vocab.txt')
+tokenizer = SmilesTokenizer("/home/raghav/Projects/Immunoinformatics/Data/vocab.txt")
+#tokenizer = SmilesTokenizer('/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/Data/vocab.txt')
 
 max_smiles_length=150
 def encode_to_indices(x):
