@@ -14,6 +14,10 @@
 # ---
 
 from torch.nn.functional import softmax, relu, selu, leaky_relu, elu, max_pool1d, batch_norm
+from torch_geometric.nn import GATConv
+from torch_geometric.nn import global_add_pool, global_mean_pool
+from torch_geometric.nn import global_max_pool as gmp
+import torch.nn.functional as F
 import torch.nn.init as init
 import time
 import torch
@@ -63,6 +67,43 @@ class NN_Encoder(nn.Module):
         #Output will be [batch_size, output_dim]                   
         
         return x
+
+
+class GATNet(torch.nn.Module):
+    def __init__(self, input_dim, n_heads, hid_dim, out_dim, dropout):
+
+        super(GATNet, self).__init__()
+
+        # SMILES graph branch
+        self.dropout = nn.Dropout(dropout)
+        self.conv1 = GATConv(input_dim, input_dim, heads=n_heads, dropout=dropout)
+        self.conv2 = GATConv(input_dim*n_heads, input_dim*n_heads, heads=n_heads, dropout=dropout)
+        self.conv3 = GATConv(input_dim*n_heads*n_heads, input_dim*n_heads*n_heads, dropout=dropout)
+        self.fc_g1 = torch.nn.Linear(input_dim*n_heads*n_heads, hid_dim)
+        self.bn2 = nn.BatchNorm1d(hid_dim)
+        self.fc_g2 = torch.nn.Linear(hid_dim, out_dim)    
+        self.out_dim = out_dim
+        
+
+    def forward(self, smiles_src):
+
+        # get graph input
+        x, edge_index, batch = smiles_src.x, smiles_src.edge_index, smiles_src.batch
+
+        x = self.conv1(x, edge_index)
+        x = F.relu(x)
+
+        x = self.conv2(x, edge_index)
+        x = F.relu(x)
+
+        x = self.conv3(x, edge_index)
+        x = F.relu(x)
+        x = gmp(x, batch)       # global max pooling
+
+        x = F.relu(self.fc_g1(x))
+        x = self.dropout(x)
+        x = F.relu(self.fc_g2(x))
+        return(x)
 
 
 class LSTM_Encoder(nn.Module):
@@ -202,6 +243,45 @@ class Seq2Func(nn.Module):
         return final_output
 
 
+class Seq2Func_Net(nn.Module):
+    def __init__(self, cell_encoder, smiles_encoder, hid_dim, out_dim, dropout, device):
+        super().__init__()
+        
+        self.cell_encoder = cell_encoder
+        
+        self.smiles_encoder = smiles_encoder
+        
+        self.device = device
+        
+        self.fc1 = nn.Linear(cell_encoder.out_dim+smiles_encoder.out_dim, hid_dim)
+        
+        self.fc2 = nn.Linear(hid_dim, out_dim)
+        
+        self.dropout = nn.Dropout(dropout)
+        
+        self.relu = leaky_relu
+        
+    def forward(self, cell_src, smiles_src):
+        
+        #Get protein encoder output
+        cell_output = self.cell_encoder(cell_src, cell_src.shape[1]) 
+        #cell_output = [batch size, cell out_dim]
+        
+        #Get smiles encoder output
+        smiles_output = self.smiles_encoder(smiles_src)
+        #smiles_output = [batch size, smiles out_dim]
+        
+        ls_output = torch.cat((cell_output,smiles_output),1)
+        #ls_output = [batch size, cell out_dim + smiles out_dim]
+        
+        o1 = self.dropout(self.relu(self.fc1(ls_output)))
+        #o1 = [batch size, hid_dim]
+        
+        final_output = self.relu(self.fc2(o1))
+        #final_output = [batch_size, 1]
+        
+        return final_output
+
 
 def init_weights(m):
     for name, param in m.named_parameters():
@@ -249,6 +329,36 @@ def evaluation(model, iterator, criterion, DEVICE):
     return epoch_loss / len(iterator)
 
 
+def evaluation_net(model, iterator, criterion, N_dim, DEVICE):
+    
+    model.eval()
+    
+    epoch_loss = 0
+    
+    with torch.no_grad():
+    
+        for i, data in enumerate(iterator):
+
+            cell_src = data.cell_src
+            cell_src = cell_src.reshape(data.c_size.shape[0],N_dim)
+            cell_src = cell_src.to(DEVICE)
+            smiles_src = data.to(DEVICE)
+            trg = data.y.to(DEVICE)
+
+            output = model(cell_src, smiles_src).squeeze(1) 
+            #output = [batch size]
+            
+            loss = criterion(output, trg)
+            
+            epoch_loss += loss.item()
+            
+            del cell_src
+            del smiles_src
+            torch.cuda.empty_cache()
+        
+    return epoch_loss / len(iterator)
+
+
 def training(model, iterator, optimizer, criterion, clip, DEVICE):
     
     model.train()
@@ -260,6 +370,41 @@ def training(model, iterator, optimizer, criterion, clip, DEVICE):
         cell_src = batch[1].to(DEVICE)
         smiles_src = batch[0].permute(1,0).to(DEVICE)
         trg = batch[2].to(DEVICE)
+        
+        optimizer.zero_grad()
+        
+        output = model(cell_src, smiles_src).squeeze(1)
+        #output = [batch size]
+        
+        loss = criterion(output, trg)
+        
+        loss.backward()
+        
+        torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
+        
+        optimizer.step()
+        
+        epoch_loss += loss.item()
+        del cell_src
+        del smiles_src
+        torch.cuda.empty_cache()
+        
+    return epoch_loss / len(iterator)
+
+
+def training_net(model, iterator, optimizer, criterion, N_dim, clip, DEVICE):
+    
+    model.train()
+    
+    epoch_loss = 0
+    
+    for i, data in enumerate(iterator):
+        
+        cell_src = data.cell_src
+        cell_src = cell_src.reshape(data.c_size.shape[0],N_dim)
+        cell_src = cell_src.to(DEVICE)
+        smiles_src = data.to(DEVICE)
+        trg = data.y.to(DEVICE)
         
         optimizer.zero_grad()
         
