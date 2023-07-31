@@ -1,0 +1,5 @@
+nohup: ignoring input
+/home/raghav/Projects/Immunoinformatics/scripts/gat_model.py:112: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1682343995622/work/torch/csrc/utils/tensor_new.cpp:245.)
+  GCNData = DATA.Data(x=torch.FloatTensor(features),
+/home/raghav/anaconda3/envs/ProtSol/lib/python3.11/site-packages/torch_geometric/utils/scatter.py:93: UserWarning: The usage of `scatter(reduce='max')` can be accelerated via the 'torch-scatter' package, but it was not found
+  warnings.warn(f"The usage of `scatter(reduce='{reduce}')` "
