@@ -425,3 +425,71 @@ def training_net(model, iterator, optimizer, criterion, N_dim, clip, DEVICE):
         torch.cuda.empty_cache()
         
     return epoch_loss / len(iterator)
+
+
+def evaluation_net_performance(model, iterator, criterion, N_dim, DEVICE):
+    
+    model.eval()
+    
+    epoch_loss = 0
+    output_list, label_list = [],[]
+    
+    with torch.no_grad():
+    
+        for i, data in enumerate(iterator):
+
+            cell_src = data.cell_src
+            cell_src = cell_src.reshape(data.c_size.shape[0],N_dim)
+            cell_src = cell_src.to(DEVICE)
+            smiles_src = data.to(DEVICE)
+            trg = data.y.to(DEVICE)
+
+            output = model(cell_src, smiles_src).squeeze(1) 
+            #output = [batch size]
+            
+            rev_output = output.tolist()
+            rev_trg = trg.tolist()
+            
+            for j in range(len(rev_output)):
+                output_list.append(rev_output[j])
+                label_list.append(rev_trg[j])
+            
+            del cell_src
+            del smiles_src
+            torch.cuda.empty_cache()
+        
+    return (output_list,label_list)
+
+
+def evaluation_performance(model, iterator, criterion, DEVICE):
+    
+    model.eval()
+    
+    epoch_loss = 0
+    output_list, label_list = [],[]
+    
+    with torch.no_grad():
+    
+        for i,batch in enumerate(iterator):
+
+            cell_src = batch[1].to(DEVICE)
+            smiles_src = batch[0].permute(1,0).to(DEVICE)
+            trg = batch[2].to(DEVICE)
+
+            output = model(cell_src, smiles_src).squeeze(1) 
+            #output = [batch size]
+            
+            rev_output = output.tolist()
+            rev_trg = trg.tolist()
+            
+            for j in range(len(rev_output)):
+                output_list.append(rev_output[j])
+                label_list.append(rev_trg[j])
+            
+            del cell_src
+            del smiles_src
+            torch.cuda.empty_cache()
+        
+    return (output_list,label_list)
+
+
