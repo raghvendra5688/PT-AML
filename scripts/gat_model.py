@@ -172,7 +172,7 @@ X_test_smiles_graphs = get_smiles_func(X_test_smiles,X_test_copy,Y_test)
 N_dim = rev_X_train.shape[1]
 for i in range(0,10):
     #Split the data into 0.8 for training and rest for validation stuff
-    BATCH_SIZE = 256
+    BATCH_SIZE = 4096
     train_dataset, valid_dataset = data_utils.random_split(X_train_smiles_graphs, [0.8, 0.2], generator = torch.Generator().manual_seed(i*42))
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     valid_loader = DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
