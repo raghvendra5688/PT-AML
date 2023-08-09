@@ -87,10 +87,6 @@ rev_X_test = X_test_numerics_only.drop(nan_cols,axis=1)
 print("Shape of training set after removing cols with NaNs")
 print(rev_X_train.shape)
 print(rev_X_test.shape)
-# -
-
-
-
 # +
 #Build the LightGBM Regression model
 model = catboost.CatBoostRegressor(boosting_type="Plain",random_state=42, loss_function="MAE",thread_count=42)

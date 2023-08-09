@@ -461,6 +461,3 @@ plt.text(25, 25, 'Pearson r =' +str(lstm_test_metrics[3]), fontsize = 10)
 plt.text(25, 50, 'MAE ='+str(lstm_test_metrics[0]),fontsize=10)
 outfilename = "../Results/LSTM_supervised_test_prediction.pdf"
 plt.savefig(outfilename, bbox_inches="tight")
-# -
-
-
