@@ -7,45 +7,113 @@ library(ggplot2)
 data <- read.csv("Catboost_MFP_Feat_Var_supervised_test_predictions.csv", header = T, sep = "\t")
 
 # correlations
+
 correlations <- split(data, data$inhibitor) %>%
-  lapply(function(data) cor(data$predictions, data$labels, method = "pearson"))
+  lapply(function(subset) {
+    if (nrow(subset) >= 10) {
+      cor(subset$predictions, subset$labels, method = "pearson")
+    } else {
+      NA  # If there are fewer than 10 counts, assign NA
+    }
+  })
+
+# Create a data frame to store correlations
 correlations_df <- data.frame(drug = names(correlations), correlation = unlist(correlations))
+
+# Remove rows with NA (less than 10 counts)
+correlations_df <- correlations_df[!is.na(correlations_df$correlation), ]
+
+# Order correlations in descending order
 correlations_df <- correlations_df[order(-correlations_df$correlation), ]
 View(correlations_df)
+
 calculate_rsquared <- function(data) {
-  model <- lm(data$labels ~ data$predictions, data = data)
-  rsquared <- summary(model)$r.squared
+  if (nrow(data) >= 10) {
+    model <- lm(labels ~ predictions, data = data)
+    rsquared <- summary(model)$r.squared
+  } else {
+    rsquared <- NA
+  }
   return(rsquared)
 }
 
-# Calculate R-squared for each drug
+# Calculate R-squared for drugs with a minimum of 10 counts
 rsquared <- tapply(data$inhibitor, data$inhibitor, function(d) {
-  calculate_rsquared(data[data$inhibitor == d, ])
+  subset <- data[data$inhibitor == d, ]
+  calculate_rsquared(subset)
 })
+
+# Create a dataframe for R-squared values
+rsquared_df <- data.frame(drug = names(rsquared), r_squared = unlist(rsquared))
+
+# Remove rows with NA (less than 10 counts)
+rsquared_df <- rsquared_df[!is.na(rsquared_df$r_squared), ]
+
+# Order R-squared values in descending order
+rsquared_df <- rsquared_df[order(-rsquared_df$r_squared), ]
 
 # Combine R-squared values into a dataframe
 rsquared_df <- data.frame(drug = names(rsquared), r_squared = unlist(rsquared))
-#View(rsquared_df)
+View(rsquared_df)
 data_drug <- merge(correlations_df,rsquared_df)
 View(data_drug)
 write.table(data_drug, file = "drug_correlations.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
 #for pateints Rsquare calculation
-calculate_rsquared_2 <- function(data) {
-  model <- lm(data$labels ~ data$predictions, data = data)
-  rsquared_2 <- summary(model)$r.squared
-  return(rsquared_2)
+
+# Define a function to calculate correlations with minimum 10 counts
+calculate_correlation <- function(data) {
+  if (nrow(data) >= 10) {
+    correlation <- cor(data$predictions, data$labels)
+  } else {
+    correlation <- NA
+  }
+  return(correlation)
 }
-View(data)
-# Calculate R-squared for each drug
-rsquared_2 <- tapply(data$dbgap_rnaseq_sample, data$dbgap_rnaseq_sample, function(d) {
-  calculate_rsquared_2(data[data$dbgap_rnaseq_sample == d, ])
-})
-View(rsquared_df_p)
-# Combine R-squared values into a dataframe
-rsquared_df_p <- data.frame(patients = names(rsquared_2), r_squared = unlist(rsquared_2))
-View(rsquared_df_p)
-data_sam <- merge(correlations_df_p,rsquared_df_p)
+
+# Calculate correlations for groups with a minimum of 10 counts
+correlations_patients <- split(data, data$dbgap_rnaseq_sample) %>%
+  lapply(function(subset) {
+    calculate_correlation(subset)
+  })
+
+# Create a data frame to store correlations
+correlations_df_p <- data.frame(patients = names(correlations_patients), correlation = unlist(correlations_patients))
+
+# Remove rows with NA (less than 10 counts)
+correlations_df_p <- correlations_df_p[!is.na(correlations_df_p$correlation), ]
+
+# Order correlations in descending order
+correlations_df_p <- correlations_df_p[order(-correlations_df_p$correlation), ]
+
+# Define a function to calculate R-squared with minimum 10 counts
+calculate_rsquared_2 <- function(data) {
+  if (nrow(data) >= 10) {
+    model <- lm(data$labels ~ data$predictions, data = data)
+    rsquared <- summary(model)$r.squared
+  } else {
+    rsquared <- NA
+  }
+  return(rsquared)
+}
+
+# Calculate R-squared for groups with a minimum of 10 counts
+rsquared_patients <- split(data, data$dbgap_rnaseq_sample) %>%
+  lapply(function(subset) {
+    calculate_rsquared_2(subset)
+  })
+
+# Create a data frame to store R-squared values
+rsquared_df_p <- data.frame(patients = names(rsquared_patients), r_squared = unlist(rsquared_patients))
+
+# Remove rows with NA (less than 10 counts)
+rsquared_df_p <- rsquared_df_p[!is.na(rsquared_df_p$r_squared), ]
+
+# Order R-squared values in descending order
+rsquared_df_p <- rsquared_df_p[order(-rsquared_df_p$r_squared), ]
+
+data_sam <- merge(correlations_df_p,rsquared_df_2)
+View(data_sam)
 write.table(data_sam, file = "sample_correlations.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
 data_sam <- read.table("samples_correlations.txt", header = T, sep = "\t")
@@ -119,7 +187,7 @@ write.table(top_10_drug_1, file = "top10_drugs_correlations.txt", sep = "\t", qu
 down_10_drug <- data_drug %>%
   arrange(correlation) %>%
   slice(1:10)
-View(top_10_drug)
+View(down_10_drug)
 write.table(down_10_drug, file = "bottom10_drug_correlations.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 top_10_drug <- read.table("top10_drugs_correlations.txt", header = T, sep = "\t")
 top_10_drug$drug <- factor(top_10_drug$drug)
@@ -167,4 +235,5 @@ drug_plot_2 <- ggplot(data_long_4, aes(x = drug_order, y = Correlation, fill = `
 drug_plot_2
 
 final = ggarrange(sam_plot_1, sam_plot_2,drug_plot_1,drug_plot_2, nrow=2, ncol = 2, common.legend = TRUE, legend="right")
+final
 ggsave("comparision_of_correlations_MFP_based.pdf", final, width = 10, height = 7, units = "in", dpi = 300)
