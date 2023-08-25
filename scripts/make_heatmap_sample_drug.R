@@ -85,9 +85,19 @@ for (i in 1:nrow(data_df))
 
 rev_mae_matrix <- remove_problematic_combs(mae_matrix, min_shared_fields=50)
 
+# correlations
+correlations <- split(data_df, data_df$inhibitor) %>%
+  lapply(function(data) cor(data$predictions, data$labels, method = "pearson"))
+correlations_df <- data.frame(drug = names(correlations),correlation = unlist(correlations))
+subset_correlations_df <- correlations_df[rownames(correlations_df) %in% colnames(rev_mae_matrix),]
+correlation_vec <- subset_correlations_df$correlation
+names(correlation_vec) <- rownames(subset_correlations_df)
+
 # Create a heatmap
 ################################################################################
 col_fun = colorRamp2(c(0,0.125,0.25),c("blue","white","red"))
+col_fun2 = colorRamp2(c(0,0.4,0.8),c("blue","white","red"))
+row_ha = rowAnnotation(r=correlation_vec, col=list(r=col_fun2))
 pdf("../Results/Drug_vs_Sample_Best_Catboost.pdf", height = 12, width = 16)
 ht <- ComplexHeatmap::Heatmap(t(rev_mae_matrix), 
               name="NMAE",
@@ -104,6 +114,7 @@ ht <- ComplexHeatmap::Heatmap(t(rev_mae_matrix),
               clustering_method_columns = "centroid",
               row_names_gp = gpar(fontsize = 8, fontface="plain"),
               column_names_gp = gpar(fontsize = 8, fontface="plain"),
+              right_annotation = row_ha,
               col=col_fun)
 draw(ht)
 dev.off()
