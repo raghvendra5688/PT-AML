@@ -1,6 +1,6 @@
 library(data.table)
 library(ggplot2)
-library(oligo)
+#library(oligo)
 library(preprocessCore)
 library(rstatix)
 library(ggpubr)

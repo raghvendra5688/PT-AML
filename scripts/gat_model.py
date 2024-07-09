@@ -232,9 +232,9 @@ for i in range(0,10):
                 torch.save(model.state_dict(), outputfile_model)
         else:
             counter+=1
-            print(f'Epoch: {epoch+1:02} | Time: {epoch_mins}m {epoch_secs}s')
-            print(f'\tTrain Loss: {train_loss:.3f}')
-            print(f'\t Val. Loss: {valid_loss:.3f}')
+        print(f'Epoch: {epoch+1:02} | Time: {epoch_mins}m {epoch_secs}s')
+        print(f'\tTrain Loss: {train_loss:.3f}')
+        print(f'\t Val. Loss: {valid_loss:.3f}')
 
     if (torch.cuda.is_available()):
         model.load_state_dict(torch.load(outputfile_model))
