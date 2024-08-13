@@ -87,7 +87,6 @@ print(final_test_drug_mfp_cell_feature_df.shape)
 final_train_drug_mfp_cell_feature_df.to_pickle("../Data/Training_Set_Var_with_Drug_MFP_Cell_Info.pkl",compression="zip")
 final_test_drug_mfp_cell_feature_df.to_pickle("../Data/Test_Set_Var_with_Drug_MFP_Cell_Info.pkl",compression="zip")
 # -
-final_train_drug_feature_cell_feature_df.columns[288:]
 
 
 
