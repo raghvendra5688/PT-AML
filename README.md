@@ -1,4 +1,4 @@
-# Immunoinformatics
+# PT-AML
 
 ## Description
 This repository contains all the data, code, model and results for the PT-AML project
