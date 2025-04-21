@@ -1,4 +1,5 @@
-# PT-AML
+# PT-AML: Personalized Treatment Recommendations for AML patients
+![PT-AML Workflow](Docs/Personalized_Medicine_RMall.png)
 
 ## Description
 This repository contains all the data, code, model and results for the PT-AML project
