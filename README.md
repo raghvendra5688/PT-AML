@@ -24,30 +24,58 @@ For each patient, we have information about several drugs used for treatment inc
 7. Perform explanability analysis using SHAPley method.
 
 ## Deadlines
-- Project Proposal: [Jun 2023]
-- Code Check in: [August 2023]
-- Manuscript Draft: [September 2024]
+- Project Proposal: [Jun 2024]
+- Code Check in: [August 2024]
+- Manuscript CSCI: [September 2024]
+- Manuscript JTRM: [Ongoing]
 
 ## Pre-processing scripts
-1. `analyze_cell_lines_rnaseq.R`: Loads gene expression and clinical information from Wave 1+2 and Wave 3+4, perform t-SNE on gene expression data, merge gene expression, clinical annotations and t-SNE co-ordinates. Add pathway enrichments, cell type enrichments and module enrichments for each sample. Finally, oncogenes and 150 most variable genes are identified and only expression of those genes are considered for gene expression profile. The training and test data are saved as Traiing_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv and Test_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv. The metadata is saved in TRAINING_METADATA.csv file in the Results folder. Figures generated using this script include Supp. Fig 1A.
+- `analyze_cell_lines_rnaseq.R`:
+	- Loads gene expression and clinical information from Wave 1+2 and Wave 3+4, perform t-SNE on gene expression data, merge gene expression, clinical annotations and t-SNE co-ordinates. Add pathway enrichments, cell type enrichments and module enrichments for each sample. 
+	- Oncogenes and 150 most variable genes are identified and only expression of those genes are considered for gene expression profile. 
+	- The training and test data are saved as Training_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv and Test_Set_with_Onco_Var_Expr_Clin_PA_CTS.csv. 
+	- The metadata is saved in TRAINING_METADATA.csv file in the Results folder. 
+	- Figures generated using this script include Supp. Fig 1A.
 
-2. `gene_expression_data_analysis.R`: Performs variance analysis of gene expression data and identifies the optimal set of genes to select which divide the data into optimal number of clusters. Figures generated using this script include Supp. Fig 1B,C and D.
+- `gene_expression_data_analysis.R`: 
+	- Performs variance analysis of gene expression data and identifies the optimal set of genes to select which divide the data into optimal number of clusters. 
+	- Figures generated using this script include Supp. Fig 1B,C and D.
 
-3. `analyze_cell_lines_dnaseq.R`: Gets the dnaseq data and divides into training and test set and converts the dnaseq data into sample by mutation type matrix for training and test sets.
+- `analyze_cell_lines_dnaseq.R`:
+	- Gets the dnaseq data and divides into training and test set and converts the dnaseq data into sample by mutation type matrix for training and test sets.
 
-4. `preprocess_drugs.py`: Get list of drug names from BeatAML dataset and corresponidng compound id from pubchempy package in python and get properties including InChiKey, SMILES, XLogP, Molecular Weight. Run the SMILES based encoding representation by calling 'ls_generator2.py' and save it in Drug_Full_SMILES_Embedding.csv. Figure 3A is representation of the embedding vector generation process.
+- `preprocess_drugs.py`:
+	- Get list of drug names from BeatAML dataset and corresponidng compound id from pubchempy package in python and get properties including InChiKey, SMILES, XLogP, Molecular Weight. 
+	- Run the SMILES based encoding representation by calling 'ls_generator2.py' and save it in Drug_Full_SMILES_Embedding.csv. 
+	- Figure 3A is representation of the embedding vector generation process.
 
-5. `morgan_fps.py`: Get molecular fingerprints for all drugs from BeatAML dataset
+- `morgan_fps.py`: 
+	- Get molecular fingerprints for all drugs from BeatAML dataset
 
-6. `analyze_cell_lines_drug_combinations.R`: Takes input sample info, drug info, train + test feature files. Based on drug targets and string ppi network estimates propagation/diffusion score for each drug. Combines the diffusion score with the gene expression profile in the sample and then estimates distance of each pathway (geneset) from the drug using AUCell package. Final output is Revised_Train_Set_with_IC50.csv and Revised_Test_Set_with_IC50.csv. Figure 3B is representative of the random walk with restart based diffusion score combined with expression profile of sample. This is followed by AUCell for each pathway to estimate the distance of the pathway from a given drug.
+- `analyze_cell_lines_drug_combinations.R`: 
+	- Takes input sample info, drug info, train + test feature files. 
+	- Based on drug targets and string ppi network estimates propagation/diffusion score for each drug. 
+	- Combines the diffusion score with the gene expression profile in the sample and then estimates distance of each pathway (geneset) from the drug using AUCell package. 
+	- Final output is Revised_Train_Set_with_IC50.csv and Revised_Test_Set_with_IC50.csv. 
+	- Figure 3B is representative of the random walk with restart based diffusion score combined with expression profile of sample. 
+	- This is followed by AUCell for each pathway to estimate the distance of the pathway from a given drug.
 
-7. `preprocess_cellline.py`: Cleans the sample features including clinical, gene expression, mutation matrix and generates training and test pickle sets.
+- `preprocess_cellline.py`: 
+	- Cleans the sample features including clinical, gene expression, mutation matrix and generates training and test pickle sets.
 
-8. `make_fig1b.R`: Make a complexheatmap of the oncogenes + top varying genes + clinical characteristics (from BeatAML) + pathway enrichments + celltype enrichments + module enrichments + mutation type matrix. Figure 1 is generated through this script.
+- `make_fig1b.R`: 
+	- Make a complexheatmap of the oncogenes + top varying genes + clinical characteristics (from BeatAML) + pathway enrichments + celltype enrichments + module enrichments + mutation type matrix. 
+	- Figure 1 is generated through this script.
 
-9. `combined_cell_drug_info.py`: Runs the `preprocess_cellline.py` file first and combines with Revised_Train_Set_with_IC50.csv and Revised_Test_Set_with_IC50.csv. Drug representations generated by SMILES encoder or MFP are used to generate two training sets - a) Training_Set_Var_with_Drug_Embedding_Cell_Info.pkl b) Training_Set_Var_with_Drug_MFP_Cell_Info.pkl and corresponding test sets. Figure 4A is generated by this script.
+- `combined_cell_drug_info.py`: 
+	- Runs the `preprocess_cellline.py` file first and combines with Revised_Train_Set_with_IC50.csv and Revised_Test_Set_with_IC50.csv. 
+	- Drug representations generated by SMILES encoder or MFP are used to generate two training sets 
+		a) Training_Set_Var_with_Drug_Embedding_Cell_Info.pkl 
+		b) Training_Set_Var_with_Drug_MFP_Cell_Info.pkl and corresponding test sets. 
+	- Figure 4A is generated by this script.
 
-10. `all_cells_functions.R`: Miscallenous R script to plot figures and additional functions.
+- `all_cells_functions.R`: 
+	- Miscallenous R script to plot figures and additional functions.
 
 ## ML scripts  
 
