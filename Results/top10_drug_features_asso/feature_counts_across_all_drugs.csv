@@ -1,0 +1,547 @@
+"CommonFeature","Drugs"
+"JAZF1",9
+"M6",9
+"MAFB",9
+"Monocyte-like",9
+"PRKACA",9
+"RARA",9
+"[HM] KRAS signaling up",8
+"[IPA] ErbB Signaling",8
+"[IPA] ErbB2 ErbB3 Signaling",8
+"[IPA] ERK5 Signaling",8
+"[IPA] mTOR Signaling",8
+"[IPA] VEGF Signaling",8
+"[TPW] Immunogenic Cell Death (ICD)",8
+"AC104809.4",8
+"AMER1",8
+"ARHGAP26",8
+"ARHGEF10L_x",8
+"AUC_[TBI] Phopholipase",8
+"B2M",8
+"BCL6",8
+"CD300E",8
+"cDC-like",8
+"CLIP1",8
+"FAS",8
+"FCGR2B",8
+"IRF4",8
+"JAK2_x",8
+"LGALS2",8
+"M1",8
+"MAP2K1",8
+"MYCL",8
+"MYD88",8
+"PATZ1",8
+"PICALM",8
+"PRLR",8
+"VCAN",8
+"[HM] Angiogenesis",7
+"[HM] Apoptosis",7
+"[HM] Notch signaling",7
+"[HM] p53 pathway",7
+"[IPA] HMGB1 Signaling",7
+"[IPA] p38 MAPK Signaling",7
+"[IPA] PI3K AKT Signaling",7
+"[IPA] TNFR1 Signaling",7
+"[IPA] UVA Induced MAPK Signaling",7
+"[TBI] Phopholipase",7
+"[TPW] Hypoxia/Adenosine Immune Cell Suppression",7
+"[TPW] SHC1/pSTAT3 Signature",7
+"%.Monocytes.in.PB",7
+"ABL1",7
+"AKT2",7
+"ARID1B_x",7
+"AUC_[HM] DNA repair",7
+"AUC_[HM] KRAS signaling up",7
+"AUC_[HM] Myc targets",7
+"AUC_[TPW] Hypoxia/Adenosine Immune Cell Suppression",7
+"BCL7A",7
+"BCR",7
+"CD209",7
+"CD74",7
+"CDK6",7
+"COL2A1",7
+"CSF1R",7
+"DSG2",7
+"FOXO1",7
+"GAS7",7
+"GPHN",7
+"HOOK3",7
+"HSP90AB1",7
+"IRX5",7
+"KLF4",7
+"M11",7
+"M16",7
+"M7",7
+"MALT1",7
+"MAML2",7
+"MDFI",7
+"MYB_x",7
+"NONO",7
+"PRCC",7
+"PRPF40B",7
+"SGK1",7
+"SMARCA4",7
+"SMARCB1",7
+"SRGAP3",7
+"TFEB",7
+"TFRC",7
+"TGFBR2",7
+"WAS",7
+"ZFHX3",7
+"[HM] PI3K Akt mTOR signaling",6
+"[IPA] EGF Signaling",6
+"[IPA] HER 2 Signaling in Breast Cancer",6
+"[IPA] UVC Induced MAPK Signaling",6
+"AFF1",6
+"AUC_[HM] Angiogenesis",6
+"AUC_[IPA] Telomere Extension by Telomerase",6
+"AUC_[IPA] VEGF Signaling",6
+"AUC_[TPW] Immunogenic Cell Death (ICD)",6
+"CCNB1IP1",6
+"CES1",6
+"CHD4",6
+"CIITA",6
+"CPEB3",6
+"CREB3L2",6
+"EXT1",6
+"FGFR3",6
+"FN1",6
+"HERPUD1",6
+"HIP1",6
+"IRX3",6
+"KAT6B_x",6
+"LCP1",6
+"LYN",6
+"M4",6
+"M9",6
+"MSI2",6
+"N4BP2",6
+"NOTCH2",6
+"PCM1",6
+"POLR2A",6
+"PRKCB",6
+"PTK6",6
+"PTPRC",6
+"SALL4_x",6
+"SFRP4",6
+"SIRPA",6
+"SMO",6
+"STAT6",6
+"SYK",6
+"Tsne1",6
+"USP8",6
+"WRN",6
+"[HM] Hypoxia",5
+"[IPA] ERK MAPK Signaling",5
+"[IPA] Estrogen Dependent Breast Cancer Signaling",5
+"[IPA] PTEN Signaling",5
+"ADAMTS2",5
+"AUC_[HM] Apoptosis",5
+"AUC_[HM] Notch signaling",5
+"AUC_[TPW] SHC1/pSTAT3 Signature",5
+"BCL2",5
+"CDC42BPA",5
+"CDH2",5
+"CDKN1A",5
+"CSPG4",5
+"DGCR8",5
+"DNMT3A_x",5
+"EIF1AX",5
+"ERBB2",5
+"FANCG",5
+"FGFR1OP",5
+"FGFR4",5
+"GNAS_x",5
+"HLA-A",5
+"IDH2_x",5
+"IL6ST",5
+"M14",5
+"MED12",5
+"MLLT10",5
+"MLLT11",5
+"MSH6",5
+"MYO5A",5
+"NKX2-3",5
+"NUMA1",5
+"PDCD1LG2",5
+"PIEZO2",5
+"QKI",5
+"RBM10",5
+"RHOA",5
+"RNF213",5
+"RP11-129J12.2",5
+"RPL22",5
+"SCN9A_x",5
+"SDHB",5
+"SEPT6",5
+"SET",5
+"SMARCD1",5
+"SMARCE1",5
+"SRSF2_x",5
+"TCF3",5
+"TCF7L2",5
+"TMEM127",5
+"TMSB4X",5
+"TNFRSF14",5
+"TRRAP_x",5
+"USP44",5
+"XPA",5
+"[HM] Glycolysis",4
+"[IPA] AMPK Signaling",4
+"[IPA] Telomere Extension by Telomerase",4
+"[TBI] MAPK up genes",4
+"ABL2",4
+"AKT1",4
+"AUC_[HM] Epithelial mesenchymal transition",4
+"AUC_[IPA] HMGB1 Signaling",4
+"AUC_[IPA] p38 MAPK Signaling",4
+"BCL11A",4
+"BIRC6",4
+"CASC10",4
+"CASP3",4
+"CDK4",4
+"CEACAM6",4
+"CEACAM8",4
+"CSF3R_x",4
+"DDIT4L",4
+"DDX10",4
+"DPP10",4
+"ERCC3",4
+"FIP1L1",4
+"FSTL3",4
+"GATA2_x",4
+"HOXA6",4
+"IL12A-AS1",4
+"KDM5C_x",4
+"LCN2",4
+"LTF",4
+"MAP3K1",4
+"MLLT6",4
+"MMP8",4
+"MSH2_x",4
+"MYCN",4
+"POLE",4
+"PPFIBP1",4
+"SETBP1_x",4
+"SFPQ",4
+"SH2B3",4
+"SNCAIP_x",4
+"SPECC1",4
+"SRSF3",4
+"TEC",4
+"UBR5_x",4
+"WT1_x",4
+"ZMYM3",4
+"[HM] DNA repair",3
+"[HM] Epithelial mesenchymal transition",3
+"[HM] Estrogen response",3
+"[HM] Myc targets",3
+"[HM] Reactive oxigen species pathway",3
+"[HM] UV response up",3
+"ARHGAP35",3
+"ATIC",3
+"ATM",3
+"ATP1A1",3
+"AUC_[HM] Hypoxia",3
+"AUC_[IPA] TNFR1 Signaling",3
+"AUC_[TBI] Barrier genes",3
+"BCOR_x",3
+"C20orf166-AS1",3
+"CBFA2T3",3
+"CBL_x",3
+"CDX2",3
+"CHRDL1",3
+"CLTCL1_x",3
+"CRTC1",3
+"CUX1",3
+"CYYR1",3
+"DCTN1",3
+"DDX6",3
+"DLK1",3
+"ERCC2",3
+"ETV1",3
+"ETV6_x",3
+"EWSR1",3
+"FLT3_x",3
+"FNBP1",3
+"FOXP1",3
+"FUBP1",3
+"HOXA11",3
+"HSP90AA1",3
+"IDH1_x",3
+"IGF2BP2",3
+"IGKV2-23",3
+"IGSF10",3
+"IL7R",3
+"KAT7",3
+"KMT2D_x",3
+"LIFR",3
+"LZTR1",3
+"M0",3
+"M23",3
+"M3",3
+"MAPK1",3
+"MEN1",3
+"NACA",3
+"NCOA2",3
+"NFKB2",3
+"PBRM1",3
+"PLAG1",3
+"PLEKHG4B",3
+"Progenitor-like",3
+"PTPN11_x",3
+"RAD21_x",3
+"RNF43",3
+"RPL10",3
+"SDHD",3
+"SEPT9",3
+"SF3B1_x",3
+"SND1",3
+"STRN",3
+"TAL1",3
+"TCF12",3
+"TPM4",3
+"TRIM24",3
+"WT1-AS",3
+"[HM] KRAS signaling down",2
+"[HM] TGF beta signaling",2
+"[HM] UV response down",2
+"[IPA] Myc Mediated Apoptosis Signaling",2
+"[IPA] UVB Induced MAPK Signaling",2
+"ACVR1B",2
+"ACVR2A",2
+"ADCY2",2
+"AKAP9",2
+"AKT3",2
+"ARID1A",2
+"ARID2",2
+"ATR",2
+"AUC_[HM] Glycolysis",2
+"AUC_[HM] Oxidative phosphorylation",2
+"AUC_[HM] p53 pathway",2
+"AUC_[HM] TGF beta signaling",2
+"AUC_[HM] UV response down",2
+"AUC_[IPA] ERK5 Signaling",2
+"AUC_[IPA] HER 2 Signaling in Breast Cancer",2
+"AUC_[IPA] Myc Mediated Apoptosis Signaling",2
+"AUC_[IPA] PI3K AKT Signaling",2
+"AUC_[IPA] PTEN Signaling",2
+"AUC_[IPA] UVA Induced MAPK Signaling",2
+"BAP1",2
+"BCL10",2
+"BCL3",2
+"BCLAF1",2
+"BIRC3",2
+"BRD3",2
+"CANT1",2
+"CBFB",2
+"CCL2",2
+"CCND2",2
+"CD177",2
+"CD79B",2
+"CDC73",2
+"CDK12",2
+"CEP89",2
+"CNTRL",2
+"creatinine",2
+"CREBBP_x",2
+"CRISP3",2
+"CTCF_x",2
+"CYP2C8",2
+"CYSLTR2",2
+"DDR2",2
+"DEFA1",2
+"DEFA3",2
+"DEFA4",2
+"DROSHA",2
+"EIF3E",2
+"EIF4A2",2
+"ELL",2
+"EML4",2
+"FANCF",2
+"FBXW7",2
+"FGD5",2
+"FGFR1",2
+"FOXC1",2
+"FUS",2
+"GATA3",2
+"GJA1",2
+"GPC6",2
+"HIF1A",2
+"HMGA2",2
+"HNRNPA2B1",2
+"HOXA11-AS",2
+"HOXA13",2
+"HOXA5",2
+"HOXB-AS3",2
+"HOXB3",2
+"HOXB5",2
+"HOXB6",2
+"HOXB8",2
+"KAT6A",2
+"KDSR",2
+"KEAP1",2
+"KIAA1549_x",2
+"LMNA",2
+"LRP1B",2
+"M21",2
+"M8",2
+"MAX",2
+"MLF1",2
+"MLLT3",2
+"MMP2",2
+"MPL_x",2
+"MTOR",2
+"MUTYH",2
+"MYH11",2
+"MYH9",2
+"NBN",2
+"NCOA1",2
+"NPTX2",2
+"NRG1",2
+"NTHL1",2
+"NUTM2B",2
+"OLFM4",2
+"PBX1",2
+"PMS1",2
+"PMS2",2
+"POLG",2
+"PPP6C",2
+"PTPN6",2
+"PTPRB",2
+"RAD17",2
+"RAF1",2
+"RB1",2
+"RBM15",2
+"RHOH",2
+"RP11-388P9.2",2
+"RPL5",2
+"SEPT5",2
+"SETD2_x",2
+"SH3GL1",2
+"SLC45A3",2
+"SPEN",2
+"TFE3",2
+"TFG",2
+"TFPT",2
+"THBS1",2
+"TPR",2
+"TSC2",2
+"WNK2",2
+"XPC",2
+"XPO1",2
+"YWHAE",2
+"ZMYM2",2
+"ZNF429",2
+"ZNRF3",2
+"ZRSR2_x",2
+"[HM] Hedgehog signaling",1
+"[HM] Mitotic spindle",1
+"[HM] mTORC1 signaling",1
+"[HM] Oxidative phosphorylation",1
+"[TPW] NOS1 Signature",1
+"[TPW] PI3Kgamma Signature",1
+"ACKR3",1
+"ACSL3",1
+"ACVR1",1
+"AL589743.1",1
+"APC",1
+"APOBEC3B",1
+"ARHGAP5",1
+"ARHGEF10_x",1
+"ASXL1",1
+"ATF1",1
+"ATRX",1
+"AUC_[HM] Estrogen response",1
+"AUC_[HM] Hedgehog signaling",1
+"AUC_[HM] Reactive oxigen species pathway",1
+"AUC_[HM] UV response up",1
+"AUC_[IPA] ErbB Signaling",1
+"AUC_[IPA] Estrogen Dependent Breast Cancer Signaling",1
+"AUC_[IPA] mTOR Signaling",1
+"AUC_[IPA] UVC Induced MAPK Signaling",1
+"AXIN1",1
+"BARD1",1
+"BCL2L12",1
+"BRAF_x",1
+"BTG1",1
+"BTK",1
+"CALR_x",1
+"CCND1",1
+"CCND3_x",1
+"CHCHD7",1
+"CTNNA1",1
+"DEFA1B",1
+"DNAJB1",1
+"EPX",1
+"EZR",1
+"FAT3",1
+"FAT4",1
+"FKBP9",1
+"FLCN",1
+"FOXO3",1
+"GOPC",1
+"GPC3",1
+"H3F3A",1
+"H3F3B",1
+"HEY1",1
+"HOXA3",1
+"HOXA7",1
+"HOXB9",1
+"IL21R",1
+"ITK",1
+"KIAA0087",1
+"KIT_x",1
+"LCK",1
+"LPP",1
+"MACC1",1
+"MAP2K4",1
+"MDM2",1
+"MDM4",1
+"MN1",1
+"MSN",1
+"MTCP1",1
+"MUC1",1
+"MUC16",1
+"MYO18B",1
+"NF2",1
+"NFIB",1
+"NIN",1
+"NRAS_y",1
+"NUP98_x",1
+"P2RY8",1
+"PHF6_x",1
+"PIK3R1",1
+"PPARG",1
+"PRDM1",1
+"PRKAR1A",1
+"Promono-like",1
+"PXDN",1
+"RAC1",1
+"RALGDS",1
+"RAP1GDS1",1
+"REL",1
+"RFWD3",1
+"RGPD3",1
+"RP11-114I8.4",1
+"RUNX1",1
+"S100A16",1
+"SDC4",1
+"SDHAF2",1
+"SETDB1",1
+"SMAD4",1
+"SPOP",1
+"SS18",1
+"TAF15",1
+"TCEA1",1
+"TERT",1
+"TET1_x",1
+"TET2_x",1
+"TNFAIP3",1
+"TP63",1
+"TPM3",1
+"TRIM33",1
+"Tsne2",1
+"VAV1",1
+"ZNF331",1
