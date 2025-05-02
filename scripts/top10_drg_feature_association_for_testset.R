@@ -388,7 +388,7 @@ make_lm_plot <- function(filtered_df, column){
 }
 
 g_icd <- make_lm_plot(filtered_df,column="[TPW] Immunogenic Cell Death (ICD)")
-ggsave(filename="Results/top10_drug_features_asso/ICD_Pathway_Association.pdf",plot = g_icd, device = pdf(), height=6, width=15, units="in")
+ggsave(filename="Results/top10_drug_features_asso/ICD_Pathway_Association.pdf",plot = g_icd, device = pdf(), height=6, width=9, units="in")
 dev.off()
 
 # #############LASSO###########
