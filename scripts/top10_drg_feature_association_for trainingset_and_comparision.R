@@ -131,13 +131,13 @@ for (drug in target_inhibitors) {
       group2 <- auc[feature_data == 1]
       
       if (length(group1) > 2 && length(group2) > 2) {
-        test <- t.test(group1, group2)
+        test <- wilcox.test(group1, group2)
         p_values <- c(p_values, test$p.value)
         assoc_results <- rbind(assoc_results, data.frame(
           feature = col,
           p_value = test$p.value,
-          q_value = NA,  # No q-value for t-test
-          method = "t-test (binary feature)",
+          q_value = NA,  # No q-value for wilcox-test
+          method = "wilcox-test (binary feature)",
           beta = mean(group2, na.rm = TRUE) - mean(group1, na.rm = TRUE),
           r_squared = NA  # Not applicable for t-test
         ))

@@ -217,8 +217,8 @@ for (drug in target_inhibitors) {
         assoc_results <- rbind(assoc_results, data.frame(
           feature = col,
           p_value = test$p.value,
-          q_value = NA,  # No q-value for t-test
-          method = "t-test (binary feature)",
+          q_value = NA,  # No q-value for wilcox-test
+          method = "wilcox-test (binary feature)",
           beta = mean(group2, na.rm = TRUE) - mean(group1, na.rm = TRUE),
           r_squared = NA  # Not applicable for t-test
         ))
