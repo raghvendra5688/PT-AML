@@ -9,7 +9,8 @@ library(extrafont)
 library(reticulate)
 loadfonts()
 
-setwd("~/TII/Projects/Raghav/Immunoinformatics/scripts/")
+#setwd("~/TII/Projects/Raghav/Immunoinformatics/scripts/")
+setwd("/home/rmall/TII/Projects/Raghav/BeatAML/PT-AML/scripts/")
 
 #Get the revised cell line data frame
 cell_line_info_part1_df <- fread("../Data/Training_Set_Mod.csv",header=T,sep="\t")
@@ -64,18 +65,18 @@ order_ids <- order(cell_line_sex, cell_line_vital_status)
 #Make the heatmap
 ha = HeatmapAnnotation(
   Age = cell_line_age[order_ids],
-  Sex = cell_line_sex[order_ids],
   Status = cell_line_vital_status[order_ids],
+  Sex = cell_line_sex[order_ids],
   OS = (cell_line_os[order_ids])/365,
   simple_anno_size = unit(5, "mm"),
-  col = list(Age = colorRamp2(c(0,40,100),c("blue","white","red")),
-             Sex = c("Female"="blue","Male"="red"),
-             Status = c("Dead"="red","Unknown"="grey","Alive"="blue"),
-             OS = colorRamp2(c(0,10),c("white","red"))),
+  col = list(Age = colorRamp2(c(0,40,100),c("blue","white","magenta")),
+             Status = c("Dead"="magenta","Unknown"="grey","Alive"="blue"),
+             Sex = c("Female"="blue","Male"="magenta"),
+             OS = colorRamp2(c(0,10),c("white","magenta"))),
   annotation_name_gp = gpar(fontsize=10, family="Open Sans", col="black"),
   annotation_legend_param = list(direction="horizontal", legend_gp = gpar(fontsize=10, family="Open Sans"), title_gp=gpar(fontsize=10, family="Open Sans")),
   show_legend=T)
-col_fun_pathway <- colorRamp2(c(-0.5,0,0.5),c("blue","white","red"))
+col_fun_pathway <- colorRamp2(c(-0.5,0,0.5),c("blue","white","magenta"))
 ht_pathway = Heatmap(matrix=t(as.matrix(pathway_matrix[order_ids,])), col_fun_pathway, 
                      name = "Pathway Activities",
                      width = unit(20, "cm"),
@@ -93,7 +94,7 @@ ht_pathway = Heatmap(matrix=t(as.matrix(pathway_matrix[order_ids,])), col_fun_pa
                      border_gp = gpar(col = "black", lty = 1),
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
-col_func_gene <- colorRamp2(c(-5,0,5),c("blue","white","red"))
+col_func_gene <- colorRamp2(c(-5,0,5),c("blue","white","magenta"))
 ht_gene = Heatmap(matrix=t(as.matrix(gene_matrix[order_ids,])), col_func_gene,
                       name = "Gene Expr",
                       width = unit(20, "cm"),
@@ -110,7 +111,7 @@ ht_gene = Heatmap(matrix=t(as.matrix(gene_matrix[order_ids,])), col_func_gene,
                       border_gp = gpar(col = "black", lty = 1),
                       border = T,
                       heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
-col_fun_clinical <- colorRamp2(c(-2.0,0,2.0),c("blue","white","red"))
+col_fun_clinical <- colorRamp2(c(-2.0,0,2.0),c("blue","white","magenta"))
 ht_clinical = Heatmap(matrix=t(as.matrix(clinical_matrix[order_ids,])), col_fun_clinical, 
                      name = "Clinical Traits",
                      width = unit(20, "cm"),
@@ -131,7 +132,7 @@ ht_clinical = Heatmap(matrix=t(as.matrix(clinical_matrix[order_ids,])), col_fun_
                      border_gp = gpar(col = "black", lty = 1),
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
-col_fun_mut_genes <- colorRamp2(c(0,2),c("white","red"))
+col_fun_mut_genes <- colorRamp2(c(0,2),c("white","magenta"))
 ht_mut_genes = Heatmap(matrix=t(as.matrix(mutation_gene_matrix[order_ids,])), col_fun_mut_genes, 
                      name = "Mutated Genes",
                      width = unit(20, "cm"),
@@ -150,7 +151,7 @@ ht_mut_genes = Heatmap(matrix=t(as.matrix(mutation_gene_matrix[order_ids,])), co
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
 
-col_fun_celltype <- colorRamp2(c(0,1),c("white","red"))
+col_fun_celltype <- colorRamp2(c(0,1),c("white","magenta"))
 ht_celltype = Heatmap(matrix=t(as.matrix(celltype_matrix[order_ids,])), col_fun_celltype, 
                      name = "Celltype",
                      width = unit(20, "cm"),
@@ -169,7 +170,7 @@ ht_celltype = Heatmap(matrix=t(as.matrix(celltype_matrix[order_ids,])), col_fun_
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
 
-col_fun_module <- colorRamp2(c(-0.5,0,0.5),c("blue","white","red"))
+col_fun_module <- colorRamp2(c(-0.5,0,0.5),c("blue","white","magenta"))
 ht_module = Heatmap(matrix=t(as.matrix(module_matrix[order_ids,])), col_fun_module, 
                      name = "Module",
                      width = unit(20, "cm"),
@@ -188,7 +189,7 @@ ht_module = Heatmap(matrix=t(as.matrix(module_matrix[order_ids,])), col_fun_modu
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
 
-col_fun_mut_type <- colorRamp2(c(0,3),c("white","red"))
+col_fun_mut_type <- colorRamp2(c(0,3),c("white","magenta"))
 ht_mut_type = Heatmap(matrix=t(as.matrix(mutation_type_matrix[order_ids,])), col_fun_mut_type, 
                      name = "Mutation Type",
                      width = unit(20, "cm"),
@@ -207,7 +208,8 @@ ht_mut_type = Heatmap(matrix=t(as.matrix(mutation_type_matrix[order_ids,])), col
                      border = T,
                      heatmap_legend_param = list(direction = "horizontal", title_gp = gpar(fontsize=10, family="Open Sans"), legend_gp = gpar(fontsize=10, family="Open Sans")))
 
-ht_list = ht_clinical %v% ht_gene %v% ht_pathway %v% ht_mut_genes %v% ht_mut_type %v% ht_celltype %v% ht_module
-tiff(file="../Results/Cell_Type_Fig1b.tiff", width = 12, height=15, units="in", family = "Open Sans", res=300)
+ht_list = ht_clinical %v% ht_mut_genes %v% ht_mut_type %v% ht_gene %v% ht_pathway %v% ht_celltype %v% ht_module
+#tiff(file="../Results/Cell_Type_Fig1b.tiff", width = 12, height=15, units="in", family = "Open Sans", res=300)
+pdf(file="../Results/Cell_Type_Fig1b.pdf", width = 12, height=15, family = "Open Sans")
 draw(ht_list, heatmap_legend_side="bottom")
 dev.off()
