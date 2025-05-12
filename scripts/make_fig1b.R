@@ -210,6 +210,6 @@ ht_mut_type = Heatmap(matrix=t(as.matrix(mutation_type_matrix[order_ids,])), col
 
 ht_list = ht_clinical %v% ht_mut_genes %v% ht_mut_type %v% ht_gene %v% ht_pathway %v% ht_celltype %v% ht_module
 #tiff(file="../Results/Cell_Type_Fig1b.tiff", width = 12, height=15, units="in", family = "Open Sans", res=300)
-pdf(file="../Results/Cell_Type_Fig1b.pdf", width = 12, height=15, family = "Open Sans")
+pdf(file="../Results/Cell_Type_Fig1b.pdf", width = 12, height=15)
 draw(ht_list, heatmap_legend_side="bottom")
 dev.off()
