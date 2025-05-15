@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.14.5
+#       jupytext_version: 1.17.0
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -138,7 +138,7 @@ fig.set_size_inches(2.5,2.5)
 fig.set_dpi(300)
 fig.set_facecolor("white")
 
-ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "lightblue",'alpha':0.5}, 
+ax = sn.regplot(x="labels", y="predictions", data=metadata_X_test, scatter_kws={"color": "yellow",'alpha':0.5}, 
                 line_kws={"color": "red"})
 ax.axes.set_title("RF Predictions (LS + Feat)",fontsize=10)
 ax.set_xlim(0, 300)

@@ -6,11 +6,11 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.14.5
+#       jupytext_version: 1.17.0
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: BeatAML
 #     language: python
-#     name: python3
+#     name: beataml
 # ---
 
 # +
