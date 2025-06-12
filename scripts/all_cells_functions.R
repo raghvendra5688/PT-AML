@@ -8,7 +8,7 @@ library(extrafont)
 library(openxlsx)
 loadfonts()
 
-setwd("/home/raghvendra/TII/Projects/Raghav/Immunoinformatics/")
+setwd("/home/rmall/TII/Projects/Raghav/BeatAML/PT-AML/")
 
 plot_umap <- function(df, plot_title, expression_range, linetype_name)
 {
