@@ -24,12 +24,6 @@ For each patient, we have information about several drugs used for treatment inc
 6. Perform comprehensive comparison of machine learning models on features of drug and samples combined.
 7. Perform explanability analysis using SHAPley method.
 
-## Deadlines
-- Project Proposal: [Jun 2024]
-- Code Check in: [August 2024]
-- Manuscript CSCI: [September 2024]
-- Manuscript JTRM: [Ongoing]
-
 ## Pre-processing scripts
 - `analyze_cell_lines_rnaseq.R`:
 	- Loads gene expression and clinical information from Wave 1+2 and Wave 3+4, perform t-SNE on gene expression data, merge gene expression, clinical annotations and t-SNE co-ordinates. Add pathway enrichments, cell type enrichments and module enrichments for each sample. 
