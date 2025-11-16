@@ -217,8 +217,8 @@ for (drug in target_inhibitors) {
         assoc_results <- rbind(assoc_results, data.frame(
           feature = col,
           p_value = test$p.value,
-          q_value = NA,  # No q-value for wilcox-test
-          method = "wilcox-test (binary feature)",
+          q_value = NA,  # No q-value for t-test
+          method = "t-test (binary feature)",
           beta = mean(group2, na.rm = TRUE) - mean(group1, na.rm = TRUE),
           r_squared = NA  # Not applicable for t-test
         ))
@@ -388,7 +388,7 @@ make_lm_plot <- function(filtered_df, column){
 }
 
 g_icd <- make_lm_plot(filtered_df,column="[TPW] Immunogenic Cell Death (ICD)")
-ggsave(filename="Results/top10_drug_features_asso/ICD_Pathway_Association.pdf",plot = g_icd, device = pdf(), height=6, width=9, units="in")
+ggsave(filename="Results/top10_drug_features_asso/ICD_Pathway_Association.pdf",plot = g_icd, device = pdf(), height=6, width=15, units="in")
 dev.off()
 
 # #############LASSO###########
